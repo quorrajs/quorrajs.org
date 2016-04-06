@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>QuorraJS</title>
+
+        <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/assets/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/assets/css/prism.css">
+        <link rel="stylesheet" href="/assets/css/main.css">
+    </head>
+    <body>
+        <div class="navbar main-menu navbar-default" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+              <a class="navbar-brand" href="" title="MaterialStrap"><img src="/assets/images/logo.png"
+              alt="logo" title="MaterialStrap" />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <main class="container">
+            <div class="row">
+
+                
+                    <nav id="sidebar" class="col-md-3 col-sm-3 col-lg-3" role="navigation">
+
+                                                    <p class="text-muted">
+                                Preface
+                            </p>
+
+                            <ul class="nav nav-pills nav-stacked">
+                                                                    <li class="">
+                                        <a href="/Preface/quickstart.html">
+                                            Quickstart
+                                        </a>
+                                    </li>
+                                                            </ul>
+                                                    <p class="text-muted">
+                                Getting started
+                            </p>
+
+                            <ul class="nav nav-pills nav-stacked">
+                                                                    <li class="">
+                                        <a href="/Getting started/installation.html">
+                                            Installation
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Getting started/configuration.html">
+                                            Configuration
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Getting started/request lifecycle.html">
+                                            Request Lifecycle
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Getting started/routing.html">
+                                            Routing
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Getting started/requests &amp; input.html">
+                                            Requests & Input
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Getting started/views &amp; responses.html">
+                                            Views & Responses
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Getting started/controllers.html">
+                                            Controllers
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Getting started/errors &amp; logging.html">
+                                            Errors & Logging
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Getting started/models &amp; orm.html">
+                                            Models & ORM
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Getting started/globals.html">
+                                            Globals
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Getting started/middleware.html">
+                                            Middleware
+                                        </a>
+                                    </li>
+                                                            </ul>
+                                                    <p class="text-muted">
+                                Lerning more
+                            </p>
+
+                            <ul class="nav nav-pills nav-stacked">
+                                                                    <li class="">
+                                        <a href="/More/mail.html">
+                                            Mail
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/More/request.html">
+                                            Request Object
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/More/response.html">
+                                            Response Object
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Middlewares/body parser.html">
+                                            Body Parser
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Middlewares/query parser.html">
+                                            Query Parser
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Middlewares/cookie parser.html">
+                                            Cookie Parser
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Middlewares/session.html">
+                                            Session
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Middlewares/localization.html">
+                                            Localization
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Middlewares/http method override.html">
+                                            HTTP Method Override
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Middlewares/serve static.html">
+                                            Server Static
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/More/miscellaneous.html">
+                                            Miscellaneous
+                                        </a>
+                                    </li>
+                                                            </ul>
+                                                    <p class="text-muted">
+                                Quorra CLI
+                            </p>
+
+                            <ul class="nav nav-pills nav-stacked">
+                                                                    <li class="">
+                                        <a href="/Quorra CLI/overview.html">
+                                            Overview
+                                        </a>
+                                    </li>
+                                                            </ul>
+                        
+                    </nav>
+
+                
+                <section class="col-sm-9 col-lg-9">
+                    <h1 id="localization">Localization</h1>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#language-files">Language Files</a></li>
+<li><a href="#basic-usage">Basic Usage</a></li>
+<li><a href="#object-notation">Object notation</a></li>
+<li><a href="#pluralization">Pluralization</a></li>
+</ul>
+<h2 id="introduction">Introduction</h2>
+<p>Quorra makes use of the popular <a href="https://github.com/mashpie/i18n-node/tree/1b0c86d14c22bc85257735e30bcbb154a4e8b91b">i18n</a> module for localization which provides a
+convenient way of retrieving strings in various languages, allowing you to easily support multiple languages within your
+application.</p>
+<h2 id="language-files">Language Files</h2>
+<p>Language strings are stored in files within the app/lang directory. Within this directory there should be a json file
+for each language supported by the application with language short code as file name.</p>
+<pre><code>/app
+    /lang
+        en.json
+        es.json</code></pre>
+<p>Language files will be generated automatically on-the-fly when first used in your app. You can turn this off if  you
+don't want to write new locale information to disk in the app/config/lang.js file.</p>
+<h3 id="example-language-file">Example Language File</h3>
+<p>Language files are simply json file with keyed strings. For example:</p>
+<pre><code>{
+    "welcome": "Welcome to our application"
+}</code></pre>
+<h3 id="changing-the-default-language-at-runtime">Changing The Default Language At Runtime</h3>
+<p>The default language for your application is stored in the app/config/lang.js configuration file. You may change the
+active language at any time using the <code>App.setLocale</code> method:</p>
+<pre><code class="language-javascript">App.setLocale('es');</code></pre>
+<p>You may change the active language for a particular request by using the <code>req.setLocale</code> method:</p>
+<pre><code class="language-javascript">req.setLocale('es');</code></pre>
+<h3 id="setting-the-fallback-language">Setting The Fallback Language</h3>
+<p>You may also configure &quot;fallbacks&quot; for each language that you use in your application, which will be used when the
+active language does not contain a given language line. Like the default language, the fallback language is also
+configured in the app/config/lang.js configuration file:</p>
+<pre><code class="language-javascript">    // fall back from Dutch to German
+    fallbacks:{'nl': 'de'},</code></pre>
+<h2 id="basic-usage">Basic Usage</h2>
+<h3 id="in-a-view">In a view</h3>
+<pre><code>&lt;h1&gt; &lt;%= __('Hello') %&gt; &lt;/h1&gt;
+
+// passing specific locale
+&lt;h1&gt; &lt;%= __({phrase: 'Hello', locale: 'fr'}) %&gt; &lt;/h1&gt;</code></pre>
+<h3 id="in-a-route">In a route:</h3>
+<pre><code>// (req.locale == 'de')
+req.__('Hello'); // =&gt; Hola
+
+// passing specific locale
+req.__({phrase: 'Hello', locale: 'fr'}); // Salut
+</code></pre>
+<h3 id="making-replacements-in-lines">Making Replacements In Lines</h3>
+<p>You may also define place-holders in your language lines:</p>
+<pre><code class="language-javascript">__('Hello %s', 'Marcus'); // Hallo Marcus
+__('Hello {{name}}', { name: 'Marcus' }); // Hallo Marcus
+
+// passing specific locale
+__({phrase: 'Hello %s', locale: 'fr'}, 'Marcus'); // Salut Marcus</code></pre>
+<h2 id="object-notation">Object notation</h2>
+<p>In addition to the traditional, linear translation lists, i18n also supports hierarchical translation catalogs.</p>
+<p>To enable this feature, be sure to set objectNotation to true in language configuration file. Note: If you can't or
+don't want to use . as a delimiter, set objectNotation to any other delimiter you like.</p>
+<p>Instead of calling <code>__("Hello")</code> you might call <code>__("greeting.formal")</code> to retrieve a formal greeting from a translation
+document like this one:</p>
+<pre><code>"greeting": {
+    "formal": "Hello",
+    "informal": "Hi",
+    "placeholder": {
+        "formal": "Hello %s",
+        "informal": "Hi %s"
+    }
+}</code></pre>
+<p>In the document, the translation terms, which include placeholders, are nested inside the &quot;greeting&quot; translation.
+They can be accessed and used in the same way, like so <code>__('greeting.placeholder.informal', 'Marcus')</code>.</p>
+<h2 id="pluralization">Pluralization</h2>
+<p>Pluralization is a complex problem, as different languages have a variety of complex rules for pluralization. You may
+easily manage this with i18n module. By using a &quot;coma&quot; character, you may separate the singular and plural forms of a
+string:</p>
+<pre><code class="language-javascript">__n("%s cat", "%s cats", 1); // 1 Katze
+__n("%s cat", "%s cats", 3); // 3 Katzen
+
+// passing specific locale
+__n({singular: "%s cat", plural: "%s cats", locale: "fr"}, 1); // 1 chat
+__n({singular: "%s cat", plural: "%s cats", locale: "fr"}, 3); // 3 chat
+
+__n({singular: "%s cat", plural: "%s cats", locale: "fr", count: 1}); // 1 chat
+__n({singular: "%s cat", plural: "%s cats", locale: "fr", count: 3}); // 3 chat</code></pre>
+                </section>
+
+            </div>
+        </main>
+
+        <section id="info">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-md-offset-4">
+                        <h4 class="wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.8s">Connect with us</h4>
+                        <div class="clearfix"></div>
+                        <ul class="list-inline social">
+                                  <li class="wow bounceIn" data-wow-duration="1.0s" data-wow-delay="0.8s">
+                                      <a href="https://github.com/quorrajs" target="_blank">
+                                          <i class="fa fa-github-square"></i>
+                                      </a>
+                                  </li>
+                                  <li class="wow bounceIn" data-wow-duration="1.0s" data-wow-delay="0.8s">
+                                      <a href="https://www.facebook.com/quorrajs" class="fb">
+                                          <i class="fa fa-facebook-square"></i></a>
+                                  </li>
+                                  <li class="wow bounceIn" data-wow-duration="1.0s" data-wow-delay="1.0s">
+                                      <a href="https://twitter.com/quorrajs" class="twt">
+                                          <i class="fa fa-twitter-square"></i>
+                                      </a>
+                                  </li>
+                                </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+        <script src="/assets/js/prism.js"></script>
+
+        <script>
+        </script>
+
+    </body>
+</html>

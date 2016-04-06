@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>QuorraJS</title>
+
+        <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/assets/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/assets/css/prism.css">
+        <link rel="stylesheet" href="/assets/css/main.css">
+    </head>
+    <body>
+        <div class="navbar main-menu navbar-default" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+              <a class="navbar-brand" href="" title="MaterialStrap"><img src="/assets/images/logo.png"
+              alt="logo" title="MaterialStrap" />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <main class="container">
+            <div class="row">
+
+                
+                    <nav id="sidebar" class="col-md-3 col-sm-3 col-lg-3" role="navigation">
+
+                                                    <p class="text-muted">
+                                Preface
+                            </p>
+
+                            <ul class="nav nav-pills nav-stacked">
+                                                                    <li class="">
+                                        <a href="/Preface/quickstart.html">
+                                            Quickstart
+                                        </a>
+                                    </li>
+                                                            </ul>
+                                                    <p class="text-muted">
+                                Getting started
+                            </p>
+
+                            <ul class="nav nav-pills nav-stacked">
+                                                                    <li class="">
+                                        <a href="/Getting started/installation.html">
+                                            Installation
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Getting started/configuration.html">
+                                            Configuration
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Getting started/request lifecycle.html">
+                                            Request Lifecycle
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Getting started/routing.html">
+                                            Routing
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Getting started/requests &amp; input.html">
+                                            Requests & Input
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Getting started/views &amp; responses.html">
+                                            Views & Responses
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Getting started/controllers.html">
+                                            Controllers
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Getting started/errors &amp; logging.html">
+                                            Errors & Logging
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Getting started/models &amp; orm.html">
+                                            Models & ORM
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Getting started/globals.html">
+                                            Globals
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Getting started/middleware.html">
+                                            Middleware
+                                        </a>
+                                    </li>
+                                                            </ul>
+                                                    <p class="text-muted">
+                                Lerning more
+                            </p>
+
+                            <ul class="nav nav-pills nav-stacked">
+                                                                    <li class="">
+                                        <a href="/More/mail.html">
+                                            Mail
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/More/request.html">
+                                            Request Object
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/More/response.html">
+                                            Response Object
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Middlewares/body parser.html">
+                                            Body Parser
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Middlewares/query parser.html">
+                                            Query Parser
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Middlewares/cookie parser.html">
+                                            Cookie Parser
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Middlewares/session.html">
+                                            Session
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Middlewares/localization.html">
+                                            Localization
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Middlewares/http method override.html">
+                                            HTTP Method Override
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Middlewares/serve static.html">
+                                            Server Static
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/More/miscellaneous.html">
+                                            Miscellaneous
+                                        </a>
+                                    </li>
+                                                            </ul>
+                                                    <p class="text-muted">
+                                Quorra CLI
+                            </p>
+
+                            <ul class="nav nav-pills nav-stacked">
+                                                                    <li class="">
+                                        <a href="/Quorra CLI/overview.html">
+                                            Overview
+                                        </a>
+                                    </li>
+                                                            </ul>
+                        
+                    </nav>
+
+                
+                <section class="col-sm-9 col-lg-9">
+                    <h1 id="quorra-quickstart">Quorra Quickstart</h1>
+<ul>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#routing">Routing</a></li>
+<li><a href="#creating-a-View">Creating A View</a></li>
+<li><a href="#waterline-ormodm">Waterline ORM</a></li>
+<li><a href="#displaying-data">Displaying Data</a></li>
+</ul>
+<h2 id="installation">Installation</h2>
+<p>First, download the Quorra cli using npm.</p>
+<pre><code>npm install -g quorra-cli</code></pre>
+<p>Once installed, the simple <code>quorra new</code> command will create a fresh Quorra installation in the directory you specify.
+For instance, <code>quorra new blog</code> would create a directory named <code>blog</code> containing a fresh Quorra installation with all
+dependencies installed.</p>
+<h3 id="permissions">Permissions</h3>
+<p>Quorra may require one set of permissions to be configured: folders within app/storage require write access by the web
+server.</p>
+<h3 id="serving-quorra">Serving Quorra</h3>
+<p>You can use the <code>ride</code> Quorra-cli command to serve Quorra applicaton:</p>
+<pre><code>quorra ride</code></pre>
+<p>By default the HTTP-server will listen to port 3000. However if that port is already in use or you wish to serve
+multiple applications this way, you might want to specify what port to use. Just add the --port argument:</p>
+<pre><code>quorra ride --port=8080</code></pre>
+<p>You can configure your default Quorra port in <code>app/config/app.js</code></p>
+<h3 id="directory-structure">Directory Structure</h3>
+<p>After installing the framework, take a glance around the project to familiarize yourself with the directory structure.
+The app directory contains folders such as controllers, and models. Most of your application's code will reside
+somewhere in this directory. You may also wish to explore the app/config directory and the configuration options that
+are available to you.</p>
+<h2 id="routing">Routing</h2>
+<p>To get started, let's create our first route. In Quorra, the simplest route is a route to a Closure. Pop open the
+app/routes.js file and add the following route to the bottom of the file:</p>
+<pre><code class="language-javascript">Route.get('users', function(req, res)
+{
+     res.send('Users!');
+});</code></pre>
+<p>Now, if you hit the <code>/users</code> route in your web browser, you should see <code>Users!</code> displayed as the response. Great! You've
+just created your first route.</p>
+<p>Routes can also be attached to controllers. For example:</p>
+<pre><code class="language-javascript">Route.get('users', 'UserController@getIndex');</code></pre>
+<p>This route informs the framework that requests to the <code>/users</code> route should call the <code>getIndex</code> method on the
+<code>UserController</code>. For more information on controller routing, check out the <a href="controllers.html">controller documentation</a>.</p>
+<h2 id="creating-a-view">Creating A View</h2>
+<p>Next, we'll create a simple view to display our user data. Views live in the <code>resources/views</code> directory and contain
+the HTML of your application. We're going to place two new views in this directory: <code>layout.jade</code> and <code>users.jade</code>
+First, let's create our layout.jade file:</p>
+<pre><code>doctype html
+html
+  head
+    title='Quorra Quickstart'
+  body
+    block content</code></pre>
+<p>Next, we'll create our <code>users.jade</code> view:</p>
+<pre><code>extends layout
+
+block content
+  p Users!</code></pre>
+<p>Here we use <a href="https://github.com/visionmedia/jade">jade</a> templating system, Quorra comes pre-installed with jade
+template engine. You can configure template engines for your application in <code>app/config/view.js</code>. Quorra uses module
+<a href="https://github.com/tj/consolidate.js">consolidate</a>, a template engine consolidation library and supports all the
+template engines <a href="https://github.com/tj/consolidate
+.js#supported-template-engines">supported by the consolidate library</a>.</p>
+<p>Now that we have our views, let's send it from our /users route as the response. Instead of sending <code>Users!</code> from the
+route, return the view instead:</p>
+<pre><code class="language-javascript">Route.get('users', function(req, res)
+{
+    res.view('users');
+});</code></pre>
+<p>Wonderful! Now you have setup a simple view that extends a layout. Next, let's start working on our database layer.</p>
+<h2 id="waterline-ormodm">Waterline ORM/ODM</h2>
+<p>Quorra makes connecting with databases and running queries extremely simple. Quorra comes installed with a powerful
+ORM/ODM called <a href="https://github.com/balderdashy/waterline">Waterline</a>, a datastore-agnostic tool that dramatically
+simplifies interaction with one or more databases.</p>
+<p>First, let's define a model. An waterline model can be used to query an associated database table. Don't worry, it
+will all make sense soon! Models are typically stored in the app/models directory. Let's define a User.js model in
+that directory like so:</p>
+<pre><code class="language-javascript">// path: app/models/user.js
+var User = {
+    attributes: {
+       ...
+    }
+};
+
+module.exports = User;</code></pre>
+<p>Note that we do not have to tell Waterline which table to use.</p>
+<p>Using your preferred database administration tool, insert a few rows into your user table, and we'll use Waterline to
+retrieve them and pass them to our view.</p>
+<p>Now let's modify our /users route to look like this:</p>
+<pre><code class="language-javascript">Route.get('users', function(req, res)
+{
+    var users = User.find();
+
+    res.view('users', {users: users});
+});</code></pre>
+<p>Let's walk through this route. First, the all method on the User model will retrieve all of the rows in the users
+table. Next, we're passing these records to the view via view method along with the view name. Now the <code>users</code> data
+is available to the view.</p>
+<p>Awesome. Now we're ready to display the users in our view!</p>
+<h2 id="displaying-data">Displaying Data</h2>
+<p>Now that we have made the users available to our view, we can display them like so:</p>
+<pre><code>extends layout
+
+block content
+ each val in users
+    p= val.name</code></pre>
+<p>Now, you should be able to hit the /users route and see the names of your users displayed in the response.</p>
+<p>This is just the beginning. In this tutorial, you've seen the very basics of Quorra, but there are so many more
+exciting things to learn. Keep reading through the documentation and dig deeper into the powerful features of Quorra
+framework.</p>
+                </section>
+
+            </div>
+        </main>
+
+        <section id="info">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-md-offset-4">
+                        <h4 class="wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.8s">Connect with us</h4>
+                        <div class="clearfix"></div>
+                        <ul class="list-inline social">
+                                  <li class="wow bounceIn" data-wow-duration="1.0s" data-wow-delay="0.8s">
+                                      <a href="https://github.com/quorrajs" target="_blank">
+                                          <i class="fa fa-github-square"></i>
+                                      </a>
+                                  </li>
+                                  <li class="wow bounceIn" data-wow-duration="1.0s" data-wow-delay="0.8s">
+                                      <a href="https://www.facebook.com/quorrajs" class="fb">
+                                          <i class="fa fa-facebook-square"></i></a>
+                                  </li>
+                                  <li class="wow bounceIn" data-wow-duration="1.0s" data-wow-delay="1.0s">
+                                      <a href="https://twitter.com/quorrajs" class="twt">
+                                          <i class="fa fa-twitter-square"></i>
+                                      </a>
+                                  </li>
+                                </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+        <script src="/assets/js/prism.js"></script>
+
+        <script>
+        </script>
+
+    </body>
+</html>

@@ -1,79 +1,148 @@
-<!DOCTYPE HTML>
-<!--
-	Aerial by HTML5 UP
-	html5up.net | @n33co
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>QuorraJS | NodeJS MVC Framework | Coming Soon</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="apple-touch-icon" sizes="57x57" href="assets/favicon/apple-icon-57x57.png">
-        <link rel="apple-touch-icon" sizes="60x60" href="assets/favicon/apple-icon-60x60.png">
-        <link rel="apple-touch-icon" sizes="72x72" href="assets/favicon/apple-icon-72x72.png">
-        <link rel="apple-touch-icon" sizes="76x76" href="assets/favicon/apple-icon-76x76.png">
-        <link rel="apple-touch-icon" sizes="114x114" href="assets/favicon/apple-icon-114x114.png">
-        <link rel="apple-touch-icon" sizes="120x120" href="assets/favicon/apple-icon-120x120.png">
-        <link rel="apple-touch-icon" sizes="144x144" href="assets/favicon/apple-icon-144x144.png">
-        <link rel="apple-touch-icon" sizes="152x152" href="assets/favicon/apple-icon-152x152.png">
-        <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-icon-180x180.png">
-        <link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="96x96" href="assets/favicon/favicon-96x96.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
-        <link rel="manifest" href="/manifest.json">
-        <meta name="msapplication-TileColor" content="#ffffff">
-        <meta name="msapplication-TileImage" content="assets/favicon/ms-icon-144x144.png">
-        <meta name="theme-color" content="#ffffff">
-		<!--[if lte IE 8]><script src="assets/css/ie/html5shiv.js"></script><![endif]-->
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie/v8.css" /><![endif]-->
-		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie/v9.css" /><![endif]-->
-		<!--[if lte IE 8]><script src="assets/css/ie/respond.min.js"></script><![endif]-->
-		<script>
-		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-		
-		  ga('create', 'UA-42913540-2', 'auto');
-		  ga('send', 'pageview');
-		
-		</script>
-	</head>
-	<body class="loading">
-		<div id="wrapper">
-			<div id="bg"></div>
-			<div id="overlay"></div>
-			<div id="main">
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="QuorraJS - The NodeJS framework for web riders">
+    <meta name="author" content="Harish Anchu">
+    <link rel="icon" href="assets/icons/favicon.ico">
+    <title>QuorraJS</title>
 
-				<!-- Header -->
-					<header id="header">
-					    <p><img src="assets/img/quorra_.png" height="128px"></p>
-						<h1>QuorraJS</h1>
-						<p>NodeJS Framework For Web Artisans &nbsp;&bull;&nbsp; Inspired by <a href="http://laravel.com" target="_blank">Laravel</a> &nbsp;&bull;&nbsp; Coming Soon</p>
-						<nav>
-							<ul>
-								<li><a href="https://twitter.com/quorrajs" target="_blank" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-								<li><a href="https://www.facebook.com/quorrajs" target="_blank" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-								<li><a href="https://github.com/quorrajs" target="_blank" class="icon fa-github"><span class="label">Github</span></a></li>
-								<li><a href="mailto:hello@quorrajs.org" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
-							</ul>
-						</nav>
-					</header>
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900' rel='stylesheet' type='text/css'>
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link href="assets/css/style.min.css" rel="stylesheet">
 
-				<!-- Footer -->
-					<footer id="footer">
-						<span class="copyright">Copyright &copy; 2014-2015 <a href="http://www.harishanchu.com/" target="_blank">Harish Anchu</a> | Designed by <a href="http://html5up.net" target="_blank">HTML5 UP</a>.</span>
-					</footer>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+          <script src="assets/js/html5shiv.min.js"></script>
+          <script src="assets/js/respond.min.js"></script>
+        <![endif]-->
+    </head>
+<body>
+<!-- Preloader -->
+<div id="preloader">
+    <div id="status">&nbsp;</div>
+</div>
 
-			</div>
-		</div>
-		<script>
-			window.onload = function() { document.body.className = ''; }
-			window.ontouchmove = function() { return false; }
-			window.onorientationchange = function() { document.body.scrollTop = 0; }
-		</script>
-	</body>
+<!-- Fixed navbar -->
+<div class="navbar main-menu navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+      <a class="navbar-brand" href="" title="MaterialStrap"><img src="assets/images/logo.png" alt="logo" title="MaterialStrap" /></a> </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-right" id="menu">
+          <li><a data-scroll data-options="easing: easeOutQuart" href="documentation.html">Documentation</a></li>
+      </ul>
+    </div>
+    <!--/.nav-collapse -->
+  </div>
+</div>
+<section id="banner" class="section">
+	<div class="container">
+    	<div class="intro">
+            <h1 class="wow fadeInUp" data-wow-duration="0.8s"
+                data-wow-delay="0.8s"><img class="logo" src="assets/images/mascot.png"></h1>
+            <h2 class="wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="1.0s"><span>Quorra</span>JS</h2>
+            <p class="wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="1.2s">NodeJS framework for web riders</p>
+            <a href="/Getting started/installation.html" class="btn btn-success">Get Started</a>
+            <a href="documentation.html" class="btn btn-success">Read Docs</a>
+            <div class="github-star-container">
+                <iframe
+                        src="https://ghbtns.com/github-btn.html?user=quorrajs&amp;repo=quorra&amp;type=watch&amp;count=true" class="github-star"></iframe>
+                </div>
+            </div>
+        <div class="clearfix"></div>
+	</div>
+    	 <!-- Carousel -->
+</section>
+<section id="about">
+    <div class="sectionIcon wow bounceIn" data-wow-duration="0.8s" data-wow-delay="1s"><i class="fa fa-angle-down"></i></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.8s">
+
+                <h2 class="heading">About</h2>
+                <div class="col-md-12">
+                    <p class="text-center">
+                        QuorraJS is a full fledged, open-source MVC NodeJS framework
+                    </p>
+                </div>
+                <div class="col-md-6 col-md-offset-3 text-left">
+                    <ul class="feature-list list-unstyled">
+                        <li><i class="fa fa-check"> Elegant applications delivered at warp speed.</i></li>
+                        <li><i class="fa fa-check"> Expressive, beautiful syntax.</i></li>
+                        <li><i class="fa fa-check"> Powerful router with</i></li>
+                        <li><i class="fa fa-check"> Easy-to-use CLI wizard</i></li>
+                        <li><i class="fa fa-check"> Easily generate restful routes with cli generators</i></li>
+                        <li><i class="fa fa-check"> There are so much nice and little nifty features like</i>
+                            <ul>
+                                <li> Maintenance mode</li>
+                                <li> Route model binding</li>
+                                <li> Ouch error handling</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <p>and much more...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="info">
+	<div class="container">
+		<div class="row">
+            <div class="col-md-4 col-md-offset-4">
+            	<h4 class="wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.8s">Connect with us</h4>
+                <div class="clearfix"></div>
+                <ul class="list-inline social">
+                      <li class="wow bounceIn" data-wow-duration="1.0s" data-wow-delay="0.8s">
+                          <a href="https://github.com/quorrajs" target="_blank">
+                              <i class="fa fa-github-square"></i>
+                          </a>
+                      </li>
+                      <li class="wow bounceIn" data-wow-duration="1.0s" data-wow-delay="0.8s">
+                          <a href="https://www.facebook.com/quorrajs" class="fb">
+                              <i class="fa fa-facebook-square"></i></a>
+                      </li>
+                      <li class="wow bounceIn" data-wow-duration="1.0s" data-wow-delay="1.0s">
+                          <a href="https://twitter.com/quorrajs" class="twt">
+                              <i class="fa fa-twitter-square"></i>
+                          </a>
+                      </li>
+                    </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>
+
+    <!-- Bootstrap core JavaScript
+        ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <!-- smooth scrolling -->
+    <script src="assets/js/smooth-scroll.js"></script>
+
+    <!-- animation scrolling -->
+    <script src="assets/js/wow.min.js"></script>
+
+    <!-- hover captions -->
+    <script src="assets/js/jquery.hcaptions.js"></script>
+
+    <!-- hover detail page -->
+    <script src="assets/js/nivo-lightbox.min.js"></script>
+
+    <!-- Form Validation -->
+    <script src="assets/js/bootstrapValidator.min.js"></script>
+
+    <!-- animation scrolling -->
+    <script src="assets/js/app.min.js"></script>
+</body>
 </html>

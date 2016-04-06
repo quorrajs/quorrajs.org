@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>QuorraJS</title>
+
+        <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/assets/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/assets/css/prism.css">
+        <link rel="stylesheet" href="/assets/css/main.css">
+    </head>
+    <body>
+        <div class="navbar main-menu navbar-default" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+              <a class="navbar-brand" href="" title="MaterialStrap"><img src="/assets/images/logo.png"
+              alt="logo" title="MaterialStrap" />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <main class="container">
+            <div class="row">
+
+                
+                    <nav id="sidebar" class="col-md-3 col-sm-3 col-lg-3" role="navigation">
+
+                                                    <p class="text-muted">
+                                Preface
+                            </p>
+
+                            <ul class="nav nav-pills nav-stacked">
+                                                                    <li class="">
+                                        <a href="/Preface/quickstart.html">
+                                            Quickstart
+                                        </a>
+                                    </li>
+                                                            </ul>
+                                                    <p class="text-muted">
+                                Getting started
+                            </p>
+
+                            <ul class="nav nav-pills nav-stacked">
+                                                                    <li class="">
+                                        <a href="/Getting started/installation.html">
+                                            Installation
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Getting started/configuration.html">
+                                            Configuration
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Getting started/request lifecycle.html">
+                                            Request Lifecycle
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Getting started/routing.html">
+                                            Routing
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Getting started/requests &amp; input.html">
+                                            Requests & Input
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Getting started/views &amp; responses.html">
+                                            Views & Responses
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Getting started/controllers.html">
+                                            Controllers
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Getting started/errors &amp; logging.html">
+                                            Errors & Logging
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Getting started/models &amp; orm.html">
+                                            Models & ORM
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Getting started/globals.html">
+                                            Globals
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Getting started/middleware.html">
+                                            Middleware
+                                        </a>
+                                    </li>
+                                                            </ul>
+                                                    <p class="text-muted">
+                                Lerning more
+                            </p>
+
+                            <ul class="nav nav-pills nav-stacked">
+                                                                    <li class="">
+                                        <a href="/More/mail.html">
+                                            Mail
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/More/request.html">
+                                            Request Object
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/More/response.html">
+                                            Response Object
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Middlewares/body parser.html">
+                                            Body Parser
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Middlewares/query parser.html">
+                                            Query Parser
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Middlewares/cookie parser.html">
+                                            Cookie Parser
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Middlewares/session.html">
+                                            Session
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Middlewares/localization.html">
+                                            Localization
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Middlewares/http method override.html">
+                                            HTTP Method Override
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Middlewares/serve static.html">
+                                            Server Static
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/More/miscellaneous.html">
+                                            Miscellaneous
+                                        </a>
+                                    </li>
+                                                            </ul>
+                                                    <p class="text-muted">
+                                Quorra CLI
+                            </p>
+
+                            <ul class="nav nav-pills nav-stacked">
+                                                                    <li class="">
+                                        <a href="/Quorra CLI/overview.html">
+                                            Overview
+                                        </a>
+                                    </li>
+                                                            </ul>
+                        
+                    </nav>
+
+                
+                <section class="col-sm-9 col-lg-9">
+                    <h1 id="request-lifecycle">Request Lifecycle</h1>
+<ul>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#application-start-&amp;-request-lifecycle">Application start</a></li>
+<li><a href="#start-files">Start Files</a></li>
+<li><a href="#application-events">Application Events</a></li>
+</ul>
+<h2 id="overview">Overview</h2>
+<p>When using any tool in the &quot;real world&quot;, you feel more confident if you understand how that tool works. Application
+development is no different. When you understand how your development tools function, you feel more comfortable and
+confident using them. The goal of this document is to give you a good, high-level overview of how the Quorra
+framework &quot;works&quot;. By getting to know the overall framework better, everything feels less &quot;magical&quot; and you will be
+more confident building your applications. In addition to a high-level overview of the request lifecycle, we'll cover
+&quot;start&quot; files and application events.</p>
+<p>If you don't understand all of the terms right away, don't lose heart! Just try to get a basic grasp of what is going
+on, and your knowledge will grow as you explore other sections of the documentation.</p>
+<h2 id="application-start-amp-request-lifecycle">Application start &amp; request lifecycle</h2>
+<p>Whenever a Qurra application is started index.js script in the application root will be executed. From here, Quorra
+begins the process of starting the application and listening requests. Getting a general idea for the Quorra
+bootstrap process will be useful, so we'll cover that now!</p>
+<p>index.js file executes the bootstrap/start.js script with a callback argument. This file creates the new Positron
+Application object(Positron is the core module that powers Quorra.), which serves as the backbone of Quorra application.</p>
+<p>After creating the Application object, a few project paths will be set and environment detection will be performed.
+Then, an internal Positron bootstrap script will be called with the callback from index.js. This file lives deep
+within the Positron source, and sets a few more settings based on your configuration files, such as error reporting,
+session init etc and initializes application core components like router, view, filter, log, encrypter etc.</p>
+<p>After initialization of all core components, your app/start files will be loaded. Lastly, your app/routes.js file
+will be loaded. Once your routes.js file has been loaded, it returns the callback from the index.js file with the
+newly created positron application object. Callback function executes the listen method of application object, which
+creates a NodeJS server and starts to listen to Request.</p>
+<p>So, let's summarize:</p>
+<ul>
+<li>index.js file is executed.</li>
+<li>bootstrap/start.js file creates Application and detects environment.</li>
+<li>Internal framework/start.js file configures settings and loads core components.</li>
+<li>Application app/start files are loaded.</li>
+<li>Application app/routes.js file is loaded.</li>
+<li>Starts to listen to Request.</li>
+</ul>
+<p>Now that you have a good idea of how a quorra application lift a NodeJS server, let's take a closer look at request
+life cycle. Whenever Quorra server receives a http request it creates a stacked http kernel object. Stacked http
+kernel is nothing but stack of application middleware instances which is programmed to execute in sequence. Then pass
+request and response object to the created middleware stack for execution. After all middleware execution global
+filters and route level filters are executed from which request reaches to the route.</p>
+<h2 id="start-files">Start Files</h2>
+<p>Your application's start files are stored at app/start. By default, two are included with your application: global.js
+and local.js.</p>
+<p>The global.js start file contains a few basic items by default, such as configuration of the Logger and the inclusion
+of your app/filters.js file. However, you are free to add anything to this file that you wish. It will be
+automatically included on application initialization, regardless of environment. The local.js file, on the other
+hand, is only called when the application is executing in the local environment. For more information on
+environments, check out the configuration documentation.</p>
+<p>Of course, if you have other environments in addition to local, you may create start files for those environments as
+well. They will be automatically included when your application is running in that environment. So, for example, if
+you have a <code>development</code> environment configured in your bootstrap/start.js file, you may create a app/start/development
+.js file, which will be included when application is lifted in that environment.</p>
+<p>What To Place In Start Files</p>
+<p>Start files serve as a simple place to place any &quot;bootstrapping&quot; code. For example, you could  configure your logging
+preferences, set some js settings, etc. It's totally up to you. Of course, throwing all of your bootstrapping code
+into your start files can get messy.</p>
+<h2 id="application-events">Application Events</h2>
+<p>Registering Application Events</p>
+<p>You may do pre request processing by registering before application event:</p>
+<pre><code class="language-javascript">App.before(function(request, response, next) {
+
+    //
+
+    next();
+});</code></pre>
+<p>Listeners to this event will be run before request to your application. This event can be helpful for global
+filtering or global modification of requests and responses. You may register them in one of your start files.</p>
+                </section>
+
+            </div>
+        </main>
+
+        <section id="info">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-md-offset-4">
+                        <h4 class="wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.8s">Connect with us</h4>
+                        <div class="clearfix"></div>
+                        <ul class="list-inline social">
+                                  <li class="wow bounceIn" data-wow-duration="1.0s" data-wow-delay="0.8s">
+                                      <a href="https://github.com/quorrajs" target="_blank">
+                                          <i class="fa fa-github-square"></i>
+                                      </a>
+                                  </li>
+                                  <li class="wow bounceIn" data-wow-duration="1.0s" data-wow-delay="0.8s">
+                                      <a href="https://www.facebook.com/quorrajs" class="fb">
+                                          <i class="fa fa-facebook-square"></i></a>
+                                  </li>
+                                  <li class="wow bounceIn" data-wow-duration="1.0s" data-wow-delay="1.0s">
+                                      <a href="https://twitter.com/quorrajs" class="twt">
+                                          <i class="fa fa-twitter-square"></i>
+                                      </a>
+                                  </li>
+                                </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+        <script src="/assets/js/prism.js"></script>
+
+        <script>
+        </script>
+
+    </body>
+</html>

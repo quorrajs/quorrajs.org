@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>QuorraJS</title>
+
+        <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/assets/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/assets/css/prism.css">
+        <link rel="stylesheet" href="/assets/css/main.css">
+    </head>
+    <body>
+        <div class="navbar main-menu navbar-default" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+              <a class="navbar-brand" href="" title="MaterialStrap"><img src="/assets/images/logo.png"
+              alt="logo" title="MaterialStrap" />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <main class="container">
+            <div class="row">
+
+                
+                    <nav id="sidebar" class="col-md-3 col-sm-3 col-lg-3" role="navigation">
+
+                                                    <p class="text-muted">
+                                Preface
+                            </p>
+
+                            <ul class="nav nav-pills nav-stacked">
+                                                                    <li class="">
+                                        <a href="/Preface/quickstart.html">
+                                            Quickstart
+                                        </a>
+                                    </li>
+                                                            </ul>
+                                                    <p class="text-muted">
+                                Getting started
+                            </p>
+
+                            <ul class="nav nav-pills nav-stacked">
+                                                                    <li class="">
+                                        <a href="/Getting started/installation.html">
+                                            Installation
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Getting started/configuration.html">
+                                            Configuration
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Getting started/request lifecycle.html">
+                                            Request Lifecycle
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Getting started/routing.html">
+                                            Routing
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Getting started/requests &amp; input.html">
+                                            Requests & Input
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Getting started/views &amp; responses.html">
+                                            Views & Responses
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Getting started/controllers.html">
+                                            Controllers
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Getting started/errors &amp; logging.html">
+                                            Errors & Logging
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Getting started/models &amp; orm.html">
+                                            Models & ORM
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Getting started/globals.html">
+                                            Globals
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Getting started/middleware.html">
+                                            Middleware
+                                        </a>
+                                    </li>
+                                                            </ul>
+                                                    <p class="text-muted">
+                                Lerning more
+                            </p>
+
+                            <ul class="nav nav-pills nav-stacked">
+                                                                    <li class="">
+                                        <a href="/More/mail.html">
+                                            Mail
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/More/request.html">
+                                            Request Object
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/More/response.html">
+                                            Response Object
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Middlewares/body parser.html">
+                                            Body Parser
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Middlewares/query parser.html">
+                                            Query Parser
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Middlewares/cookie parser.html">
+                                            Cookie Parser
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Middlewares/session.html">
+                                            Session
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Middlewares/localization.html">
+                                            Localization
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Middlewares/http method override.html">
+                                            HTTP Method Override
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Middlewares/serve static.html">
+                                            Server Static
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/More/miscellaneous.html">
+                                            Miscellaneous
+                                        </a>
+                                    </li>
+                                                            </ul>
+                                                    <p class="text-muted">
+                                Quorra CLI
+                            </p>
+
+                            <ul class="nav nav-pills nav-stacked">
+                                                                    <li class="">
+                                        <a href="/Quorra CLI/overview.html">
+                                            Overview
+                                        </a>
+                                    </li>
+                                                            </ul>
+                        
+                    </nav>
+
+                
+                <section class="col-sm-9 col-lg-9">
+                    <h1 id="body-parser">Body Parser</h1>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#configuration">Configuration</a></li>
+</ul>
+<h2 id="introduction">Introduction</h2>
+<p>A pretty common task for every web application is handling user input. When you submit form data with a POST request,
+that form data can be encoded in many ways. The default type for HTML forms is application/x-www-urlencoded, but you
+can also submit data as JSON or any other arbitrary format.</p>
+<p>Body parser parser parses input data based on the request <code>Content-Type</code> and stores the result as an object in <code>req .body</code> and is used by various method's provided by the Quorra's request object. This middleware uses module
+<a href="https://www.npmjs.com/package/body-parser">body-parser</a> internally.</p>
+<h2 id="configuration">Configuration</h2>
+<p>You can enable or disable this module in <code>app/config/middleware.js</code>.</p>
+<p>Body parser middleware offers to parse four types of request data: <code>JSON</code>, <code>url-encoded</code>, <code>text</code> and <code>raw</code>. By
+default it's enabled and configured to parse JSON and URL-encoded requests. Checkout <a href="https://www.npmjs
+.com/package/body-parser#api">body-parser</a> to find out all the available options for different parsers.</p>
+                </section>
+
+            </div>
+        </main>
+
+        <section id="info">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-md-offset-4">
+                        <h4 class="wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.8s">Connect with us</h4>
+                        <div class="clearfix"></div>
+                        <ul class="list-inline social">
+                                  <li class="wow bounceIn" data-wow-duration="1.0s" data-wow-delay="0.8s">
+                                      <a href="https://github.com/quorrajs" target="_blank">
+                                          <i class="fa fa-github-square"></i>
+                                      </a>
+                                  </li>
+                                  <li class="wow bounceIn" data-wow-duration="1.0s" data-wow-delay="0.8s">
+                                      <a href="https://www.facebook.com/quorrajs" class="fb">
+                                          <i class="fa fa-facebook-square"></i></a>
+                                  </li>
+                                  <li class="wow bounceIn" data-wow-duration="1.0s" data-wow-delay="1.0s">
+                                      <a href="https://twitter.com/quorrajs" class="twt">
+                                          <i class="fa fa-twitter-square"></i>
+                                      </a>
+                                  </li>
+                                </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+        <script src="/assets/js/prism.js"></script>
+
+        <script>
+        </script>
+
+    </body>
+</html>

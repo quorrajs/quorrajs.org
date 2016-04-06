@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>QuorraJS</title>
+
+        <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/assets/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/assets/css/prism.css">
+        <link rel="stylesheet" href="/assets/css/main.css">
+    </head>
+    <body>
+        <div class="navbar main-menu navbar-default" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+              <a class="navbar-brand" href="" title="MaterialStrap"><img src="/assets/images/logo.png"
+              alt="logo" title="MaterialStrap" />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <main class="container">
+            <div class="row">
+
+                
+                    <nav id="sidebar" class="col-md-3 col-sm-3 col-lg-3" role="navigation">
+
+                                                    <p class="text-muted">
+                                Preface
+                            </p>
+
+                            <ul class="nav nav-pills nav-stacked">
+                                                                    <li class="">
+                                        <a href="/Preface/quickstart.html">
+                                            Quickstart
+                                        </a>
+                                    </li>
+                                                            </ul>
+                                                    <p class="text-muted">
+                                Getting started
+                            </p>
+
+                            <ul class="nav nav-pills nav-stacked">
+                                                                    <li class="">
+                                        <a href="/Getting started/installation.html">
+                                            Installation
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Getting started/configuration.html">
+                                            Configuration
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Getting started/request lifecycle.html">
+                                            Request Lifecycle
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Getting started/routing.html">
+                                            Routing
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Getting started/requests &amp; input.html">
+                                            Requests & Input
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Getting started/views &amp; responses.html">
+                                            Views & Responses
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Getting started/controllers.html">
+                                            Controllers
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Getting started/errors &amp; logging.html">
+                                            Errors & Logging
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Getting started/models &amp; orm.html">
+                                            Models & ORM
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Getting started/globals.html">
+                                            Globals
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Getting started/middleware.html">
+                                            Middleware
+                                        </a>
+                                    </li>
+                                                            </ul>
+                                                    <p class="text-muted">
+                                Lerning more
+                            </p>
+
+                            <ul class="nav nav-pills nav-stacked">
+                                                                    <li class="">
+                                        <a href="/More/mail.html">
+                                            Mail
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/More/request.html">
+                                            Request Object
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/More/response.html">
+                                            Response Object
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Middlewares/body parser.html">
+                                            Body Parser
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Middlewares/query parser.html">
+                                            Query Parser
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Middlewares/cookie parser.html">
+                                            Cookie Parser
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Middlewares/session.html">
+                                            Session
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Middlewares/localization.html">
+                                            Localization
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Middlewares/http method override.html">
+                                            HTTP Method Override
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/Middlewares/serve static.html">
+                                            Server Static
+                                        </a>
+                                    </li>
+                                                                    <li class="">
+                                        <a href="/More/miscellaneous.html">
+                                            Miscellaneous
+                                        </a>
+                                    </li>
+                                                            </ul>
+                                                    <p class="text-muted">
+                                Quorra CLI
+                            </p>
+
+                            <ul class="nav nav-pills nav-stacked">
+                                                                    <li class="">
+                                        <a href="/Quorra CLI/overview.html">
+                                            Overview
+                                        </a>
+                                    </li>
+                                                            </ul>
+                        
+                    </nav>
+
+                
+                <section class="col-sm-9 col-lg-9">
+                    <h1 id="errors-amp-logging">Errors &amp; Logging</h1>
+<ul>
+<li><a href="#configuration">Configuration</a></li>
+<li><a href="#handling-errors">Handling Errors</a></li>
+<li><a href="#handling-404-errors">Handling 404 Errors</a></li>
+<li><a href="#logging">Logging</a></li>
+</ul>
+<h2 id="configuration">Configuration</h2>
+<p>The logging handler for your application is registered in the app/start/global.js start file. By default, the logger
+is configured to use a single log file; however, you may customize this behavior as needed. Since Quorra uses the
+popular <a href="https://github.com/winstonjs/winston">Winston</a> logging library, you can take advantage of the variety of
+handlers that Winston offers.</p>
+<p>Quorra provides some additional utility methods over winston logger so that you can easily configure log handler in
+your application.</p>
+<ul>
+<li>useFiles(FileTransportOptions)</li>
+<li>useDailyFiles(DailyRotateFileTransportOptions)</li>
+<li>useMongoDB(MongodbTransportOptions)</li>
+<li>useMail(MailTransportOptions)</li>
+<li>useConsole(ConsoleTransportOptions)</li>
+</ul>
+<p>For example, if you wish to use daily log files instead of a single, large file, you can make the following change to
+your start file:</p>
+<pre><code class="language-javascript">var Log = require('positron').log;
+Log.useDailyFiles({filename: path.join(App.path.storage, 'logs/quorra.log'), level: 'silly'});</code></pre>
+<p>Or you can manually add transport mechanism provided by winston library just like following.</p>
+<pre><code class="language-javascript">var Log = require('positron').log;
+var winston = require('winston'); // For this to work you have to install winston with command `npm install winston`
+Log.add(winston.transports.File, {filename: path.join(App.path.storage, 'logs/quorra.log'), level: 'silly'});</code></pre>
+<h3 id="error-detail">Error Detail</h3>
+<p>By default, error detail is enabled for your application. This means that when an error occurs you will be shown an
+error page with a detailed stack trace and error message. You may turn off error details by setting the debug option
+in your app/config/app.js file to false.</p>
+<p>Note: It is strongly recommended that you turn off error detail in a production environment.</p>
+<h2 id="handling-errors">Handling Errors</h2>
+<p>By default, the app/start/global.js file contains an error handler for all exceptions:</p>
+<pre><code class="language-javascript">App.error(function(error, code, request, response, next)
+{
+    var extra = {};
+
+    if(error.stack) {
+        extra.stackTrace = error.stack;
+    }
+
+    Log.error(error.message || error, extra);
+    next();
+});</code></pre>
+<p>This is the most basic error handler. However, you may specify more handlers if needed.</p>
+<p>If an exception handler returns a response, that response will be sent to the browser. A handler can stop the
+execution of the other registered handlers by choose to not call the next callback.</p>
+<h3 id="where-to-place-error-handlers">Where To Place Error Handlers</h3>
+<p>There is no default &quot;home&quot; for error handler registrations. Quorra offers you freedom in this area. One option is to
+define the handlers in your start/global.js file. In general, this is a convenient location to place any
+&quot;bootstrapping&quot; code. If that file is getting crowded, you could create an app/errors.js file, and require that file
+from your start/global.js script.</p>
+<h2 id="http-exceptions">HTTP Exceptions</h2>
+<p>Some exceptions describe HTTP error codes from the server. For example, this may be a &quot;page not found&quot; error (404),
+an &quot;unauthorized error&quot; (401) or even a developer generated 500 error. In order to return such a response, use the
+following:</p>
+<pre><code class="language-javascript">res.abort(404);</code></pre>
+<p>Optionally, you may provide a response:</p>
+<pre><code class="language-javascript">res.abort(403, 'Unauthorized action.');</code></pre>
+<p>This method may be used at any time during the request's lifecycle.</p>
+<h2 id="handling-404-errors">Handling 404 Errors</h2>
+<p>You may register an error handler that handles all &quot;404 Not Found&quot; errors in your application, allowing you to easily
+return custom 404 error pages:</p>
+<pre><code class="language-javascript">App.missing(function(error, req, res, next)
+{
+    res.status(400).view('errors.missing');
+});</code></pre>
+<h2 id="logging">Logging</h2>
+<p>The Quorra logging facilities provide an instance of powerful winston library with some additional methods. By
+default,  Quorra is configured to create a single log file for your application, and this file is stored in
+app/storage/logs/quorra.log.
+You may write information to the log like so:</p>
+<pre><code class="language-javascript">var App = require('positron');
+var Log = App.log;
+
+Log.info('This is some useful information.');
+
+Log.warning('Something could be going wrong.');
+
+Log.error('Something is really going wrong.');</code></pre>
+<p>The logger provides the six logging levels: silly, debug, verbose, info, warn and error.</p>
+<p>A JSON object of contextual data may also be passed to the log methods:</p>
+<pre><code class="language-javascript">Log.info('Log message', {'context': 'Other helpful information'});</code></pre>
+<p>Winston has a variety of additional handlers you may use for logging.</p>
+                </section>
+
+            </div>
+        </main>
+
+        <section id="info">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-md-offset-4">
+                        <h4 class="wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.8s">Connect with us</h4>
+                        <div class="clearfix"></div>
+                        <ul class="list-inline social">
+                                  <li class="wow bounceIn" data-wow-duration="1.0s" data-wow-delay="0.8s">
+                                      <a href="https://github.com/quorrajs" target="_blank">
+                                          <i class="fa fa-github-square"></i>
+                                      </a>
+                                  </li>
+                                  <li class="wow bounceIn" data-wow-duration="1.0s" data-wow-delay="0.8s">
+                                      <a href="https://www.facebook.com/quorrajs" class="fb">
+                                          <i class="fa fa-facebook-square"></i></a>
+                                  </li>
+                                  <li class="wow bounceIn" data-wow-duration="1.0s" data-wow-delay="1.0s">
+                                      <a href="https://twitter.com/quorrajs" class="twt">
+                                          <i class="fa fa-twitter-square"></i>
+                                      </a>
+                                  </li>
+                                </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+        <script src="/assets/js/prism.js"></script>
+
+        <script>
+        </script>
+
+    </body>
+</html>
