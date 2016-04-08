@@ -317,7 +317,7 @@ a:focus {
 }
 
 #banner .container .intro {
-    margin-top: 200px
+    margin-top: 150px
 }
 
 #about .sectionIcon {
@@ -364,64 +364,8 @@ section {
     margin-bottom: 25px
 }
 
-#mywork {
-    background: #fff
-}
-
-.portfolio-grid .thumbnail {
-    margin-bottom: 30px;
-    border-radius: 0;
-    border: none;
-    padding: 0
-}
-
-.portfolio-grid .thumbnail img {
-    height: 213px;
-    border: none;
-    border-radius: 0;
-    padding: 0
-}
-
 .drop-panel {
     padding: 0 !important
-}
-
-.portfolio-grid .hide-none {
-    display: none;
-    height: 213px !important;
-    background: rgba(66, 134, 245, .9)
-}
-
-.portfolio-grid .hover-text {
-    text-align: center;
-    padding-top: 55px
-}
-
-.portfolio-grid .hover-text h5 {
-    font-size: 24px;
-    color: #fff;
-    font-weight: 300;
-    line-height: 36px;
-    margin-bottom: 0
-}
-
-.portfolio-grid .hover-text p {
-    font-size: 18px;
-    color: #fff;
-    font-weight: 300;
-    line-height: 30px
-}
-
-.portfolio-grid .hover-text a {
-    color: #fff
-}
-
-.portfolio-grid .hover-text a i {
-    font-size: 48px
-}
-
-.portfolio-grid .hover-text a:hover {
-    color: #e91e63
 }
 
 .social li a {
@@ -436,10 +380,6 @@ section {
 
 .social li a:hover {
     color: #e91e63
-}
-
-#skills {
-    background: #fff
 }
 
 .progress-bar-success {
@@ -480,55 +420,9 @@ section {
     font-size: 14px
 }
 
-footer {
-    padding: 20px 0;
-    background: #333;
-    width: 100%;
-    float: left
-}
-
-footer .design-by {
-    font-size: 13px;
-    color: #888;
-    text-align: right
-}
-
 @media (min-width: 1200px) {
     .container {
         width: 1080px
-    }
-}
-
-@media (max-width: 768px) {
-    .portfolio-grid .thumbnail img {
-        height: 228px
-    }
-
-    .portfolio-grid .hide-none {
-        height: 228px !important;
-        width: 316px !important
-    }
-
-    .portfolio-grid .hover-text {
-        padding-top: 70px;
-        left: 14px !important
-    }
-
-    .portfolio-grid .hover-text h5 {
-        font-size: 28px;
-        line-height: 30px
-    }
-
-    .portfolio-grid .hover-text p {
-        font-size: 18px;
-        line-height: 24px
-    }
-}
-
-@media (max-width: 640px) {
-    .portfolio-grid .hover-text {
-        padding-top: 70px;
-        left: 139px !important
     }
 }
 
@@ -545,31 +439,8 @@ footer .design-by {
         background: 0 0
     }
 
-    .carousel-inner .item .carousel-caption h3 {
-        font-size: 36px
-    }
-
-    .carousel-inner .item {
-        min-height: 500px
-    }
-
     .bgParallax h2.heading {
         font-size: 20px
-    }
-
-    .portfolio-grid .hover-text {
-        padding-top: 70px;
-        left: 0 !important
-    }
-
-    .portfolio-grid .thumbnail img {
-        height: 313px;
-        width: 100%
-    }
-
-    .portfolio-grid .hide-none {
-        height: 313px !important;
-        width: 100% !important
     }
 
     #banner h2 {
@@ -610,15 +481,6 @@ footer .design-by {
         left: 25px
     }
 
-    .portfolio-grid .hover-text {
-        padding-top: 60px
-    }
-
-    .portfolio-grid .thumbnail img {
-        height: 206px;
-        width: 100%
-    }
-
     #banner .container .intro {
         margin-top: 50px
     }
@@ -629,10 +491,5 @@ footer .design-by {
 
     #banner p {
         font-size: 14px
-    }
-
-    .portfolio-grid .hide-none {
-        height: 206px !important;
-        width: 100% !important
     }
 }
