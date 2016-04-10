@@ -223,7 +223,7 @@ the <code>modified</code> response header.</li>
 <p>For more information, issues, or concerns, see <a href="#https://github.com/jshttp/fresh">fresh</a>.</p>
 <h3 id="reqhost">req.host</h3>
 <p>Contains the hostname derived from the Host HTTP header.</p>
-<p>When the <a href="/docs/1/More/miscellaneous.html#quorra-behind-proxies">trust proxy setting</a> is set to a non-falsey value, the value of the
+<p>When the <a href="/docs/v1/more/miscellaneous.html#quorra-behind-proxies">trust proxy setting</a> is set to a non-falsey value, the value of the
 X-Forwarded-Host header field will be
 used instead. This header can be set by the client or by the proxy.</p>
 <pre><code class="language-javascript">// Host: "example.com:3000"
@@ -231,13 +231,13 @@ req.hostname
 // =&gt; "example.com"</code></pre>
 <h3 id="reqip">req.ip</h3>
 <p>The remote IP address of the request.</p>
-<p>When the <a href="/docs/1/More/miscellaneous.html#quorra-behind-proxies">trust proxy setting</a> is set to a non-falsey value, the
+<p>When the <a href="/docs/v1/more/miscellaneous.html#quorra-behind-proxies">trust proxy setting</a> is set to a non-falsey value, the
 value is
 derived from the left-most entry in the <code>X-Forwarded-For</code> header. This header can be set by the client or by the proxy.</p>
 <pre><code class="language-javascript">req.ip
 // =&gt; "127.0.0.1"</code></pre>
 <h3 id="reqips">req.ips</h3>
-<p>When the <a href="/docs/1/More/miscellaneous.html#quorra-behind-proxies">trust proxy setting</a> is set to a non-falsey value, this property
+<p>When the <a href="/docs/v1/more/miscellaneous.html#quorra-behind-proxies">trust proxy setting</a> is set to a non-falsey value, this property
 contains an array of IP addresses specified in the <code>X-Forwarded-For</code> request header. Otherwise, it contains an empty
 array. This header can be set by the client or by the proxy.</p>
 <p>For example, if <code>X-Forwarded-For</code> is client, proxy1, proxy2, <code>req.ips</code> would be <code>["client", "proxy1", "proxy2"]</code>, where
@@ -257,7 +257,7 @@ req.path
 // =&gt; "/users"</code></pre>
 <h3 id="reqprotocol">req.protocol</h3>
 <p>The request protocol string, http or https when requested with TLS.</p>
-<p>When the <a href="/docs/1/More/miscellaneous.html#quorra-behind-proxies">trust proxy setting</a> is set to a non-falsey value, the value of the
+<p>When the <a href="/docs/v1/more/miscellaneous.html#quorra-behind-proxies">trust proxy setting</a> is set to a non-falsey value, the value of the
 <code>X-Forwarded-Proto</code> header field will be trusted and used if present. This header can be set by the client or by the
 proxy.</p>
 <pre><code class="language-javascript">req.protocol
@@ -409,7 +409,7 @@ after checking it for validation errors. This will work only if you have enabled
 <p>Flashes all input items to the session</p>
 <pre><code class="language-javascript">req.input.flash();</code></pre>
 <blockquote>
-<p><strong>Note:</strong> You may flash other data across requests using the <a href="/docs/1/Middlewares/session.html">session</a> middleware methods.</p>
+<p><strong>Note:</strong> You may flash other data across requests using the <a href="/docs/v1/middlewares/session.html">session</a> middleware methods.</p>
 </blockquote>
 <h3 id="reqinputflashexceptname">req.input.flashExcept(name)</h3>
 <p>You may need to keep input from one request until the next request. For example, you may need to re-populate a form
