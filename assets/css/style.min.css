@@ -326,6 +326,14 @@ a:focus {
     margin-top: 150px
 }
 
+#banner .container .intro p {
+    margin: 0 0 11.5px
+}
+
+#banner .container .intro .attribution {
+    font-size: 18px;
+}
+
 #about .sectionIcon {
     background: 0 0;
     top: -66px;
