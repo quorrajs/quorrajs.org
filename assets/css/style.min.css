@@ -5,6 +5,32 @@ body {
     overflow: hidden
 }
 
+body:after{
+    content: "beta";
+    position: fixed;
+    width: 80px;
+    height: 25px;
+    background: #EE8E4A;
+    top: 7px;
+    right: -20px;
+    text-align: center;
+    font-size: 13px;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #fff;
+    line-height: 27px;
+    -ms-transform:rotate(45deg);
+    -webkit-transform:rotate(45deg);
+    transform:rotate(45deg);
+    z-index: 10001;
+}
+
+@font-face {
+    font-family: Urba;
+    src: url('../fonts/Urba.ttf');
+}
+
 .logo {
     transition: box-shadow .25s;
     box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
@@ -293,9 +319,10 @@ a:focus {
 }
 
 #banner h2 {
-    font-size: 60px;
+    font-size: 70px;
     font-weight: 500;
-    color: #fff
+    color: #fff;
+    font-family: Urba;
 }
 
 #banner h2 span {
@@ -318,6 +345,14 @@ a:focus {
 
 #banner .container .intro {
     margin-top: 150px
+}
+
+#banner .container .intro p {
+    margin: 0 0 11.5px
+}
+
+#banner .container .intro .attribution {
+    font-size: 18px;
 }
 
 #about .sectionIcon {
