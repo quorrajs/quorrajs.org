@@ -200,45 +200,97 @@
 
         
         <section class="col-sm-9 col-lg-9 doc-content">
-            <h1 id="installation">Installation</h1>
+            <h1 id="session">Session</h1>
 <ul>
-<li><a href="#quorra-installation">Quorra Installation</a></li>
-<li><a href="#system-requirements">System requirements</a></li>
 <li><a href="#configuration">Configuration</a></li>
-</ul>
-<h2 id="quorra-installation">Quorra Installation</h2>
-<p>First, download the Quorra cli using npm.</p>
-<pre><code>npm install -g quorra-cli</code></pre>
-<p>Once installed, the simple <code>quorra new</code> command will create a fresh Quorra installation in the directory you specify.
-For instance, <code>quorra new blog</code> would create a directory named <code>blog</code> containing a fresh Quorra installation with all
-dependencies installed.</p>
-<h2 id="system-requirements">System requirements</h2>
-<p>Quorra has a few system requirements.
-@todo: update</p>
-<ul>
-<li>NodeJS &gt;= 0.12.0</li>
-<li>npm &gt;= 2.5.1</li>
+<li><a href="#session-usage">Session Usage</a></li>
+<li><a href="#flash-data">Flash Data</a></li>
+<li><a href="#database-sessions">Database Sessions</a></li>
+<li><a href="#session-drivers">Session Drivers</a></li>
 </ul>
 <h2 id="configuration">Configuration</h2>
-<p>The first thing you should do after installing Quorra is set your application key to a random string. If you installed
-Quorra via quorra-cli, this key has probably already been set for you by the <code>generate-key</code> command. Typically, this
-string should be 32 characters long. The key can be set in the app.js configuration file. If the application key is
-not set, your user sessions and other encrypted data will not be secure.</p>
-<p>Quorra needs almost no other configuration out of the box. You are free to get started developing! However, you may
-wish to review the <code>app/config/app.js</code> file and its documentation. It contains several options such as timezone and
-locale that you may wish to change according to your application.</p>
-<p>Once Quorra is installed, you should also configure your local environment. This will allow you to receive detailed
-error messages when developing on your local machine. By default, detailed error reporting is disabled in your
-production configuration file.</p>
+<p>Since HTTP driven applications are stateless, sessions provide a way to store information about the user across
+requests. NodeSession ships with a variety of session back-ends available for use through a clean, unified API.
+Support for back-ends such as Memory, File and databases is included out of the box.</p>
+<p>By default session middleware is turned off in <code>app/config/middleware.js</code>. Be sure to turn it on if your application
+needs session support.</p>
+<p>The session configuration is stored in <code>app/config/session.js</code>. Be sure to review the well documented options available
+to you in this file. By default, Quorra is configured to use the memory session driver.</p>
 <blockquote>
-<p><strong>Note:</strong> You should never have <code>app.debug</code> set to true for a production application. Never, ever do it.</p>
+<p><strong>warning:</strong> Memory session driver is purposely not designed for a production environment. It will leak memory under most
+conditions, does not scale past a single process, and is meant for debugging and developing.</p>
 </blockquote>
-<h3 id="permissions">Permissions</h3>
-<p>Quorra may require one set of permissions to be configured: folders within app/storage require write access by the web
-server.</p>
-<h3 id="paths">Paths</h3>
-<p>Several of the framework directory paths are configurable. To change the location of these directories, check out the
-<code>bootstrap/paths.js</code> file.</p>
+<h3 id="reserved-keys">Reserved Keys</h3>
+<p>The Quorra framework uses the flash session key internally, so you should not add an item to the session by that name.</p>
+<h2 id="session-usage">Session Usage</h2>
+<p>The session can be accessed via the HTTP request object's session property.</p>
+<h3 id="storing-an-item-in-the-session">Storing An Item In The Session</h3>
+<pre><code class="language-javascript">req.session.put('key', 'value');</code></pre>
+<h3 id="push-a-value-onto-an-array-session-value">Push A Value Onto An Array Session Value</h3>
+<pre><code class="language-javascript">req.session.push('user.teams', 'developers');</code></pre>
+<h3 id="retrieving-an-item-from-the-session">Retrieving An Item From The Session</h3>
+<pre><code class="language-javascript">var value = req.session.get('key');</code></pre>
+<h3 id="retrieving-an-item-or-returning-a-default-value">Retrieving An Item Or Returning A Default Value</h3>
+<pre><code class="language-javascript">var value = req.session.get('key', 'default');</code></pre>
+<h3 id="retrieving-an-item-and-forgetting-it">Retrieving An Item And Forgetting It</h3>
+<pre><code class="language-javascript">var value = req.session.pull('key', 'default');</code></pre>
+<h3 id="retrieving-all-data-from-the-session">Retrieving All Data From The Session</h3>
+<pre><code class="language-javascript">var data = req.session.all();</code></pre>
+<h3 id="determining-if-an-item-exists-in-the-session">Determining If An Item Exists In The Session</h3>
+<pre><code class="language-javascript">if (req.session.has('users'))
+{
+    //
+}</code></pre>
+<h3 id="removing-an-item-from-the-session">Removing An Item From The Session</h3>
+<pre><code class="language-javascript">req.session.forget('key');</code></pre>
+<h3 id="removing-all-items-from-the-session">Removing All Items From The Session</h3>
+<pre><code class="language-javascript">req.session.flush();</code></pre>
+<h3 id="regenerating-the-session-id">Regenerating The Session ID</h3>
+<pre><code class="language-javascript">req.session.regenerate();</code></pre>
+<h2 id="flash-data">Flash Data</h2>
+<p>Sometimes you may wish to store items in the session only for the next request. You may do so using the <code>req.session .flash</code> method:</p>
+<pre><code class="language-javascript">req.session.flash('key', 'value');</code></pre>
+<h3 id="reflashing-the-current-flash-data-for-another-request">Reflashing The Current Flash Data For Another Request</h3>
+<pre><code class="language-javascript">req.session.reflash();</code></pre>
+<h3 id="reflashing-only-a-subset-of-flash-data">Reflashing Only A Subset Of Flash Data</h3>
+<pre><code class="language-javascript">req.session.keep('username', 'email');</code></pre>
+<h2 id="database-sessions">Database Sessions</h2>
+<p>When using the database session driver, you may need to setup a table to contain the session items based on database.
+Below is a required schema for the table:</p>
+<table>
+<thead>
+<tr>
+<th>filed</th>
+<th>type</th>
+<th>index</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>unique</td>
+</tr>
+<tr>
+<td>payload</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>lastActivity</td>
+<td>integer</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="session-drivers">Session Drivers</h2>
+<p>The session &quot;driver&quot; defines where session data will be stored for each request. Quorra ships with several great
+drivers out of the box:</p>
+<ul>
+<li>memory - sessions will be stored in memory(only for test and debug purpose).</li>
+<li>file - sessions will be stored in files in a specified location.</li>
+<li>database - sessions will be stored in a database.</li>
+</ul>
         </section>
 
     </div>

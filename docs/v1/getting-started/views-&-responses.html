@@ -119,6 +119,11 @@
 
                     <ul class="nav nav-pills nav-stacked">
                                                     <li class="">
+                                <a href="/docs/v1/more/security.html">
+                                    Security
+                                </a>
+                            </li>
+                                                    <li class="">
                                 <a href="/docs/v1/more/mail.html">
                                     Mail
                                 </a>
@@ -151,6 +156,11 @@
                                                     <li class="">
                                 <a href="/docs/v1/middlewares/session.html">
                                     Session
+                                </a>
+                            </li>
+                                                    <li class="">
+                                <a href="/docs/v1/middlewares/authentication.html">
+                                    Authentication
                                 </a>
                             </li>
                                                     <li class="">
@@ -237,7 +247,7 @@ block content
   h1= title
   p Welcome to #{title}</code></pre>
 <p>This view may be returned to the browser like so:</p>
-<pre><code class="language-javascript">Route.get('/', function()
+<pre><code class="language-javascript">Route.get('/', function(req, res)
 {
     res.view('index', { title: 'Quorra' })
 })</code></pre>
@@ -306,5 +316,9 @@ res.download('/report-12345.pdf', 'report.pdf', function(err){
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 <script src="https://quorrajs.org/assets/js/prism.js"></script>
+
+<script>
+</script>
+
 </body>
 </html>

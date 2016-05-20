@@ -200,45 +200,175 @@
 
         
         <section class="col-sm-9 col-lg-9 doc-content">
-            <h1 id="installation">Installation</h1>
+            <h1 id="security">Security</h1>
 <ul>
-<li><a href="#quorra-installation">Quorra Installation</a></li>
-<li><a href="#system-requirements">System requirements</a></li>
 <li><a href="#configuration">Configuration</a></li>
-</ul>
-<h2 id="quorra-installation">Quorra Installation</h2>
-<p>First, download the Quorra cli using npm.</p>
-<pre><code>npm install -g quorra-cli</code></pre>
-<p>Once installed, the simple <code>quorra new</code> command will create a fresh Quorra installation in the directory you specify.
-For instance, <code>quorra new blog</code> would create a directory named <code>blog</code> containing a fresh Quorra installation with all
-dependencies installed.</p>
-<h2 id="system-requirements">System requirements</h2>
-<p>Quorra has a few system requirements.
-@todo: update</p>
-<ul>
-<li>NodeJS &gt;= 0.12.0</li>
-<li>npm &gt;= 2.5.1</li>
+<li><a href="#storing-passwords">Storing Passwords</a></li>
+<li><a href="#authenticating-users">Authenticating Users</a></li>
+<li><a href="#manually">Manually Logging In Users</a></li>
+<li><a href="#protecting-routes">Protecting Routes</a></li>
+<li><a href="#http-basic-authentication">HTTP Basic Authentication</a></li>
+<li><a href="#encryption">Encryption</a></li>
 </ul>
 <h2 id="configuration">Configuration</h2>
-<p>The first thing you should do after installing Quorra is set your application key to a random string. If you installed
-Quorra via quorra-cli, this key has probably already been set for you by the <code>generate-key</code> command. Typically, this
-string should be 32 characters long. The key can be set in the app.js configuration file. If the application key is
-not set, your user sessions and other encrypted data will not be secure.</p>
-<p>Quorra needs almost no other configuration out of the box. You are free to get started developing! However, you may
-wish to review the <code>app/config/app.js</code> file and its documentation. It contains several options such as timezone and
-locale that you may wish to change according to your application.</p>
-<p>Once Quorra is installed, you should also configure your local environment. This will allow you to receive detailed
-error messages when developing on your local machine. By default, detailed error reporting is disabled in your
-production configuration file.</p>
+<p>Quorra aims to make implementing authentication very simple. In fact, almost everything is configured for you out of the box. The authentication configuration file is located at <code>app/config/auth.js</code>, which contains well documented auth related options for tweaking the behavior of the authentication facilities.</p>
+<p>By default, Quorra includes a <code>User</code> model in your <code>app/models</code> directory. Please remember when building the Schema for this Model to ensure that the password field is a minimum of 60 characters.</p>
 <blockquote>
-<p><strong>Note:</strong> You should never have <code>app.debug</code> set to true for a production application. Never, ever do it.</p>
+<p><strong>Note:</strong> Don't forget to set auth middleware support to true in the <code>app/config/middleware.js</code> file to enable authentication support in your application.</p>
 </blockquote>
-<h3 id="permissions">Permissions</h3>
-<p>Quorra may require one set of permissions to be configured: folders within app/storage require write access by the web
-server.</p>
-<h3 id="paths">Paths</h3>
-<p>Several of the framework directory paths are configurable. To change the location of these directories, check out the
-<code>bootstrap/paths.js</code> file.</p>
+<h2 id="storing-passwords">Storing Passwords</h2>
+<p>The Quorra <code>Hash</code> service provides secure Bcrypt hashing which wraps the popular <a href="https://www.npmjs.com/package/bcryptjs">bcryptjs</a> npm module:</p>
+<h3 id="hashing-a-password-using-bcrypt">Hashing A Password Using Bcrypt</h3>
+<pre><code class="language-javascript">    App.hash.make('password', function (err, hash) {
+        // Use hashed password
+    });</code></pre>
+<h3 id="verifying-a-password-against-a-hash">Verifying A Password Against A Hash</h3>
+<pre><code class="language-javascript">    App.hash.check('password', hashedPassword, function (err, result) {
+        if(result) {
+            // The passwords match...
+        }
+    });</code></pre>
+<h2 id="authenticating-users">Authenticating Users</h2>
+<p>To log a user into your application, you may use the <code>Auth::attempt</code> method.</p>
+<pre><code class="language-javascript">    req.auth.attempt({email: 'email', password: 'password'}, function (result) {
+        if(result) {
+            // direct user to appropriate page
+        }
+    });</code></pre>
+<p>Take note that <code>email</code> is not a required option, it is merely used for example. You should use whatever column name corresponds to a &quot;username&quot; in your database.</p>
+<h3 id="determining-if-a-user-is-authenticated">Determining If A User Is Authenticated</h3>
+<p>To determine if the user is already logged into your application, you may use the <code>check</code> method:</p>
+<pre><code class="language-javascript">    req.auth.check(function (result) {
+        if(result) {
+            // The user is logged in...
+        }
+    })</code></pre>
+<h3 id="authenticating-a-user-and-quotrememberingquot-them">Authenticating A User And &quot;Remembering&quot; Them</h3>
+<p>If you would like to provide &quot;remember me&quot; functionality in your application, you may pass <code>true</code> as the third argument to the <code>attempt</code> method, which will keep the user authenticated indefinitely (or until they manually logout). Of course, your <code>users</code> table must include the string <code>remember_token</code> column, which will be used to store the &quot;remember me&quot; token.</p>
+<pre><code class="language-javascript">    req.auth.attempt({email: 'email', password: 'password'}, function (result) {
+        if(result) {
+            // The user is being remembered...
+        }
+    }, true);</code></pre>
+<blockquote>
+<p><strong>Note:</strong> If the <code>attempt</code> method returns callback with <code>true</code>, the user is considered logged into the application.</p>
+</blockquote>
+<h3 id="determining-if-user-authenticated-via-remember">Determining If User Authenticated Via Remember</h3>
+<p>If you are &quot;remembering&quot; user logins, you may use the <code>viaRemember</code> method to determine if the user was authenticated using the &quot;remember me&quot; cookie:</p>
+<pre><code class="language-javascript">    if (req.auth.viaRemember())
+    {
+        //
+    }</code></pre>
+<h3 id="authenticating-a-user-with-conditions">Authenticating A User With Conditions</h3>
+<p>You also may add extra conditions to the authenticating query:</p>
+<pre><code class="language-javascript">    req.auth.attempt({email: 'email', password: 'password', active: true}, function (result) {
+        if(result) {
+            // The user is active, not suspended, and exists.
+        }
+    });</code></pre>
+<blockquote>
+<p><strong>Note:</strong> For added protection against session fixation, the user's session ID will automatically be regenerated after authenticating.</p>
+</blockquote>
+<h3 id="accessing-the-logged-in-user">Accessing The Logged In User</h3>
+<p>Once a user is authenticated, you may access the User record:</p>
+<pre><code class="language-javascript">    req.auth.user(function (user) {
+        var email = user.email;
+    });</code></pre>
+<p>To retrieve the authenticated user's ID, you may use the <code>id</code> method:</p>
+<pre><code class="language-javascript">    var id = req.auth.id();</code></pre>
+<p>To simply log a user into the application by their ID, use the <code>loginUsingId</code> method:</p>
+<pre><code class="language-javascript">    req.auth.loginUsingId(1, function (user) {
+        // login success
+    });</code></pre>
+<h3 id="validating-user-credentials-without-login">Validating User Credentials Without Login</h3>
+<p>The <code>validate</code> method allows you to validate a user's credentials without actually logging them into the application:</p>
+<pre><code class="language-javascript">    req.auth.validate(credentials, function (result) {
+        if(result) {
+            //
+        }
+    })</code></pre>
+<h3 id="logging-a-user-in-for-a-single-request">Logging A User In For A Single Request</h3>
+<p>You may also use the <code>once</code> method to log a user into the application for a single request. No sessions or cookies will be utilized.</p>
+<pre><code class="language-javascript">    req.auth.once(credentials, function (result) {
+        if(result) {
+            //
+        }
+    });</code></pre>
+<h3 id="logging-a-user-out-of-the-application">Logging A User Out Of The Application</h3>
+<pre><code class="language-javascript">    req.auth.logout(function() {
+        //
+    });</code></pre>
+<h2 id="manually-logging-in-users">Manually Logging In Users</h2>
+<p>If you need to log an existing user object into your application, you may simply call the <code>login</code> method with the object:</p>
+<pre><code class="language-javascript">    User.findOne(1).exec(function (err, user) {
+        req.auth.login(user);
+    });</code></pre>
+<p>This is equivalent to logging in a user via credentials using the <code>attempt</code> method.</p>
+<h2 id="protecting-routes">Protecting Routes</h2>
+<p>Route filters may be used to allow only authenticated users to access a given route. Quorra provides the <code>auth</code> filter by default, and it is defined in <code>app/filters.js</code>.</p>
+<h4 id="protecting-a-route">Protecting A Route</h4>
+<pre><code class="language-javascript">    Route.get('profile', {before: 'auth', uses: function()
+    {
+        // Only authenticated users may enter...
+    }});</code></pre>
+<h3 id="csrf-protection">CSRF Protection</h3>
+<p>Quorra provides an easy method of protecting your application from cross-site request forgeries.</p>
+<h4 id="inserting-csrf-token-into-form">Inserting CSRF Token Into Form</h4>
+<p>Pass csrfToken to view after generating it with method <code>request.csrfToken</code> from a route.</p>
+<p>For example</p>
+<pre><code class="language-javascript">    Route.get('/register', function(req, res) {
+        res.view('form', { csrfToken: req.csrfToken() });
+    });</code></pre>
+<p>Use csrf token in your view</p>
+<pre><code class="language-javascript">    &lt;input type="hidden" name="_token" value="{{ csrfToken }}"&gt;</code></pre>
+<h4 id="validate-the-submitted-csrf-token">Validate The Submitted CSRF Token</h4>
+<pre><code class="language-javascript">    Route.post('register', {before: 'csrf', uses: function(req, res) {
+        //'You gave a valid CSRF token!';
+    }});</code></pre>
+<h2 id="http-basic-authentication">HTTP Basic Authentication</h2>
+<p>HTTP Basic Authentication provides a quick way to authenticate users of your application without setting up a dedicated &quot;login&quot; page. To get started, attach the <code>auth.basic</code> filter to your route:</p>
+<h4 id="protecting-a-route-with-http-basic">Protecting A Route With HTTP Basic</h4>
+<pre><code class="language-javascript">    Route.get('profile', {before: 'auth.basic', uses: function(req, res) {
+        // Only authenticated users may enter...
+    }});</code></pre>
+<p>By default, the <code>basic</code> filter will use the <code>email</code> column on the user record when authenticating. If you wish to use another column you may pass the column name as the second parameter to the <code>basic</code> method in your <code>app/filters.js</code> file:</p>
+<pre><code class="language-javascript">    Route.filter('auth.basic', function(request, response, next) {
+        req.auth.basic(function (result) {
+            if (result) {
+                next();
+            } else {
+                var error = new Error('Invalid credentials');
+
+                error.status = 401;
+                response.setHeader('WWW-Authenticate', 'Basic');
+                response.abort(error);
+            }
+        }, 'username');
+    });</code></pre>
+<h4 id="setting-up-a-stateless-http-basic-filter">Setting Up A Stateless HTTP Basic Filter</h4>
+<p>You may also use HTTP Basic Authentication without setting a user identifier cookie in the session, which is particularly useful for API authentication. To do so, define a filter that executes the <code>onceBasic</code> method:</p>
+<pre><code class="language-javascript">    Route.filter('basic.once', function(request, response, next) {
+        req.auth.onceBasic(function (result) {
+            if (result) {
+                next();
+            } else {
+                var error = new Error('Invalid credentials');
+
+                error.status = 401;
+                response.setHeader('WWW-Authenticate', 'Basic');
+                response.abort(error);
+            }
+        });
+    });</code></pre>
+<h2 id="encryption">Encryption</h2>
+<p>Quorra provides facilities for strong AES encryption:</p>
+<h4 id="encrypting-a-value">Encrypting A Value</h4>
+<pre><code class="language-javascript">    var encrypted = App.encrypter.encrypt('secret');</code></pre>
+<blockquote>
+<p><strong>Note:</strong> Be sure to set a random string in the <code>key</code> option of the <code>app/config/app.js</code> file. Otherwise, encrypted values will not be secure.</p>
+</blockquote>
+<h4 id="decrypting-a-value">Decrypting A Value</h4>
+<pre><code class="language-javascript">    var  decrypted = App.encrypter.decrypt(encrypted);</code></pre>
         </section>
 
     </div>

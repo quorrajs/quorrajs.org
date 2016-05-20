@@ -119,6 +119,11 @@
 
                     <ul class="nav nav-pills nav-stacked">
                                                     <li class="">
+                                <a href="/docs/v1/more/security.html">
+                                    Security
+                                </a>
+                            </li>
+                                                    <li class="">
                                 <a href="/docs/v1/more/mail.html">
                                     Mail
                                 </a>
@@ -151,6 +156,11 @@
                                                     <li class="">
                                 <a href="/docs/v1/middlewares/session.html">
                                     Session
+                                </a>
+                            </li>
+                                                    <li class="">
+                                <a href="/docs/v1/middlewares/authentication.html">
+                                    Authentication
                                 </a>
                             </li>
                                                     <li class="">
@@ -209,8 +219,8 @@ by requiring the Positron singleton like <code>var App = require('positron')</co
 Quorra.)</p>
 <h2 id="models">Models</h2>
 <p>Your app's models are exposed as global variables using their globalId. For instance, the model defined in the file
-app/models/Foo.js will be globally accessible as <code>Foo</code>. If this is disabled, you can still access your models via App
-.models.*.</p>
+<code>app/models/Foo.js</code> will be globally accessible as <code>Foo</code>. If this is disabled, you can still access your models via
+<code>App.models.&lt;model identity&gt;</code>.</p>
         </section>
 
     </div>
@@ -248,5 +258,9 @@ app/models/Foo.js will be globally accessible as <code>Foo</code>. If this is di
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 <script src="https://quorrajs.org/assets/js/prism.js"></script>
+
+<script>
+</script>
+
 </body>
 </html>

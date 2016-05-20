@@ -119,6 +119,11 @@
 
                     <ul class="nav nav-pills nav-stacked">
                                                     <li class="">
+                                <a href="/docs/v1/more/security.html">
+                                    Security
+                                </a>
+                            </li>
+                                                    <li class="">
                                 <a href="/docs/v1/more/mail.html">
                                     Mail
                                 </a>
@@ -151,6 +156,11 @@
                                                     <li class="">
                                 <a href="/docs/v1/middlewares/session.html">
                                     Session
+                                </a>
+                            </li>
+                                                    <li class="">
+                                <a href="/docs/v1/middlewares/authentication.html">
+                                    Authentication
                                 </a>
                             </li>
                                                     <li class="">
@@ -202,7 +212,9 @@
 is placed in your user's session. You can use following methods to access and regenerate tokens. Include the token in
 your html form as a hidden field with <code>_token</code> as field name.</p>
 <h3 id="access-csrf-token">Access CSRF token</h3>
-<pre><code class="language-javascript">req.session.getToken()</code></pre>
+<pre><code class="language-javascript">req.session.getToken()
+// or
+req.csrfToken()</code></pre>
 <h3 id="regenerate-csrf-token">Regenerate CSRF token</h3>
 <pre><code class="language-javascript">req.session.regenerateToken()</code></pre>
 <h3 id="attaching-the-csrf-filter-to-a-route">Attaching The CSRF Filter To A Route</h3>
@@ -298,5 +310,9 @@ App.locals.strftime = require('strftime');</code></pre>
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 <script src="https://quorrajs.org/assets/js/prism.js"></script>
+
+<script>
+</script>
+
 </body>
 </html>
