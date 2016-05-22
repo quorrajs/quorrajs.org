@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,19 +19,26 @@
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-          <script src="assets/js/html5shiv.min.js"></script>
-          <script src="assets/js/respond.min.js"></script>
-        <![endif]-->
-	<script>
-	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-	
-	  ga('create', 'UA-42913540-2', 'auto');
-	  ga('send', 'pageview');
-	</script>        
-    </head>
+    <script src="assets/js/html5shiv.min.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-42913540-2', 'auto');
+        ga('send', 'pageview');
+    </script>
+</head>
 <body>
 <!-- Preloader -->
 <div id="preloader">
@@ -40,46 +47,68 @@
 
 <!-- Fixed navbar -->
 <div class="navbar main-menu navbar-default navbar-fixed-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-      <a class="navbar-brand" href="" title="MaterialStrap"><img src="assets/images/logo.png" alt="logo" title="MaterialStrap" /></a> </div>
-    <div class="navbar-collapse collapse">
-      <ul class="nav navbar-nav navbar-right" id="menu">
-          <li><a data-scroll data-options="easing: easeOutQuart" href="/docs/v1/getting-started/installation.html">Documentation</a></li>
-          <li><a data-scroll data-options="easing: easeOutQuart" target="_blank" href="https://github.com/quorrajs/Quorra">Github</a></li>
-      </ul>
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span
+                    class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span
+                    class="icon-bar"></span> <span class="icon-bar"></span></button>
+            <a class="navbar-brand" href="" title="QuorraJS"><img src="assets/images/logo.png" alt="logo"
+                                                                       title="QuorraJS"/></a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right" id="menu">
+                <li><a data-scroll data-options="easing: easeOutQuart"
+                       href="/docs/v1/getting-started/installation.html">Documentation</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Community <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="https://github.com/quorrajs" target="_blank">Github</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="https://quorrajs.slack.com" target="_blank">Slack</a></li>
+                        <li><a href="https://gitter.im/quorrajs/quorrajs" target="_blank">Gitter</a></li>
+                        <li><a href="https://twitter.com/quorrajs" target="_blank">Twitter</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!--/.nav-collapse -->
     </div>
-    <!--/.nav-collapse -->
-  </div>
 </div>
 <section id="banner" class="section">
-	<div class="container">
-    	<div class="intro">
+    <div class="container">
+        <div class="intro">
             <h1 class="wow fadeInUp" data-wow-duration="0.8s"
                 data-wow-delay="2s"><img class="logo" src="assets/images/mascot.png"></h1>
+
             <h2 class="wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="1.6s"><span>Quorra</span>JS</h2>
+
             <p class="wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="1.8s">NodeJS framework for web riders</p>
-            <p class="attribution wow fadeIn"  data-wow-duration="0.8s" data-wow-delay="2.2s">Inspired By <3 <a href="http://laravel.com" target="_blank">Laravel</a></p>
+
+            <p class="attribution wow fadeIn" data-wow-duration="0.8s" data-wow-delay="2.2s">Inspired By <3 <a
+                    href="http://laravel.com" target="_blank">Laravel</a></p>
             <a data-wow-duration="0.8s" data-wow-delay="2.2s" href="/docs/v1/preface/quickstart.html"
                class="btn btn-success wow fadeIn">Get Started</a>
             <a data-wow-duration="0.8s" data-wow-delay="2.2s" href="/docs/v1/getting-started/installation.html"
                class="btn btn-success wow fadeIn">Read Docs</a>
+
             <div data-wow-duration="0.8s" data-wow-delay="2.2s" class="github-star-container wow bounceInDown">
                 <iframe
-                        src="https://ghbtns.com/github-btn.html?user=quorrajs&amp;repo=quorra&amp;type=watch&amp;count=true" class="github-star"></iframe>
-                </div>
+                        src="https://ghbtns.com/github-btn.html?user=quorrajs&amp;repo=quorra&amp;type=watch&amp;count=true"
+                        class="github-star"></iframe>
             </div>
+        </div>
         <div class="clearfix"></div>
-	</div>
+    </div>
 </section>
 <section id="about">
-    <div class="sectionIcon wow bounceIn" data-wow-duration="0.8s" data-wow-delay="3s"><i class="fa fa-angle-down"></i></div>
+    <div class="sectionIcon wow bounceIn" data-wow-duration="0.8s" data-wow-delay="3s"><i class="fa fa-angle-down"></i>
+    </div>
     <div class="container">
         <div class="row">
             <div class="col-md-12 wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="2s">
 
                 <h2 class="heading">About</h2>
+
                 <div class="col-md-12">
                     <p class="text-center">
                         QuorraJS is a full fledged, open-source MVC NodeJS framework
@@ -91,7 +120,7 @@
                         <li><i class="fa fa-check"> Expressive, beautiful syntax.</i></li>
                         <li><i class="fa fa-check"> Powerful router</i></li>
                         <li><i class="fa fa-check"> Easy-to-use CLI wizard</i></li>
-                        <li><i class="fa fa-check"> Easily generate restful routes with cli generators</i></li>
+                        <li><i class="fa fa-check"> Easily generate restful routes with CLI generators</i></li>
                         <li><i class="fa fa-check"> There are so much nice and little nifty features like</i>
                             <ul>
                                 <li> Maintenance mode</li>
@@ -107,25 +136,26 @@
     </div>
 </section>
 <section id="info">
-	<div class="container">
-		<div class="row">
+    <div class="container">
+        <div class="row">
             <div class="col-md-4 col-md-offset-4">
-            	<h4 class="wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.8s">Connect with us</h4>
+                <h4 class="wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.8s">Connect with us</h4>
+
                 <div class="clearfix"></div>
                 <ul class="list-inline social">
                     <li class="wow bounceIn" data-wow-duration="1.0s" data-wow-delay="0.8s">
-                      <a href="https://github.com/quorrajs" target="_blank">
-                          <i class="fa fa-github-square"></i>
-                      </a>
+                        <a href="https://github.com/quorrajs" target="_blank">
+                            <i class="fa fa-github-square"></i>
+                        </a>
                     </li>
                     <li class="wow bounceIn" data-wow-duration="1.0s" data-wow-delay="0.8s">
-                      <a href="https://www.facebook.com/quorrajs" class="fb" target="_blank">
-                          <i class="fa fa-facebook-square"></i></a>
+                        <a href="https://www.facebook.com/quorrajs" class="fb" target="_blank">
+                            <i class="fa fa-facebook-square"></i></a>
                     </li>
                     <li class="wow bounceIn" data-wow-duration="1.0s" data-wow-delay="1.0s">
-                      <a href="https://twitter.com/quorrajs" class="twt" target="_blank">
-                          <i class="fa fa-twitter-square"></i>
-                      </a>
+                        <a href="https://twitter.com/quorrajs" class="twt" target="_blank">
+                            <i class="fa fa-twitter-square"></i>
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -134,14 +164,14 @@
 </section>
 <a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>
 
-    <!-- Bootstrap core JavaScript
-        ================================================== -->
-    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-    <!-- smooth scrolling -->
-    <script src="assets/js/smooth-scroll.js"></script>
-    <!-- animation scrolling -->
-    <script src="assets/js/wow.min.js"></script>
-    <script src="assets/js/app.min.js"></script>
+<!-- Bootstrap core JavaScript
+    ================================================== -->
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<!-- smooth scrolling -->
+<script src="assets/js/smooth-scroll.js"></script>
+<!-- animation scrolling -->
+<script src="assets/js/wow.min.js"></script>
+<script src="assets/js/app.min.js"></script>
 </body>
 </html>

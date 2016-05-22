@@ -32,6 +32,23 @@
                 <img src="https://quorrajs.org/assets/images/logo.png" alt="logo" title="QuorraJS"/>
             </a>
         </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right" id="menu">
+                <li><a data-scroll data-options="easing: easeOutQuart"
+                       href="/docs/v1/getting-started/installation.html">Documentation</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Community <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="https://github.com/quorrajs" target="_blank">Github</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="https://quorrajs.slack.com" target="_blank">Slack</a></li>
+                        <li><a href="https://gitter.im/quorrajs/quorrajs" target="_blank">Gitter</a></li>
+                        <li><a href="https://twitter.com/quorrajs" target="_blank">Twitter</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!--/.nav-collapse -->
     </div>
 </div>
 
@@ -214,7 +231,7 @@
 <p>Quorra aims to make implementing authentication very simple. In fact, almost everything is configured for you out of the box. The authentication configuration file is located at <code>app/config/auth.js</code>, which contains well documented auth related options for tweaking the behavior of the authentication facilities.</p>
 <p>By default, Quorra includes a <code>User</code> model in your <code>app/models</code> directory. Please remember when building the Schema for this Model to ensure that the password field is a minimum of 60 characters.</p>
 <blockquote>
-<p><strong>Note:</strong> Don't forget to set auth middleware support to true in the <code>app/config/middleware.js</code> file to enable authentication support in your application.</p>
+<p><strong>Note:</strong> Don't forget to set auth and session middlewares to true in the <code>app/config/middleware.js</code> file to enable authentication support in your application.</p>
 </blockquote>
 <h2 id="storing-passwords">Storing Passwords</h2>
 <p>The Quorra <code>Hash</code> service provides secure Bcrypt hashing which wraps the popular <a href="https://www.npmjs.com/package/bcryptjs">bcryptjs</a> npm module:</p>
@@ -301,7 +318,9 @@
 <h2 id="manually-logging-in-users">Manually Logging In Users</h2>
 <p>If you need to log an existing user object into your application, you may simply call the <code>login</code> method with the object:</p>
 <pre><code class="language-javascript">    User.findOne(1).exec(function (err, user) {
-        req.auth.login(user);
+        req.auth.login(user, function () {
+            // user logged in
+        });
     });</code></pre>
 <p>This is equivalent to logging in a user via credentials using the <code>attempt</code> method.</p>
 <h2 id="protecting-routes">Protecting Routes</h2>
