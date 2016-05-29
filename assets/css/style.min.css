@@ -42,7 +42,7 @@ body:after{
 }
 
 .github-star {
-    width: 80px;
+    width: 86px;
     height: 20px;
     margin-left: 1.5rem;
     margin-bottom: 0;
@@ -125,25 +125,6 @@ a:focus {
 
 .color-overlay {
     background: rgba(66, 134, 245, .9)
-}
-
-.sectionIcon {
-    color: #e5e5e5;
-    background: #fff;
-    padding-right: 0;
-    font-size: 30px;
-    display: inline-block;
-    text-align: center;
-    position: absolute;
-    margin: auto;
-    left: 0;
-    right: 0;
-    top: -37px;
-    width: 75px;
-    height: 75px;
-    line-height: 75px;
-    border-radius: 50%;
-    vertical-align: middle
 }
 
 .bgParallax {
