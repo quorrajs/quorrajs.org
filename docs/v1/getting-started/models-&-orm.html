@@ -247,7 +247,7 @@ module.exports = User;</code></pre>
 <h4 id="tablename">tableName</h4>
 <p>Note that we did not tell Waterline which table to use for our User model. The lower-case, plural name of the model
 file will be used as the table name unless another name is explicitly specified. So, in this case, Waterline will
-assume the User model stores records in the user table. You may specify a custom table by defining a tableName property
+assume the <code>User</code> model stores records in the <code>users</code> table. You may specify a custom table by defining a tableName property
 on your model:</p>
 <pre><code class="language-javascript">// path: app/models/User.js
 var User = {

@@ -236,17 +236,17 @@ more confident building your applications. In addition to a high-level overview 
 <p>If you don't understand all of the terms right away, don't lose heart! Just try to get a basic grasp of what is going
 on, and your knowledge will grow as you explore other sections of the documentation.</p>
 <h2 id="application-start-amp-request-lifecycle">Application start &amp; Request lifecycle</h2>
-<p>Whenever a Qurra application is started index.js script in the application root will be executed. From here, Quorra
+<p>Whenever a Qurra application is started <code>index.js</code> script in the application root will be executed. From here, Quorra
 begins the process of starting the application and listening requests. Getting a general idea for the Quorra
 bootstrap process will be useful, so we'll cover that now!</p>
-<p>index.js file executes the <code>bootstrap/start.js</code> script with a callback argument. This file creates the new Positron
+<p><code>index.js</code> file executes the <code>bootstrap/start.js</code> script with a callback argument. This file creates the new Positron
 Application object(Positron is the core module that powers Quorra.), which serves as the backbone of Quorra application.</p>
 <p>After creating the Application object, a few project paths will be set and environment detection will be performed.
-Then, an internal Positron bootstrap script will be called with the callback from index.js. This file lives deep
-within the Positron source, and sets a few more settings based on your configuration files, such as error reporting,
+Then, an internal Positron bootstrap script will be called with the callback from <code>index.js</code>. This file lives deep
+within the Positron source, and sets a few more settings based on quorra application configuration files, such as error reporting,
 session init etc and initializes application core components like router, view, filter, log, encrypter etc.</p>
-<p>After initialization of all core components, your app/start files will be loaded. Lastly, your app/routes.js file
-will be loaded. Once your routes.js file has been loaded, it returns the callback from the index.js file with the
+<p>After initialization of all core components, <code>app/start</code> files will be loaded. Lastly, <code>app/routes.js</code> file
+will be loaded. Once <code>routes.js</code> file has been loaded, it returns the callback from the <code>index.js</code> file with the
 newly created positron application object. Callback function executes the listen method of application object, which
 creates a NodeJS server and starts to listen to Request.</p>
 <p>So, let's summarize:</p>
@@ -264,13 +264,13 @@ kernel is nothing but stack of application middleware instances which is program
 request and response object to the created middleware stack for execution. After all middleware execution global
 filters and route level filters are executed from which request reaches to the route.</p>
 <h2 id="start-files">Start Files</h2>
-<p>Your application's start files are stored at <code>app/start</code>. By default, two are included with your application: <code>global .js</code> and <code>local.js</code>.</p>
-<p>The global.js start file contains a few basic items by default, such as configuration of the Logger and the inclusion
-of your <code>app/filters.js</code> file. However, you are free to add anything to this file that you wish. It will be
+<p>Application's start files are stored at <code>app/start</code>. By default, two are included with your application: <code>global.js</code> and <code>local.js</code>.</p>
+<p>The <code>global.js</code> start file contains a few basic items by default, such as configuration of the Logger and the inclusion
+of <code>app/filters.js</code> file. However, you are free to add anything to this file that you wish. It will be
 automatically included on application initialization, regardless of environment. The <code>local.js</code> file, on the other
-hand, is only called when the application is executing in the local environment. For more information on
+hand, is only called when the application is executing in the <code>local</code> environment. For more information on
 environments, check out the configuration documentation.</p>
-<p>Of course, if you have other environments in addition to local, you may create start files for those environments as
+<p>Of course, if you have other environments in addition to <code>local</code>, you may create start files for those environments as
 well. They will be automatically included when your application is running in that environment. So, for example, if
 you have a <code>development</code> environment configured in your <code>bootstrap/start.js</code> file, you may create a
 <code>app/start/development.js</code> file, which will be included when application is lifted in that environment.</p>
@@ -280,7 +280,7 @@ preferences, set some js settings, etc. It's totally up to you. Of course, throw
 into your start files can get messy.</p>
 <h2 id="application-events">Application Events</h2>
 <h3 id="registering-application-events">Registering Application Events</h3>
-<p>You may do pre request processing by registering before application event:</p>
+<p>You may do pre request processing by registering <code>before</code> application event:</p>
 <pre><code class="language-javascript">App.before(function(request, response, next) {
 
     //
