@@ -309,9 +309,9 @@ retrieve them and pass them to our view.</p>
 <p>Now let's modify our <code>/users</code> route to look like this:</p>
 <pre><code class="language-javascript">Route.get('users', function(req, res)
 {
-    var users = User.find();
-
-    res.view('users', {users: users});
+    User.find(function (err, users) {
+        res.view('users', {users: users});
+    });
 });</code></pre>
 <p>Let's walk through this route. First, the all method on the User model will retrieve all of the rows in the users
 table. Next, we're passing these records to the view via view method along with the view name. Now the <code>users</code> data
