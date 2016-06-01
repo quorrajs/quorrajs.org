@@ -224,25 +224,48 @@
 
         
         <section class="col-sm-9 col-lg-9 doc-content">
-            <h1 id="quorra-cli">Quorra CLI</h1>
+            <h1 id="testing">Testing</h1>
 <ul>
 <li><a href="#introduction">Introduction</a></li>
-<li><a href="#installation">Installation</a></li>
-<li><a href="#usage">Usage</a></li>
+<li><a href="#defining-and-running-tests">Defining &amp; Running Tests</a></li>
+<li><a href="#test-environment">Test Environment</a></li>
+<li><a href="#calling-routes-from-tests">Calling Routes From Tests</a></li>
 </ul>
 <h2 id="introduction">Introduction</h2>
-<p>Quorra CLI provides a number of helpful commands for your use while developing your application.</p>
-<h2 id="installation">Installation</h2>
-<p>Install the Quorra cli using npm.</p>
-<pre><code>npm install -g quorra-cli</code></pre>
-<h2 id="usage">Usage</h2>
-<h3 id="listing-all-available-commands">Listing All Available Commands</h3>
-<p>To view a list of all available Quorra commands, you may use the <code>--help</code> command:</p>
-<pre><code>quorra --help</code></pre>
-<h3 id="viewing-the-help-screen-for-a-command">Viewing The Help Screen For A Command</h3>
-<p>Every command also includes a help screen which displays and describes the command's available arguments and
-options. To view a help screen, simply follow the name of the command with <code>--help</code>:</p>
-<pre><code>quorra routes --help</code></pre>
+<p>Quorra is pre-configured with <a href="https://mochajs.org">mocha</a> and <a href="https://github.com/shouldjs/should.js">should.js</a> for application testing.</p>
+<p>Some example test files are provided in the <code>app/tests/integration</code> directory. After creating a new Quorra application, simply run <code>npm test</code> on the command line to run your tests.</p>
+<blockquote>
+<p><strong>Note:</strong> Install dev dependencies by running <code>npm install</code> before running unit tests.</p>
+</blockquote>
+<h2 id="defining-amp-running-tests">Defining &amp; Running Tests</h2>
+<p>To create a test case, simply create a new test file in the <code>app/tests/unit</code> directory.</p>
+<p>You may organise your test files like below.</p>
+<pre><code>    ./myApp
+    ├── app
+    │    ├── config/
+    │    ├── controllers/
+    │    ├── ...
+    │    └── tests/
+    │       ├── integration/
+    │       │  ├── controllers/
+    │       │  │  └── UserController.spec.js
+    │       │  ├── models/
+    │       │  │  └── User.spec.js
+    │       │  └── ...
+    │       ├── unit/
+    │       ├── fixtures/
+    │       ├── ...
+    │       ├── bootstrap.js
+    │       └── mocha.opts
+    ├── bootstrap/
+    ├── resources/
+    └── ...
+</code></pre>
+<p>You may run all of the tests for your application by executing the <code>npm test</code> command from your terminal.</p>
+<h2 id="test-environment">Test Environment</h2>
+<p>When running unit tests, Quorra will automatically set the configuration environment to <code>testing</code>. Also, Quorra includes configuration file for <code>mail</code> service in the test environment. Mail driver is set to memory based while in the test environment, meaning no actual mail will be send while testing. You are free to create other testing environment configurations as necessary.</p>
+<h2 id="calling-routes-from-tests">Calling Routes From Tests</h2>
+<p>To test application route responses you can use <a href="https://github.com/visionmedia/supertest">Supertest</a> library which provides several useful methods for testing HTTP requests.</p>
         </section>
 
     </div>
