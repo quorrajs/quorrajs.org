@@ -163,6 +163,11 @@
                                 </a>
                             </li>
                                                     <li class="">
+                                <a href="/docs/v1/more/service-providers.html">
+                                    Service Providers
+                                </a>
+                            </li>
+                                                    <li class="">
                                 <a href="/docs/v1/middlewares/body-parser.html">
                                     Body Parser
                                 </a>
@@ -235,10 +240,10 @@
 <p>Quorra is pre-configured with <a href="https://mochajs.org">mocha</a> and <a href="https://github.com/shouldjs/should.js">should.js</a> for application testing.</p>
 <p>Some example test files are provided in the <code>app/tests/integration</code> directory. After creating a new Quorra application, simply run <code>npm test</code> on the command line to run your tests.</p>
 <blockquote>
-<p><strong>Note:</strong> Install dev dependencies by running <code>npm install</code> before running unit tests.</p>
+<p><strong>Note:</strong> Install dev dependencies by running <code>npm install</code> from your project root directory before running tests.</p>
 </blockquote>
 <h2 id="defining-amp-running-tests">Defining &amp; Running Tests</h2>
-<p>To create a test case, simply create a new test file in the <code>app/tests/unit</code> directory.</p>
+<p>To create a test case, simply create a new test file in the <code>app/tests/unit</code> or <code>app/tests/integration</code> directory.</p>
 <p>You may organise your test files like below.</p>
 <pre><code>    ./myApp
     ├── app
@@ -263,7 +268,7 @@
 </code></pre>
 <p>You may run all of the tests for your application by executing the <code>npm test</code> command from your terminal.</p>
 <h2 id="test-environment">Test Environment</h2>
-<p>When running unit tests, Quorra will automatically set the configuration environment to <code>testing</code>. Also, Quorra includes configuration file for <code>mail</code> service in the test environment. Mail driver is set to memory based while in the test environment, meaning no actual mail will be send while testing. You are free to create other testing environment configurations as necessary.</p>
+<p>When running unit tests, Quorra will automatically set the configuration environment to <code>testing</code>. Quorra includes configuration file for <code>mail</code> service in the test environment. Mail driver is set to memory based while in the test environment, meaning no actual mail will be send while testing. You are free to create other testing environment configurations as necessary.</p>
 <h2 id="calling-routes-from-tests">Calling Routes From Tests</h2>
 <p>To test application route responses you can use <a href="https://github.com/visionmedia/supertest">Supertest</a> library which provides several useful methods for testing HTTP requests.</p>
         </section>

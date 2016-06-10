@@ -229,38 +229,50 @@
 
         
         <section class="col-sm-9 col-lg-9 doc-content">
-            <h1 id="mail">Mail</h1>
+            <h1 id="service-providers">Service Providers</h1>
 <ul>
-<li><a href="#configuration">Configuration</a></li>
-<li><a href="#basic-usage">Basic Usage</a></li>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#defining-a-service-provider">Defining A Service Provider</a></li>
+<li><a href="#registering-a-service-provider-at-run-time">Registering A Service Provider At Run-Time</a></li>
 </ul>
-<h2 id="configuration">Configuration</h2>
-<p>Quorra provides a clean, simple API over the popular <a href="https://github.com/nodemailer/nodemailer">nodemailer</a> library.
-The mail configuration file is <code>app/config/mail.js</code>, and contains options allowing you choose nodemailer transport
-diver, driver configuration as well as set a global from address for all messages delivered by the library. You may
-use any nodemailer trasnport you wish.</p>
-<p>For test purpose you may install and use <a href="https://github
-.com/andris9/nodemailer-stub-transport">node-mailer-stub-transport</a> which just returns message via callback method.</p>
-<h2 id="basic-usage">Basic Usage</h2>
-<p>The <code>Mail.send</code> method may be used to send an e-mail message:</p>
-<pre><code class="language-javascript">var Mail = App.mail;
+<h2 id="introduction">introduction</h2>
+<p>Service providers are a great way to group related service registrations in a single location. Think of them as a way
+to bootstrap components in your application. Within a service provider, you might register a custom authentication
+driver, or any other service that needs to be regiseterd with the Application object.</p>
+<p>In fact, most of the core Quorra components include service providers. All of the registered service providers for your
+application are listed in the <code>providers</code> array of the <code>app/config/app.js</code> configuration file.</p>
+<p>By default, service providers contain two methods: <code>boot</code> and <code>register</code>. The <code>register</code> method is called immediately
+when the service provider is registered, while the <code>boot</code> method is only called right after all services are
+registered. So, if actions in your service provider rely on another service provider already being registered, or you
+are overriding services bound by another provider, you should use the boot method.</p>
+<h2 id="defining-a-service-provider">Defining A Service Provider</h2>
+<p>To create a service provider, simply extend the <code>ServiceProvider</code> class provided by the <code>@positron/support</code> module and
+define a register method:</p>
+<pre><code class="language-javascript">var ServiceProvider = require('@positron/support').ServiceProvider;
+var FooService = require('./FooService');
 
-Mail.send('emails/welcome', {'key': 'value'}, {'to': 'email'}, function(err, info)
-{
-    if(err){
-        return console.log(err);
-    }
-    console.log('Message sent: ' + info.response);
-});</code></pre>
-<p>The first argument passed to the send method is the name of the view that should be used as the e-mail body. The
-second is the data to be passed to the view, often as an object where the data items are available to the view by key.
-The third is the nodemailer mail options like to, cc, attachments etc. The list of available options can be found
-<a href="https://github.com/nodemailer/nodemailer#e-mail-message-fields">here</a>. The fourth is a callback method allowing you to
-receive the response from nodemailer after email is sent.</p>
-<p>You may also specify a plain text view to use in addition to an HTML view:</p>
-<pre><code class="language-javascript">Mail::send({'html': 'view', 'text': 'view'), viewOptions, mailOptions, callback);</code></pre>
-<p>Or, you may specify only one type of view using the html or text keys:</p>
-<pre><code class="language-javascript">Mail.send({'text': 'view'}, viewOptions, mailOptions, callback);</code></pre>
+var FooServiceProvider = ServiceProvider.extend(function(app) {
+    this.__app = app;
+});
+
+FooServiceProvider.prototype.register = function (done) {
+    this.__app.foo = new FooService();
+
+    done();
+}</code></pre>
+<p>Now you can use foo service anywhere in you application as <code>App.foo</code>. Note that in the constructor method, the
+application object is available to you as an argument which is saved as
+<code>this.__app</code> property and used in the register method. Once you have created a provider and are ready to register it
+with your application, simply add it to the <code>providers</code> array in your <code>app</code> configuration file. You may place your
+custom service providers inside <code>project-root/app/providers</code> directory.</p>
+<blockquote>
+<p><strong>Note:</strong> To register your custom service provider, provide absolute path of your service provider
+file in the <code>providers</code> array. To register a custom npm Quorra service provider module you can just use the
+module name in the <code>providers</code> array.</p>
+</blockquote>
+<h2 id="registering-a-service-provider-at-run-time">Registering A Service Provider At Run-Time</h2>
+<p>You may also register a service provider at run-time using the <code>App.register</code> method:</p>
+<pre><code class="language-javascript">App.register('FooServiceProvider');</code></pre>
         </section>
 
     </div>

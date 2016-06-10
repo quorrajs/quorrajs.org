@@ -163,6 +163,11 @@
                                 </a>
                             </li>
                                                     <li class="">
+                                <a href="/docs/v1/more/service-providers.html">
+                                    Service Providers
+                                </a>
+                            </li>
+                                                    <li class="">
                                 <a href="/docs/v1/middlewares/body-parser.html">
                                     Body Parser
                                 </a>
@@ -242,14 +247,25 @@ more confident building your applications. In addition to a high-level overview 
 on, and your knowledge will grow as you explore other sections of the documentation.</p>
 <h2 id="application-start-amp-request-lifecycle">Application start &amp; Request lifecycle</h2>
 <p>Whenever a Qurra application is started <code>index.js</code> script in the application root will be executed. From here, Quorra
-begins the process of starting the application and listening requests. Getting a general idea for the Quorra
+begins the process of starting the application and listening to the requests. Getting a general idea for the Quorra
 bootstrap process will be useful, so we'll cover that now!</p>
-<p><code>index.js</code> file executes the <code>bootstrap/start.js</code> script with a callback argument. This file creates the new Positron
-Application object(Positron is the core module that powers Quorra.), which serves as the backbone of Quorra application.</p>
-<p>After creating the Application object, a few project paths will be set and environment detection will be performed.
+<p>By far, the most important concept to grasp when learning about Quorra's bootstrap process is Service Providers. You
+can find a list of service providers by opening your <code>app/config/app.js</code> configuration file and finding the <code>providers</code>
+array. These providers serve as the primary bootstrapping mechanism for Quorra. But, before we dig into service
+providers, let's go back to <code>index.js</code>. <code>index.js</code> file executes the <code>bootstrap/start.js</code> script with a callback
+argument. This file creates the new Positron <code>Application object</code>(Positron is the core module that powers Quorra.),
+which serves as the backbone of Quorra application.</p>
+<p>After creating the <code>Application object</code>, a few project paths will be set and environment detection will be performed.
 Then, an internal Positron bootstrap script will be called with the callback from <code>index.js</code>. This file lives deep
-within the Positron source, and sets a few more settings based on quorra application configuration files, such as error reporting,
-session init etc and initializes application core components like router, view, filter, log, encrypter etc.</p>
+within the Positron source, and sets a few more settings based on quorra application configuration files, such as
+<code>request.trustProxyFn</code>, <code>cache.etagFn</code> etc. But, in addition to setting these rather trivial configuration options, it
+also does something very important: registers all of the service providers configured for your application.</p>
+<p>Simple service providers only have one method: <code>register</code>. This <code>register</code> method is called when the service provider is
+registered with the application object via the application's own <code>register</code> method. Within this method, service
+providers register things with the Application object. Essentially, each service provider binds one or more
+services into the <code>Application object</code>, which allows you to access those bound services within your application. So, for
+example, the <code>MailServiceProvider</code> registers service <code>mailer</code>. Of course, service providers may be used for any
+bootstrapping task, not just registering things with the Application object.</p>
 <p>After initialization of all core components, <code>app/start</code> files will be loaded. Lastly, <code>app/routes.js</code> file
 will be loaded. Once <code>routes.js</code> file has been loaded, it returns the callback from the <code>index.js</code> file with the
 newly created positron application object. Callback function executes the listen method of application object, which
@@ -258,7 +274,7 @@ creates a NodeJS server and starts to listen to Request.</p>
 <ul>
 <li><code>index.js</code> file is executed.</li>
 <li><code>bootstrap/start.js</code> file creates Application and detects environment.</li>
-<li>Internal <code>framework/start.js</code> file configures settings and loads core components.</li>
+<li>Internal <code>framework/start.js</code> file configures settings and loads service providers.</li>
 <li>Application <code>app/start</code> files are loaded.</li>
 <li>Application <code>app/routes.js</code> file is loaded.</li>
 <li>Starts to listen to Request.</li>
@@ -282,7 +298,8 @@ you have a <code>development</code> environment configured in your <code>bootstr
 <h3 id="what-to-place-in-start-files">What To Place In Start Files</h3>
 <p>Start files serve as a simple place to place any &quot;bootstrapping&quot; code. For example, you could  configure your logging
 preferences, set some js settings, etc. It's totally up to you. Of course, throwing all of your bootstrapping code
-into your start files can get messy.</p>
+into your start files can get messy. For large applications, or if you feel your start files are getting messy,
+consider moving some bootstrapping code into <a href="/docs/v1/more/service-providers.html">service providers</a>.</p>
 <h2 id="application-events">Application Events</h2>
 <h3 id="registering-application-events">Registering Application Events</h3>
 <p>You may do pre request processing by registering <code>before</code> application event:</p>
