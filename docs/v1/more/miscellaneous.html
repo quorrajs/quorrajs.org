@@ -290,8 +290,8 @@ name. This value is reflected by req.protocol.</p>
 <p>The req.ip and req.ips values are populated with the list of addresses from <code>X-Forwarded-For</code>.</p>
 <p>The trust proxy setting is implemented using the <a href="https://www.npmjs.com/package/proxy-addr">proxy-addr</a> package. For more information, see its documentation.</p>
 <h2 id="application-locals">Application Locals</h2>
-<p>In Quorra application local variables within the application can be saved to locals attribute of Quorra application
-instance, ie <code>App.locals</code>.</p>
+<p>In Quorra local variables within the application can be saved to locals attribute of Quorra application instance, ie
+<code>App.locals</code>.</p>
 <pre><code class="language-javascript">App.locals.title
 // =&gt; 'My App'
 
@@ -299,9 +299,10 @@ App.locals.email
 // =&gt; 'me@myapp.com'
 
 App.locals.strftime = require('strftime');</code></pre>
-<p>Once set, the value of <code>App.locals</code> properties persist throughout the life of the application, in contrast with res
-.locals properties that are valid only for the lifetime of the request.</p>
-<p>You can access local variables in templates rendered within the application. This is useful for providing helper functions to templates, as well as app-level data. Locals are available in middleware via req.app.locals (see req.app)</p>
+<p>Once set, the value of <code>App.locals</code> properties persist throughout the life of the application, in contrast with <code>res .locals</code> properties that are valid only for the lifetime of the <code>request</code>.</p>
+<p>Both <code>app.locals</code> and <code>res.locals</code> properties are available in aplication view templates. This is useful for
+providing helper functions to templates, as well as app-level data. Application locals are available in <code>middleware</code>
+via <code>req.app.locals</code> (see <a href="/docs/v1/more/request.html#reqapp">req.app</a>).</p>
         </section>
 
     </div>
