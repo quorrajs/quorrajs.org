@@ -233,6 +233,7 @@
 <ul>
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#defining-a-service-provider">Defining A Service Provider</a></li>
+<li><a href="#registering-a-service-provider">Registering A Service Provider</a></li>
 <li><a href="#registering-a-service-provider-at-run-time">Registering A Service Provider At Run-Time</a></li>
 </ul>
 <h2 id="introduction">Introduction</h2>
@@ -246,9 +247,9 @@ when the service provider is registered, while the <code>boot</code> method is o
 registered. So, if actions in your service provider rely on another service provider already being registered, or you
 are overriding services bound by another provider, you should use the boot method.</p>
 <h2 id="defining-a-service-provider">Defining A Service Provider</h2>
-<p>To create a service provider, simply extend the <code>ServiceProvider</code> class provided by the <code>@positron/support</code> module and
+<p>To create a service provider, simply extend the <code>ServiceProvider</code> class provided by the Quorra framework(Positron) and
 define a register method:</p>
-<pre><code class="language-javascript">var ServiceProvider = require('@positron/support').ServiceProvider;
+<pre><code class="language-javascript">var ServiceProvider = use('ServiceProvider');
 var FooService = require('./FooService');
 
 var FooServiceProvider = ServiceProvider.extend(function(app) {
@@ -259,12 +260,33 @@ FooServiceProvider.prototype.register = function (done) {
     this.__app.foo = new FooService();
 
     done();
-}</code></pre>
+}
+
+module.exports = FooServiceProvider;</code></pre>
 <p>Now you can use foo service anywhere in you application as <code>App.foo</code>. Note that in the constructor method, the
 application object is available to you as an argument which is saved as
-<code>this.__app</code> property and used in the register method. Once you have created a provider and are ready to register it
+<code>this.__app</code> property and used in the register method.</p>
+<h2 id="registering-a-service-provider">Registering A Service Provider</h2>
+<p>Once you have created a provider and are ready to register it
 with your application, simply add it to the <code>providers</code> array in your <code>app</code> configuration file. You may place your
 custom service providers inside <code>project-root/app/providers</code> directory.</p>
+<p>For example if you are keeping the new service provider class in <code>app/providers/</code> directory then you can add it to providers array like:</p>
+<pre><code class="language-javascript">var path = require('path');
+
+providers: [
+    ...
+    ...
+    path.join(__dirname,'../providers/FooServiceProvider')
+]
+</code></pre>
+<p>If you want to use a service provider that is published as an npm module then just install the service provider from npm
+and add its name to the providers array. For example if <code>foo-service</code> is a npm module then you can add it to provider array like:</p>
+<pre><code class="language-javascript">providers: [
+    ...
+    ...
+    'foo-service'
+]
+</code></pre>
 <blockquote>
 <p><strong>Note:</strong> To register your custom service provider, provide absolute path of your service provider
 file in the <code>providers</code> array. To register a custom npm Quorra service provider module you can just use the

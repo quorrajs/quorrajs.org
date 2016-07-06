@@ -258,7 +258,7 @@
         }
     });</code></pre>
 <h2 id="authenticating-users">Authenticating Users</h2>
-<p>To log a user into your application, you may use the <code>Auth::attempt</code> method.</p>
+<p>To log a user into your application, you may use the <code>auth.attempt</code> method.</p>
 <pre><code class="language-javascript">    req.auth.attempt({email: 'email', password: 'password'}, function (result) {
         if(result) {
             // direct user to appropriate page
