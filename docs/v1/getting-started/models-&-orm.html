@@ -203,6 +203,11 @@
                                 </a>
                             </li>
                                                     <li class="">
+                                <a href="/docs/v1/more/elixir.html">
+                                    Elixir
+                                </a>
+                            </li>
+                                                    <li class="">
                                 <a href="/docs/v1/more/miscellaneous.html">
                                     Miscellaneous
                                 </a>
@@ -304,7 +309,8 @@ you do not specify a <code>globalId</code> attribute on your model, capitalized 
   email: { type: 'email' },
   age: { type: 'integer' }
 }</code></pre>
-<p>See <a href="https://github.com/balderdashy/waterline-docs/blob/master/models/data-types-attributes.md">Model Attributes</a>.</p>
+<p>See <a href="https://github.com/balderdashy/waterline-docs/blob/master/models/data-types-attributes.md">Model
+    Attributes</a>.</p>
 <h3 id="migrate">migrate</h3>
 <p>This flag sets the schema to automatically alter the schema, drop the schema or make no changes (safe). Default: <code>alter</code></p>
 <ul>
@@ -406,11 +412,16 @@ User.destroy(234)
 or an order could be associated to the user who placed it. Waterline makes managing and working with these associations
 easy. Waterline supports many types of associations:</p>
 <ul>
-<li><a href="https://github.com/balderdashy/waterline-docs/blob/master/models/associations/one-to-one.md">One To One</a></li>
-<li><a href="https://github.com/balderdashy/waterline-docs/blob/master/models/associations/one-to-one.md">One To One</a></li>
-<li><a href="https://github.com/balderdashy/waterline-docs/blob/master/models/associations/one-to-many.md">One To Many</a></li>
-<li><a href="https://github.com/balderdashy/waterline-docs/blob/master/models/associations/many-to-many.md">Many To Many</a></li>
-<li><a href="https://github.com/balderdashy/waterline-docs/blob/master/models/associations/dominance.md">Dominance</a></li>
+<li><a href="https://github.com/balderdashy/waterline-docs/blob/master/models/associations/one-to-one.md">One To
+    One</a></li>
+<li><a href="https://github.com/balderdashy/waterline-docs/blob/master/models/associations/one-to-one.md">One To
+    One</a></li>
+<li><a href="https://github.com/balderdashy/waterline-docs/blob/master/models/associations/one-to-many.md">One To
+    Many</a></li>
+<li><a href="https://github.com/balderdashy/waterline-docs/blob/master/models/associations/many-to-many.md">Many To
+    Many</a></li>
+<li><a href="https://github.com/balderdashy/waterline-docs/blob/master/models/associations/dominance.md">Dominance
+</a></li>
 </ul>
 <h2 id="querying-associations">Querying Associations</h2>
 <p><code>.populate( foreignKey, [query] )</code> a chainable method is used between <code>.find()/.update()</code> and <code>.exec()</code> in order to

@@ -203,6 +203,11 @@
                                 </a>
                             </li>
                                                     <li class="">
+                                <a href="/docs/v1/more/elixir.html">
+                                    Elixir
+                                </a>
+                            </li>
+                                                    <li class="">
                                 <a href="/docs/v1/more/miscellaneous.html">
                                     Miscellaneous
                                 </a>
@@ -472,7 +477,7 @@ example, a request to <code>profile/1</code> will inject the User instance which
 <p>Sometimes you may wish to use your own resolver for route parameters. Simply use the <code>Route::bind</code> method:</p>
 <pre><code class="language-javascript">Route.bind('user', function(value, route, req, callback)
 {
-    User.findOne(id, function(err, model){
+    User.findOne(value, function(err, model){
         callback(model);
     });
 });</code></pre>
