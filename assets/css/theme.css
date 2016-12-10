@@ -4810,6 +4810,7 @@ pre, pre[class*="language-"] {
 
 #masthead.navbar-small {
     min-height: 60px;
+    z-index: 1100;
 }
 
 #masthead.navbar-scrolled, #masthead.navbar-animate-display {
