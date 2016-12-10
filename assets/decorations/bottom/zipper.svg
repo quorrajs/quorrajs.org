@@ -1,0 +1,7 @@
+<svg class="decor hidden-xs hidden-sm" height="100%" preserveaspectratio="none" version="1.1" viewbox="0 0 100 100" width="100%" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 0 L0 50 L2 50 L2 0 L4 0 L4 50 L6 50 L6 0 L8 0 L8 50 L10 50 L10 0 L12 0 L12 50 L14 50 L14 0 L16 0 L16 50 L18 50 L18 0 L20 0 L20 50 L22 50 L22 0 L24 0 L24 50 L26 50 L26 0 L28 0 L28 50 L30 50 L30 0 L32 0 L32 50 L34 50 L34 0 L36 0 L36 50 L38 50 L38 0 L40 0 L40 50 L42 50 L42 0 L44 0 L44 50 L46 50 L46 0 L48 0 L48 50 L50 50 L50 0 L52 0 L52 50 L54 50 L54 0 L56 0 L56 50 L58 50 L58 0 L60 0 L60 50 L62 50 L62 0 L64 0 L64 50 L66 50 L66 0 L68 0 L68 50 L70 50 L70 0 L72 0 L72 50 L74 50 L74 0 L76 0 L76 50 L78 50 L78 0 L80 0 L80 50 L82 50 L82 0 L84 0 L84 50 L86 50 L86 0 L88 0 L88 50 L90 50 L90 0 L92 0 L92 50 L94 50 L94 0 L96 0 L96 50 L98 50 L98 0 L100 0" stroke-width="0"></path>
+</svg>
+<svg class="decor visible-xs visible-sm" height="100%" preserveaspectratio="none" version="1.1" viewbox="0 0 100 100" width="100%" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 0 L0 50 L5 50 L5 0 L10 0 L10 50 L15 50 L15 0 L20 0 L20 50 L25 50 L25 0 L30 0 L30 50 L35 50 L35 0 L40 0 L40 50 L45 50 L45 0 L50 0 L50 50 L55 50 L55 0 L60 0 L60 50 L65 50 L65 0 L70 0 L70 50 L75 50 L75 0 L80 0 L80 50 L85 50 L85 0 L90 0 L90 50 L95 50 L95 0 L100 0" stroke-width="0"></path>
+</svg>
+}

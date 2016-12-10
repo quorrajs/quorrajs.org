@@ -1,193 +1,229 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="QuorraJS - The NodeJS framework for web riders">
-    <meta name="author" content="Harish Anchu">
-    <meta property="og:title" content="QuorraJS" />
-    <meta property="og:description" content="NodeJS framework for web riders" />
-    <meta property="og:image" content="https://quorrajs.org/assets/images/mascot.png" />
-    <link rel="icon" href="assets/icons/favicon.ico">
-    <title>QuorraJS</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>QuorraJS</title>
+        <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico" />
+        <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,400italic' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/css/theme.css">
+        <link rel="stylesheet" href="assets/css/color-defaults.min.css">
+        <link rel="stylesheet" href="assets/css/swatch-blue-white.css">
+        <link rel="stylesheet" href="assets/css/swatch-white-blue.css">
+        <link rel="stylesheet" href="assets/css/fonts.min.css" media="screen">
+        <script>
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                        m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
-    <!-- Bootstrap core CSS -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href='//fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900' rel='stylesheet' type='text/css'>
-    <!-- Custom styles for this template -->
-    <link rel="stylesheet" href="assets/css/animate.css">
-    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
-    <link href="assets/css/style.min.css" rel="stylesheet">
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <script src="assets/js/html5shiv.min.js"></script>
-    <script src="assets/js/respond.min.js"></script>
-    <![endif]-->
-    <script>
-        (function (i, s, o, g, r, a, m) {
-            i['GoogleAnalyticsObject'] = r;
-            i[r] = i[r] || function () {
-                (i[r].q = i[r].q || []).push(arguments)
-            }, i[r].l = 1 * new Date();
-            a = s.createElement(o),
-                    m = s.getElementsByTagName(o)[0];
-            a.async = 1;
-            a.src = g;
-            m.parentNode.insertBefore(a, m)
-        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-        ga('create', 'UA-42913540-2', 'auto');
-        ga('send', 'pageview');
-    </script>
-</head>
-<body>
-<!-- Preloader -->
-<div id="preloader">
-    <div id="status">&nbsp;</div>
-</div>
-
-<!-- Fixed navbar -->
-<div class="navbar main-menu navbar-default navbar-fixed-top" role="navigation">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span
-                    class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span
-                    class="icon-bar"></span> <span class="icon-bar"></span></button>
-            <a class="navbar-brand" href="" title="QuorraJS"><img src="assets/images/logo.png" alt="logo"
-                                                                       title="QuorraJS"/></a>
-        </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-right" id="menu">
-                <li><a data-scroll data-options="easing: easeOutQuart"
-                       href="/docs/v1/getting-started/installation.html">Documentation</a></li>
-                <li><a data-scroll data-options="easing: easeOutQuart"
-                       href="https://medium.com/@quorrajs" target="_blank">Blog</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Community <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="https://github.com/quorrajs" target="_blank">Github</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="https://quorrajs.slack.com" target="_blank">Slack</a></li>
-                        <li><a href="https://gitter.im/quorrajs/quorrajs" target="_blank">Gitter</a></li>
-                        <li><a href="https://twitter.com/quorrajs" target="_blank">Twitter</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-        <!--/.nav-collapse -->
-    </div>
-</div>
-<section id="banner" class="section">
-    <div class="container">
-        <div class="intro">
-            <h1 class="wow fadeInUp" data-wow-duration="0.8s"
-                data-wow-delay="2s"><img class="logo" src="assets/images/mascot.png"></h1>
-
-            <h2 class="wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="1.6s"><span>Quorra</span>JS</h2>
-
-            <p class="wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="1.8s">NodeJS framework for web riders</p>
-
-            <p class="attribution wow fadeIn" data-wow-duration="0.8s" data-wow-delay="2.2s">Inspired By <3 <a
-                    href="http://laravel.com" target="_blank">Laravel</a></p>
-            <a data-wow-duration="0.8s" data-wow-delay="2.2s" href="/docs/v1/preface/quickstart.html"
-               class="btn btn-success wow fadeIn">Get Started</a>
-            <a data-wow-duration="0.8s" data-wow-delay="2.2s" href="/docs/v1/getting-started/installation.html"
-               class="btn btn-success wow fadeIn">Read Docs</a>
-
-            <div data-wow-duration="0.8s" data-wow-delay="2.2s" class="github-star-container wow bounceInDown">
-                <iframe
-                        src="https://ghbtns.com/github-btn.html?user=quorrajs&amp;repo=quorra&amp;type=watch&amp;count=true"
-                        class="github-star"></iframe>
-            </div>
-            <div>
-                <span class='st_twitter' st_title="QuorraJS - NodeJS framework for web riders" st_via=""></span>
-                <span class='st_facebook' st_title="QuorraJS - NodeJS framework for web riders" st_via=""></span>
-                <span class='st_googleplus' st_title="QuorraJS - NodeJS framework for web riders" st_via=""></span>
-                <span class='st_linkedin' st_title="QuorraJS - NodeJS framework for web riders" st_via=""></span>
-                <span class='st_email' st_title="QuorraJS - NodeJS framework for web riders" st_via=""></span>
-                <span class="st_sharethis" st_title="QuorraJS - NodeJS framework for web riders" st_via=""></span>
-            </div>
-        </div>
-        <div class="clearfix"></div>
-    </div>
-</section>
-<section id="about">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="2s">
-
-                <h2 class="heading">About</h2>
-
-                <div class="col-md-12">
-                    <p class="text-center">
-                        QuorraJS is a full fledged, open-source MVC NodeJS framework
-                    </p>
+            ga('create', 'UA-42913540-2', 'auto');
+            ga('send', 'pageview');
+        </script>
+    </head>
+    <body>
+        <header id="masthead" class="navbar navbar-sticky swatch-blue-white" role="banner">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".main-navbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="../index.html" class="navbar-brand">
+                        <img src="assets/images/logo.png" alt="QuorraJS">
+                    </a>
                 </div>
-                <div class="col-md-6 col-md-offset-3 text-left">
-                    <ul class="feature-list list-unstyled">
-                        <li><i class="fa fa-check"> Elegant applications delivered at warp speed.</i></li>
-                        <li><i class="fa fa-check"> Expressive, beautiful syntax.</i></li>
-                        <li><i class="fa fa-check"> Powerful router</i></li>
-                        <li><i class="fa fa-check"> Easy-to-use CLI wizard</i></li>
-                        <li><i class="fa fa-check"> Easily generate restful routes with CLI generators</i></li>
-                        <li><i class="fa fa-check"> There are so much nice and little nifty features like</i>
-                            <ul>
-                                <li> Maintenance mode</li>
-                                <li> Route model binding</li>
-                                <li> Ouch error handling</li>
+                <nav class="collapse navbar-collapse main-navbar" role="navigation">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a data-scroll data-options="easing: easeOutQuart"
+                               href="docs/v1/getting-started/installation.html">Documentation</a></li>
+                        <li><a data-scroll data-options="easing: easeOutQuart"
+                               href="https://medium.com/@quorrajs" target="_blank">Blog</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="https://github.com/quorrajs" target="_blank">Github</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="https://quorrajs.slack.com" target="_blank">Slack</a></li>
+                                <li><a href="https://gitter.im/quorrajs/quorrajs" target="_blank">Gitter</a></li>
+                                <li><a href="https://twitter.com/quorrajs" target="_blank">Twitter</a></li>
                             </ul>
                         </li>
                     </ul>
-                    <p>and much more...</p>
+                </nav>
+            </div>
+        </header>
+        <div id="content" role="main">
+            <section class="section swatch-blue-white">
+                <div class="container">
+                    <header class="section-header less-margin underline">
+                        <img class="logo" src="assets/images/mascot.png">
+                        <h2 ><span>Quorra</span>JS</h2>
+                        <p class="bigger">NodeJS framework for web riders</p>
+                        <p class="big">Inspired By <3 <a href="http://laravel.com" target="_blank">Laravel</a></p>
+                    </header>
+                    <div class="row text-center">
+                        <a class="btn btn-warning" href="docs/v1/preface/quickstart.html">
+                            <i class="fa fa-book"></i>
+                            &nbsp; Get Started
+                        </a>
+                    </div>
                 </div>
-            </div>
+            </section>
+            <section class="section swatch-white-blue has-top">
+                <div class="decor-top">
+                    <svg class="decor" height="100%" preserveaspectratio="none" version="1.1" viewbox="0 0 100 100" width="100%" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 0 L100 100 L0 100" stroke-width="0"></path>
+                    </svg>
+                </div>
+                <div class="container">
+                    <header class="section-header underline">
+                        <h1 class="headline super hairline">Features</h1>
+                        <p class="">
+                            QuorraJS is a full fledged, open-source MVC NodeJS framework.
+                            Quorra helps to develop web applications using simple and clean code in a short time.
+                        </p>
+                    </header>
+                    <div class="row">
+                        <ul class="list-unstyled row box-list ">
+                            <li class="col-md-3 text-center os-animation" data-os-animation="fadeInUp" data-os-animation-delay=".0s">
+                                <div class="box-round">
+                                    <div class="box-dummy"></div>
+                                    <div class="box-inner">
+                                        <img class="svg-inject" src="assets/images/design/custom-icons/speed.png"
+                                             alt="a clock" data-animation="" />
+                                    </div>
+                                </div>
+                                <h3 class="text-center ">
+    
+        <a href="single-service.html">
+    
+        Speed
+    
+        </a>
+    
+</h3>
+                                <p class="text-center">Engineered with performance tuning in mind. Quorra process http
+                                    requests at wrap speed.
+                                </p>
+                            </li>
+                            <li class="col-md-3 text-center os-animation" data-os-animation="fadeInUp" data-os-animation-delay=".3s">
+                                <div class="box-round">
+                                    <div class="box-dummy"></div>
+                                    <div class="box-inner">
+                                        <img class="svg-inject" src="assets/images/design/custom-icons/routing.png"
+                                             alt="a clock" data-animation="" />
+                                    </div>
+                                </div>
+                                <h3 class="text-center ">
+    
+        <a href="single-service.html">
+    
+        Routing
+    
+        </a>
+    
+</h3>
+                                <p class="text-center">Quorra router provides advanced routing capabilities yet its
+                                    very easy to write routes.</p>
+                            </li>
+                            <li class="col-md-3 text-center os-animation" data-os-animation="fadeInUp" data-os-animation-delay=".6s">
+                                <div class="box-round">
+                                    <div class="box-dummy"></div>
+                                    <div class="box-inner">
+                                        <img class="svg-inject" src="assets/images/design/custom-icons/rest-api.png"
+                                             alt="a clock" data-animation="" />
+                                    </div>
+                                </div>
+                                <h3 class="text-center ">
+    
+        <a href="single-service.html">
+    
+        REST Support
+    
+        </a>
+    
+</h3>
+                                <p class="text-center">Resource controllers make it painless to build RESTful controllers around resources.</p>
+                            </li>
+                            <li class="col-md-3 text-center os-animation" data-os-animation="fadeInUp" data-os-animation-delay=".9s">
+                                <div class="box-round">
+                                    <div class="box-dummy"></div>
+                                    <div class="box-inner">
+                                        <img class="svg-inject" src="assets/images/design/custom-icons/security.png"
+                                             alt="a clock" data-animation="" />
+                                    </div>
+                                </div>
+                                <h3 class="text-center ">
+    
+        <a href="single-service.html">
+    
+        Security
+
+        </a>
+    
+</h3>
+                                <p class="text-center">Built with security best practices. Ships with built in basic
+                                    authentication support.</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <footer id="footer" role="contentinfo">
+                <section class="section swatch-blue-white has-top less-padding">
+                    <div class="decor-top">
+                        <svg class="decor" height="100%" preserveaspectratio="none" version="1.1" viewbox="0 0 100 100" width="100%" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 0 L50 100 L100 0 L100 100 L0 100" stroke-width="0"></path>
+                        </svg>
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <h4 class="big">Connect with us</h4>
+                                <div id="swatch_social-2" class="sidebar-widget  widget_swatch_social">
+                                    <ul class="unstyled inline small-screen-center social-icons social-background social-big">
+                                        <li>
+                                            <a target="_blank" href="https://www.facebook.com/quorrajs">
+                                                <i class="fa fa-facebook"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="https://twitter.com/quorrajs">
+                                                <i class="fa fa-twitter"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="https://github.com/quorrajs">
+                                                <i class="fa fa-github-square"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div id="text-4" class="sidebar-widget widget_text">
+                                    <div class="textwidget">QuorraJS 2016 ALL RIGHTS RESERVED
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </footer>
         </div>
-    </div>
-</section>
-<section id="info">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4 col-md-offset-4">
-                <h4 class="wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.8s">Connect with us</h4>
-
-                <div class="clearfix"></div>
-                <ul class="list-inline social">
-                    <li class="wow bounceIn" data-wow-duration="1.0s" data-wow-delay="0.8s">
-                        <a href="https://github.com/quorrajs" target="_blank">
-                            <i class="fa fa-github-square"></i>
-                        </a>
-                    </li>
-                    <li class="wow bounceIn" data-wow-duration="1.0s" data-wow-delay="0.8s">
-                        <a href="https://www.facebook.com/quorrajs" class="fb" target="_blank">
-                            <i class="fa fa-facebook-square"></i></a>
-                    </li>
-                    <li class="wow bounceIn" data-wow-duration="1.0s" data-wow-delay="1.0s">
-                        <a href="https://twitter.com/quorrajs" class="twt" target="_blank">
-                            <i class="fa fa-twitter-square"></i>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</section>
-<a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>
-
-<!-- Bootstrap core JavaScript
-    ================================================== -->
-<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-<!-- smooth scrolling -->
-<script src="assets/js/smooth-scroll.js"></script>
-<!-- animation scrolling -->
-<script src="assets/js/wow.min.js"></script>
-<script src="assets/js/app.min.js"></script>
-<!-- sharethis -->
-<script type="text/javascript">var switchTo5x=true;</script>
-<script type="text/javascript" src="https://ws.sharethis.com/button/buttons.js"></script>
-<script type="text/javascript">stLight.options({publisher: "972d5ddc-8dc6-4ef5-878f-df08db805d99", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
-
-</body>
+        <a class="go-top hex-alt" href="javascript:void(0)">
+            <i class="fa fa-angle-up"></i>
+        </a>
+        <script src="assets/js/packages.min.js"></script>
+        <script src="assets/js/theme.min.js"></script>
+    </body>
 </html>
