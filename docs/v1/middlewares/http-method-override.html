@@ -23,6 +23,59 @@
             ga('create', 'UA-42913540-2', 'auto');
             ga('send', 'pageview');
         </script>
+        
+        <script id="search_suggestion_template" type="text/template">
+            <div class="autocomplete-wrapper">
+                {{#_highlightResult.h1}}
+                <div class="h1">
+                    {{{ _highlightResult.h1.value }}}
+                </div>
+                {{/_highlightResult.h1}}
+
+                <div class="sub-section">
+                    {{#_highlightResult.h2}}
+                    <div class="h2">
+                        <span class="hash">#</span> {{{ _highlightResult.h2.value }}}
+                    </div>
+                    {{/_highlightResult.h2}}
+
+                    {{#_highlightResult.h3}}
+                    <div class="h3">
+                        > {{{ _highlightResult.h3.value }}}
+                    </div>
+                    {{/_highlightResult.h3}}
+
+                    {{#_highlightResult.h4}}
+                    <div class="h4">
+                        > {{{ _highlightResult.h4.value }}}
+                    </div>
+                    {{/_highlightResult.h4}}
+                </div>
+
+                {{#_highlightResult.content}}
+                <div class="content">
+                    {{{ _highlightResult.content.value }}}
+                </div>
+                {{/_highlightResult.content}}
+            </div>
+        </script>
+        <script id="search_empty_template" type="text/template">
+            <div class="autocomplete-wrapper empty">
+                <div class="h2">We didn't find any result for "{{query}}". Sorry!</div>
+            </div>
+        </script>
+        <script id="search_footer_template" type="text/template">
+            <div class="footer">
+                <a target="_blank" href="https://www.algolia.com/">
+        
+                    <img width="50" src="https://quorrajs.org/assets/images/algolia.png">
+        
+                    <div class="powered">powered by</div>
+                    <div style="clear: both"></div>
+                </a>
+            </div>
+        </script>
+        
     </head>
     <body>
         <header id="masthead" class="navbar-small navbar swatch-blue-white" role="banner">
@@ -36,6 +89,12 @@
                     <a href="https://quorrajs.org/index.html" class="navbar-brand">
                         <img src="https://quorrajs.org/assets/images/logo.png" alt="QuorraJS">
                     </a>
+                </div>
+                <div id="search" class="nav navbar-nav">
+                    <div class="search">
+                        <button type="submit"><i class="fa fa-search"></i></button>
+                        <input type="text" name="search" class="form-control">
+                    </div>
                 </div>
                 <nav class="collapse navbar-collapse main-navbar" role="navigation">
                     <ul class="nav navbar-nav navbar-right">
@@ -307,6 +366,10 @@ value.</p>
         <script src="https://quorrajs.org/assets/js/packages.min.js"></script>
         <script src="https://quorrajs.org/assets/js/theme.min.js"></script>
         <script src="https://quorrajs.org/assets/js/prism.js"></script>
+        <script src="https://quorrajs.org/assets/js/algoliasearch.min.js"></script>
+        <script src="https://quorrajs.org/assets/js/typeahead.js"></script>
+        <script src="https://quorrajs.org/assets/js/Hogan.js"></script>
+        <script src="https://quorrajs.org/assets/js/quorra.js"></script>
     </body>
 </html>
 

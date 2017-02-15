@@ -14177,8 +14177,325 @@ header h2{
 header h2 span {
     font-weight: 300;
 }
+.navbar-toggle {
+    margin-top: 13px;
+    margin-bottom: 13px;
+}
+#masthead .navbar-brand {
+    padding-right: 15px;
+}
+#search {
+    width: 58.3%;
+}
+.search {
+    border-radius: 4px;
+    transition: all .3s ease-in-out;
+    background: rgba(255,255,255,0.1);
+}
+.search input {
+    font-size: 15px;
+    padding: 4px 8px;
+    width: 94%;
+    background: none;
+}
+.search input:focus {
+    box-shadow: none!important;
+    outline: none;
+}
+.search button {
+    text-align: center;
+    background: none;
+    border: none;
+    font-size: 12px;
+    padding: 8px 4px 8px 8px;
+    float: left;
+    height: 26px;
+    top: 3px;
+    transition: all .3s ease-in-out;
+    width: 26px;
+    cursor: default;
+}
+.search button:focus {
+    outline: none;
+}
+.search button:hover {
+    background: none!important;
+}
+.search button i {
+    font-size: 18px;
+}
+.search {
+    margin: 13px 0;
+    position: relative;
+}
+@media (max-width: 1200px) {
+    #search {
+        width: 49.5%;
+    }
+}
+@media (max-width: 990px) {
+    #search {
+        width: 100%;
+        margin: 0;
+        margin-left: -10px;
+    }
+
+    .search {
+        width: 100%;
+        margin: 0;
+    }
+
+    .search input {
+        width: 87%;
+    }
+
+    #masthead.navbar {
+        min-height: 109px;
+    }
+}
+
+@keyframes bounceRight {
+    0% {
+        transform: translateX(0px);
+    }
+    50% {
+        transform: translateX(10px);
+    }
+    100% {
+        transform: translateX(0px);
+    }
+}
+@keyframes jumpTowardSearch {
+    0% {
+        background: #ccc;
+        opacity: 1;
+        transform: rotateZ(0deg) scale(1);
+    }
+    20% {
+        background: #ccc;
+        opacity: 0;
+        transform: rotateZ(-60deg) scale(50);
+    }
+    55% {
+        background: hotpink;
+        opacity: 0;
+        transform: rotateZ(-30deg) scale(100);
+    }
+    90% {
+        background: hotpink;
+        opacity: 0;
+        transform: rotateZ(-30deg) scale(50);
+    }
+    100% {
+        background: hotpink;
+        opacity: 1;
+        transform: rotateZ(0deg) scale(1);
+    }
+}
+@keyframes jumpTowardReset {
+    0% {
+        opacity: 0;
+        transform: rotateZ(0deg) scale(1);
+    }
+    20% {
+        opacity: 0;
+        transform: rotateZ(-60deg) scale(50);
+    }
+    55% {
+        opacity: 0;
+        transform: rotateZ(-30deg) scale(100);
+    }
+    90% {
+        opacity: 0;
+        transform: rotateZ(-30deg) scale(50);
+    }
+    100% {
+        opacity: 1;
+        transform: rotateZ(0deg) scale(1);
+    }
+}
 
 .post .documentation > ul:first-of-type {
     list-style: none;
     padding-left: 0;
+}
+
+.autocomplete-wrapper .h1 {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0!important;
+}
+
+
+.autocomplete-wrapper .h2 {
+    font-size: 16px;
+    display: inline-block;
+    margin: 0!important;
+}
+
+.autocomplete-wrapper .h2 .hash {
+    color: #F8A2A9;
+}
+
+.autocomplete-wrapper .h3 {
+    font-size: 16px;
+    display: inline-block;
+    margin: 0!important;
+}
+
+.autocomplete-wrapper .h4 {
+    font-size: 16px;
+    display: inline-block;
+    margin: 0!important;
+}
+
+.autocomplete-wrapper .content {
+    font-size: 13px;
+    background-color: rgba(238, 238, 238, 0.35);
+    padding: 10px;
+    border-radius: 3px;
+    margin-left: 3px;
+    margin-top: 14px;
+}
+
+.twitter-typeahead {
+    position: relative;
+    color: #444;
+    width: 92%
+}
+
+.twitter-typeahead .tt-hint {
+    color: #999;
+}
+
+.twitter-typeahead .tt-dropdown-menu {
+    margin: 21px 0 0 0;
+    width: 100%;
+    padding: 0;
+    background-color: #fff;
+    border: solid 1px #dee0df;
+    border-bottom: 0;
+    border-radius: 0 0 2px 2px;
+}
+
+.twitter-typeahead .tt-dropdown-menu .tt-suggestion:first-child {
+    margin-top: 20px;
+}
+
+.twitter-typeahead .tt-dropdown-menu .footer {
+    border-bottom: solid 1px #dee0df !important;
+}
+
+.twitter-typeahead .tt-dropdown-menu .autocomplete-wrapper {
+    text-align: left;
+    padding: 12px 18px;
+    font-size: 16px;
+    line-height: 24px;
+    border-bottom: solid 1px #EEE;
+}
+
+.autocomplete-wrapper.empty {
+    padding-top: 30px !important;
+}
+
+.twitter-typeahead .tt-dropdown-menu .footer {
+    padding: 10px;
+    color: #777777;
+}
+
+.twitter-typeahead .tt-dropdown-menu .footer .powered {
+    float: right;
+    font-size: 13px;
+    margin-right: 3px;
+    color: #888888;
+}
+
+.twitter-typeahead .tt-dropdown-menu .footer img {
+    float: right;
+}
+
+.twitter-typeahead .tt-dropdown-menu .tt-suggestion.tt-cursor .autocomplete-wrapper .content {
+    background-color: rgba(238, 238, 238, 0.7);
+}
+
+.twitter-typeahead .tt-dropdown-menu .tt-suggestion.tt-cursor .autocomplete-wrapper {
+    background-color: rgba(238, 238, 238, 0.3);
+    cursor: pointer;
+}
+
+.twitter-typeahead .tt-dropdown-menu .tt-suggestion p {
+    margin: 0;
+}
+
+.twitter-typeahead .tt-dropdown-menu .tt-suggestion a {
+    color: #000;
+    text-decoration: none;
+}
+
+.twitter-typeahead .tt-dropdown-menu .tt-suggestion .autocomplete-wrapper em {
+    background-color: rgba(255, 116, 116, 0.2);
+    font-style: normal;
+}
+
+.twitter-typeahead .tt-dropdown-menu .tt-suggestion.tt-cursor .autocomplete-wrapper em {
+    background-color: rgba(255, 116, 116, 0.4);
+    font-style: normal;
+}
+
+.twitter-typeahead .tt-dropdown-menu .tt-suggestion .autocomplete-wrapper .content em,
+.twitter-typeahead .tt-dropdown-menu .tt-suggestion.tt-cursor .autocomplete-wrapper .content em {
+    background-color: transparent;
+    font-weight: bold;
+}
+
+.twitter-typeahead .tt-dropdown-menu .category {
+    font-weight: bold;
+    font-size: 15px;
+    padding: 5px 20px;
+    background: #EEE;
+    margin-top: 4px;
+    margin-bottom: 3px;
+}
+
+.twitter-typeahead .tt-dropdown-menu .tt-dataset-all {
+    border-top: 1px solid #DDD;
+    background: #F7F7F7;
+    margin-top: 8px;
+}
+
+.twitter-typeahead .suggestion_typehead img {
+    display: inline-block;
+    float: left;
+    margin-right: 10px;
+}
+
+.twitter-typeahead .suggestion_typehead .infos {
+    display: inline-block;
+}
+
+.twitter-typeahead .brand {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.twitter-typeahead .name {
+    font-size: 12px;
+    font-weight: normal;
+    max-width: 310px;
+    line-height: 1.2;
+}
+
+.twitter-typeahead .suggestion_typehead .price {
+    display: inline-block;
+    float: right;
+    font-size: 14px;
+    padding-top: 8px;
+}
+
+.twitter-typeahead .suggestion_typehead.brand_in {
+    font-size: 12px;
+}
+
+.twitter-typeahead .suggestion_typehead.brand_in .keyword_in {
+    color: #888;
 }
