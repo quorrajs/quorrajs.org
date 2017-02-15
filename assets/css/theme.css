@@ -14196,7 +14196,7 @@ header h2 span {
     font-size: 15px;
     padding: 4px 8px;
     width: 94%;
-    background: none;
+    background: none!important;
 }
 .search input:focus {
     box-shadow: none!important;
@@ -14204,7 +14204,7 @@ header h2 span {
 }
 .search button {
     text-align: center;
-    background: none;
+    background: none!important;
     border: none;
     font-size: 12px;
     padding: 8px 4px 8px 8px;
