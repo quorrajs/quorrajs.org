@@ -14195,7 +14195,7 @@ header h2 span {
 .search input {
     font-size: 15px;
     padding: 4px 8px;
-    width: 94%;
+    width: 100%;
     background: none!important;
 }
 .search input:focus {
@@ -14243,10 +14243,6 @@ header h2 span {
     .search {
         width: 100%;
         margin: 0;
-    }
-
-    .search input {
-        width: 87%;
     }
 
     #masthead.navbar {
