@@ -305,7 +305,7 @@
 <li><a href="#views">Views</a></li>
 <li><a href="#special-responses">Special Responses</a></li>
 </ul>
-<p>Read more about Quorra request object <a href="/docs/v1/more/response.html">here</a>.</p>
+<p>Read more about Quorra request object <a href="/docs/1.0.0/more/response.html">here</a>.</p>
 <h2 id="basic-responses">Basic Responses</h2>
 <h3 id="returning-strings-from-routes">Returning Strings From Routes</h3>
 <pre><code class="language-javascript">var Route = App.router;
@@ -358,7 +358,7 @@ setting in <code>app/config/response.js</code>.</p>
 <p>Transfer the file at path as an “attachment”, typically browsers will prompt the user for download. The
 Content-Disposition “filename=” parameter, aka the one that will appear in the browser dialog is set to path by
 default, however you may provide an override filename.</p>
-<p>When an error has occurred or transfer is complete the optional callback fn is invoked. This method uses <a href="/docs/v1/more/response.html#ressendfilepath--options--fn">res.sendfile
+<p>When an error has occurred or transfer is complete the optional callback fn is invoked. This method uses <a href="/docs/1.0.0/more/response.html#ressendfilepath--options--fn">res.sendfile
 ()</a> to transfer the file.</p>
 <pre><code class="language-javascript">res.download(pathToFile, fileName, callback);
 

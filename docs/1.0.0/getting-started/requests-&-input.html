@@ -306,7 +306,7 @@
 <li><a href="#files">Files</a></li>
 <li><a href="#request-information">Request Information</a></li>
 </ul>
-<p>Read more about Quorra request object <a href="/docs/v1/more/request.html">here</a>.</p>
+<p>Read more about Quorra request object <a href="/docs/1.0.0/more/request.html">here</a>.</p>
 <h2 id="basic-input">Basic Input</h2>
 <p>You may access all user input with a few simple methods. You do not need to worry about the HTTP verb used for the request, as input is accessed in the same way for all verbs.</p>
 <h3 id="retrieving-an-input-value">Retrieving An Input Value</h3>
@@ -326,7 +326,7 @@
 var input = req.input.except('credit_card');</code></pre>
 <h2 id="cookies">Cookies</h2>
 <p>All cookies created by the Quorra framework are encrypted and signed with an authentication code, meaning they will be
-considered invalid if they have been changed by the client. See <a href="/docs/v1/middlewares/cookie-parser
+considered invalid if they have been changed by the client. See <a href="/docs/1.0.0/middlewares/cookie-parser
 .html">Cookie Parser</a> middleware for more.</p>
 <h3 id="retrieving-a-cookie-value">Retrieving A Cookie Value</h3>
 <pre><code class="language-javascript">var value = req.cookies.name;</code></pre>
