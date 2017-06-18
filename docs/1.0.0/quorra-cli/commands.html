@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>QuorraJS</title>
+        <link rel="icon" type="image/x-icon" href="https://quorrajs.org/assets/icons/favicon.ico" />
+        <link href='https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,400italic' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://quorrajs.org/assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://quorrajs.org/assets/css/theme.css">
+        <link rel="stylesheet" href="https://quorrajs.org/assets/css/color-defaults.min.css">
+        <link rel="stylesheet" href="https://quorrajs.org/assets/css/swatch-blue-white.css">
+        <link rel="stylesheet" href="https://quorrajs.org/assets/css/swatch-white-blue.css">
+        <link rel="stylesheet" href="https://quorrajs.org/assets/css/prism.css">
+        <link rel="stylesheet" href="https://quorrajs.org/assets/css/fonts.min.css" media="screen">
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-42913540-2', 'auto');
+            ga('send', 'pageview');
+        </script>
+        
+        <script id="search_suggestion_template" type="text/template">
+            <div class="autocomplete-wrapper">
+                {{#_highlightResult.h1}}
+                <div class="h1">
+                    {{{ _highlightResult.h1.value }}}
+                </div>
+                {{/_highlightResult.h1}}
+
+                <div class="sub-section">
+                    {{#_highlightResult.h2}}
+                    <div class="h2">
+                        <span class="hash">#</span> {{{ _highlightResult.h2.value }}}
+                    </div>
+                    {{/_highlightResult.h2}}
+
+                    {{#_highlightResult.h3}}
+                    <div class="h3">
+                        > {{{ _highlightResult.h3.value }}}
+                    </div>
+                    {{/_highlightResult.h3}}
+
+                    {{#_highlightResult.h4}}
+                    <div class="h4">
+                        > {{{ _highlightResult.h4.value }}}
+                    </div>
+                    {{/_highlightResult.h4}}
+                </div>
+
+                {{#_highlightResult.content}}
+                <div class="content">
+                    {{{ _highlightResult.content.value }}}
+                </div>
+                {{/_highlightResult.content}}
+            </div>
+        </script>
+        <script id="search_empty_template" type="text/template">
+            <div class="autocomplete-wrapper empty">
+                <div class="h2">We didn't find any result for "{{query}}". Sorry!</div>
+            </div>
+        </script>
+        <script id="search_footer_template" type="text/template">
+            <div class="footer">
+                <a target="_blank" href="https://www.algolia.com/">
+        
+                    <img width="50" src="https://quorrajs.org/assets/images/algolia.png">
+        
+                    <div class="powered">powered by</div>
+                    <div style="clear: both"></div>
+                </a>
+            </div>
+        </script>
+        
+    </head>
+    <body>
+        <header id="masthead" class="navbar-small navbar swatch-blue-white" role="banner">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".main-navbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="https://quorrajs.org/index.html" class="navbar-brand">
+                        <img src="https://quorrajs.org/assets/images/logo.png" alt="QuorraJS">
+                    </a>
+                </div>
+                <div id="search" class="nav navbar-nav">
+                    <div class="search">
+                        <button type="submit"><i class="fa fa-search"></i></button>
+                        <input type="text" name="search" class="form-control">
+                    </div>
+                </div>
+                <nav class="collapse navbar-collapse main-navbar" role="navigation">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a data-scroll data-options="easing: easeOutQuart"
+                               href="https://quorrajs.org/docs/1.0.0/getting-started/installation.html">Documentation</a></li>
+                        <li><a data-scroll data-options="easing: easeOutQuart"
+                               href="https://medium.com/@quorrajs" target="_blank">Blog</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="https://github.com/quorrajs" target="_blank">Github</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="https://quorrajs.slack.com" target="_blank">Slack</a></li>
+                                <li><a href="https://gitter.im/quorrajs/quorrajs" target="_blank">Gitter</a></li>
+                                <li><a href="https://twitter.com/quorrajs" target="_blank">Twitter</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <div id="content" role="main">
+            <section class="section documentation swatch-white-blue">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3 sidebar">
+                            <div class="sidebar-widget widget_categories">
+                                <h3 class="sidebar-header">Preface</h3>
+                                <ul>
+                                    <li class="">
+                                        <a href="/docs/1.0.0/preface/quickstart.html">
+                                            Quickstart
+                                        </a>
+                                    </li>
+                                    <li class="">
+                                        <a href="/docs/1.0.0/preface/contribution-guide.html">
+                                            Contribution Guide
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="sidebar-widget widget_categories">
+                                <h3 class="sidebar-header">Getting started</h3>
+                                <ul>
+                                    <li class="">
+                                        <a href="/docs/1.0.0/getting-started/installation.html">
+                                            Installation
+                                        </a>
+                                    </li>
+                                    <li class="">
+                                        <a href="/docs/1.0.0/getting-started/configuration.html">
+                                            Configuration
+                                        </a>
+                                    </li>
+                                    <li class="">
+                                        <a href="/docs/1.0.0/getting-started/request-lifecycle.html">
+                                            Request Lifecycle
+                                        </a>
+                                    </li>
+                                    <li class="">
+                                        <a href="/docs/1.0.0/getting-started/routing.html">
+                                            Routing
+                                        </a>
+                                    </li>
+                                    <li class="">
+                                        <a href="/docs/1.0.0/getting-started/requests-&amp;-input.html">
+                                            Requests & Input
+                                        </a>
+                                    </li>
+                                    <li class="">
+                                        <a href="/docs/1.0.0/getting-started/views-&amp;-responses.html">
+                                            Views & Responses
+                                        </a>
+                                    </li>
+                                    <li class="">
+                                        <a href="/docs/1.0.0/getting-started/controllers.html">
+                                            Controllers
+                                        </a>
+                                    </li>
+                                    <li class="">
+                                        <a href="/docs/1.0.0/getting-started/errors-&amp;-logging.html">
+                                            Errors & Logging
+                                        </a>
+                                    </li>
+                                    <li class="">
+                                        <a href="/docs/1.0.0/getting-started/models-&amp;-orm.html">
+                                            Models & ORM
+                                        </a>
+                                    </li>
+                                    <li class="">
+                                        <a href="/docs/1.0.0/getting-started/globals.html">
+                                            Globals
+                                        </a>
+                                    </li>
+                                    <li class="">
+                                        <a href="/docs/1.0.0/getting-started/middleware.html">
+                                            Middleware
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="sidebar-widget widget_categories">
+                                <h3 class="sidebar-header">Learning more</h3>
+                                <ul>
+                                    <li class="">
+                                        <a href="/docs/1.0.0/more/security.html">
+                                            Security
+                                        </a>
+                                    </li>
+                                    <li class="">
+                                        <a href="/docs/1.0.0/middlewares/session.html">
+                                            Session
+                                        </a>
+                                    </li>
+                                    <li class="">
+                                        <a href="/docs/1.0.0/more/mail.html">
+                                            Mail
+                                        </a>
+                                    </li>
+                                    <li class="">
+                                        <a href="/docs/1.0.0/more/request.html">
+                                            Request Object
+                                        </a>
+                                    </li>
+                                    <li class="">
+                                        <a href="/docs/1.0.0/more/response.html">
+                                            Response Object
+                                        </a>
+                                    </li>
+                                    <li class="">
+                                        <a href="/docs/1.0.0/more/service-providers.html">
+                                            Service Providers
+                                        </a>
+                                    </li>
+                                    <li class="">
+                                        <a href="/docs/1.0.0/middlewares/body-parser.html">
+                                            Body Parser
+                                        </a>
+                                    </li>
+                                    <li class="">
+                                        <a href="/docs/1.0.0/middlewares/query-parser.html">
+                                            Query Parser
+                                        </a>
+                                    </li>
+                                    <li class="">
+                                        <a href="/docs/1.0.0/middlewares/cookie-parser.html">
+                                            Cookie Parser
+                                        </a>
+                                    </li>
+                                    <li class="">
+                                        <a href="/docs/1.0.0/middlewares/authentication.html">
+                                            Authentication
+                                        </a>
+                                    </li>
+                                    <li class="">
+                                        <a href="/docs/1.0.0/middlewares/localization.html">
+                                            Localization
+                                        </a>
+                                    </li>
+                                    <li class="">
+                                        <a href="/docs/1.0.0/middlewares/http-method-override.html">
+                                            HTTP Method Override
+                                        </a>
+                                    </li>
+                                    <li class="">
+                                        <a href="/docs/1.0.0/middlewares/serve-static.html">
+                                            Server Static
+                                        </a>
+                                    </li>
+                                    <li class="">
+                                        <a href="/docs/1.0.0/more/elixir.html">
+                                            Elixir
+                                        </a>
+                                    </li>
+                                    <li class="">
+                                        <a href="/docs/1.0.0/more/miscellaneous.html">
+                                            Miscellaneous
+                                        </a>
+                                    </li>
+                                    <li class="">
+                                        <a href="/docs/1.0.0/more/testing.html">
+                                            Testing
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="sidebar-widget widget_categories">
+                                <h3 class="sidebar-header">Quorra CLI</h3>
+                                <ul>
+                                    <li class="">
+                                        <a href="/docs/1.0.0/quorra-cli/overview.html">
+                                            Overview
+                                        </a>
+                                    </li>
+                                    <li class="">
+                                        <a href="/docs/1.0.0/quorra-cli/commands.html">
+                                            Custom Commands 
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <article class="post">
+                                <section class="section swatch-white-blue">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-12 documentation">
+                                                <h1 id="session">Custom Commands</h1>
+                                                <ul>
+                                                    <li><a href="#writing-commands">Writing Commands</a></li>
+                                                    <li>
+                                                        <a href="#input-expectations">Defining Input Expectations</a>
+                                                        <ul>
+                                                            <li><a href="#arguments">Arguments</a></li>
+                                                            <li><a href="#options">Options</a></li>
+                                                            <li><a href="#input-arrays">Input Arrays</a></li>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#command-io">Command I/O</a>
+                                                        <ul>
+                                                            <li><a href="#retrieving-input">Retrieving Input</a></li>
+                                                            <li><a href="#writing-output">Writing Output</a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <li><a href="#registering-commands">Registering Commands</a></li>
+                                                    <li><a href="#call-from-code">Call Commands From Your App Code</a></li>
+                                                </ul>
+
+                                                <h2 id="writing-commands">Writing Commands</h2>
+                                                <p>Quorra, like Laravel, gives you the possibility to write your own commands which can be ran from CLI or code. Files are stored in <code>app/console/commands</code> folder.
+                                                This is the basic structure to create it:</p>
+<pre><code class="language-javascript">'use strict';
+const Command = App.command;
+
+class Inspire extends Command {
+    constructor() {
+        super();
+        // Command signature
+        this.signature = 'greet {user}';
+    }
+
+    // Execute the command
+    handle() {
+        const user = this.argument('user');
+        console.log('Hi, ', user);
+    }
+}
+
+module.exports = Inspire;</code></pre>
+
+                                                <p>In the <code>constructor</code>, after <code>super()</code> method, you have to fill a <code>signature</code> with your command name and its inputs.</p>
+                                                <p>Then, in the <code>handle()</code> method you can write your code which will be execute when the command will be fired.
+                                                <p>You can find a complete example in <code>app/console/commands/Inspire.js</code> file.</p>
+                                                <blockquote>
+                                                    <p><strong>Note:</strong> <code>'use strict';</code> is required since we are using ES6 classes feature.</p>
+                                                </blockquote>
+
+                                                <h2 id="input-expectations">Defining Input Expectations</h2>
+                                                <p>When writing console commands, it is common to gather input from the user through arguments or options.
+                                                Quorra makes it very convenient to define the input you expect from the user using the signature property on your commands. The signature property allows you to define the name, arguments, and options for the command in a single, expressive, route-like syntax.</p>
+
+                                                <h3 id="arguments">Arguments</h3>
+                                                <p>All user supplied arguments and options are wrapped in curly braces. In the following example, the command defines one <strong>required</strong> argument <code>user</code>:</p>
+                                                <pre><code class="language-javascript">this.signature = 'greet {user}';</code></pre>
+                                                <p>You may also define default values for arguments:</p>
+                                                <pre><code class="language-javascript">this.signature = 'greet {user=foo}';</code></pre>
+
+                                                <h3 id="options">Options</h3>
+                                                <p>Options, like arguments, are another form of user input. Options are prefixed by two hyphens (--) when they are specified on the command line.
+                                                There are two types of options: those that receive a value and those that don't. Options that don't receive a value serve as a boolean "switch".
+                                                Let's take a look at an example of this type of option:</p>
+                                                <pre><code class="language-javascript">this.signature = 'greet {user} {--hand}';</code></pre>
+                                                <p>In this example, the <code>--hand</code> switch may be specified when calling the command. If the <code>--hand</code> switch is passed, the value of the option will be true. Otherwise, the value will be false:</p>
+                                                <pre><code>quorra greet John --hand</code></pre>
+
+                                                <h4>Options with values</h4>
+                                                <p>Next, let's take a look at an option that expects a value. If the user must specify a value for an option, suffix the option name with a = sign:</p>
+                                                <pre><code class="language-javascript">this.signature = 'greet {user} {--hand=}';</code></pre>
+                                                <p>In this example, the user may pass a value for the option like so:</p>
+                                                <pre><code class="language-javascript">quorra greet John --hand=left</code></pre>
+                                                <p>You may assign default values to options by specifying the default value after the option name. If no option value is passed by the user, the default value will be used:</p>
+                                                <pre><code class="language-javascript">this.signature = 'greet {user} {--hand=left}';</code></pre>
+
+                                                <h3 id="input-arrays">Input Arrays</h3>
+                                                <p>If you would like to define arguments or options to expect array inputs, you may use the <code>*</code> character. First, let's take a look at an example that specifies an array argument:</p>
+                                                <pre><code class="language-javascript">this.signature = 'greet {user*}';</code></pre>
+                                                <p>When calling this method, the user arguments may be passed in order to the command line. For example, the following command will set the value of user to <code>['John', 'Mike']</code>:</p>
+                                                <pre><code class="language-javascript">quorra greet John Mike</code></pre>
+                                                <p>When defining an option that expects an array input, each option value passed to the command should be prefixed with the option name:</p>
+<pre><code class="language-javascript">this.signature = 'greet {user} {--hand*}';
+
+quorra greet John --hand=left --hand=right    
+</code></pre>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <footer id="footer" role="contentinfo">
+            <section class="section swatch-blue-white no-padding">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <h3>Connect with us</h3>
+                            <div id="swatch_social-2" class="sidebar-widget  widget_swatch_social no-margin">
+                                <ul class="unstyled inline small-screen-center social-icons social-background social-small">
+                                    <li>
+                                        <a target="_blank" href="https://www.facebook.com/quorrajs">
+                                            <i class="fa fa-facebook"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a target="_blank" href="https://twitter.com/quorrajs">
+                                            <i class="fa fa-twitter"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a target="_blank" href="https://github.com/quorrajs">
+                                            <i class="fa fa-github-square"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div id="text-4" class="sidebar-widget widget_text bottom-margin-10">
+                                <div class="textwidget">QuorraJS 2016 ALL RIGHTS RESERVED
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </footer>
+        <a class="go-top hex-alt" href="javascript:void(0)">
+            <i class="fa fa-angle-up"></i>
+        </a>
+        <script src="https://quorrajs.org/assets/js/packages.min.js"></script>
+        <script src="https://quorrajs.org/assets/js/theme.min.js"></script>
+        <script src="https://quorrajs.org/assets/js/prism.js"></script>
+        <script src="https://quorrajs.org/assets/js/algoliasearch.min.js"></script>
+        <script src="https://quorrajs.org/assets/js/typeahead.js"></script>
+        <script src="https://quorrajs.org/assets/js/Hogan.js"></script>
+        <script src="https://quorrajs.org/assets/js/quorra.js"></script>
+    </body>
+</html>
