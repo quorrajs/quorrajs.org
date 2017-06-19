@@ -303,57 +303,143 @@
                                     <div class="container">
                                         <div class="row">
                                             <div class="col-md-12 documentation">
-                                                <h1 id="http-middleware">HTTP Middleware</h1>
+                                                <h1 id="session">Custom Commands</h1>
                                                 <ul>
-                                                    <li><a href="#introduction">Introduction</a></li>
-                                                    <li><a href="#custom-middleware">Custom Middleware</a></li>
-                                                    <li><a href="#registering-middleware">Registering Middleware</a></li>
+                                                    <li><a href="#writing-commands">Writing Commands</a></li>
+                                                    <li>
+                                                        <a href="#input-expectations">Defining Input Expectations</a>
+                                                        <ul>
+                                                            <li><a href="#arguments">Arguments</a></li>
+                                                            <li><a href="#options">Options</a></li>
+                                                            <li><a href="#input-arrays">Input Arrays</a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#command-io">Command I/O</a>
+                                                        <ul>
+                                                            <li><a href="#retrieving-input">Retrieving Input</a></li>
+                                                            <li><a href="#prompting-input">Prompting For Input</a></li>
+                                                            <li><a href="#writing-output">Writing Output</a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <li><a href="#registering-commands">Registering Commands</a></li>
+                                                    <li><a href="#call-from-code">Call Commands From Your App Code</a></li>
                                                 </ul>
 
-                                                <h2 id="introduction">Introduction</h2>
-                                                <p>Each time your app receives an HTTP request, the configured HTTP middleware stack runs in order. HTTP middleware
-                                                provide a convenient mechanism for filtering/modifying HTTP requests entering your application. For
-                                                example, Quorra includes a middleware that attaches the session object to the request object before it reaches the
-                                                route. Like that one can create a custom auth middleware which will allow the request to pass to the route only if
-                                                user is authenticated. A ServeStatic middleware might be responsible for responding with requested static resource. A
-                                                logging middleware might log all incoming requests to your application.</p>
-                                                <p>There are several middleware included in the Quorra framework by default, including middleware for session handling,
-                                                query parsing, enabling http method override feature, and more. All of these middlewares can be turned off or on from
-                                                <code>app/config/middleware.js</code> configuration file.</p>
+                                                <h2 id="writing-commands">Writing Commands</h2>
+                                                <p>Quorra, like Laravel, allows you to write your own commands which can be ran from CLI or code. Files are stored in <code>app/console/commands</code> folder.
+                                                This is the basic structure:</p>
+<pre><code class="language-javascript">'use strict';
+const Command = App.command;
 
-                                                <h2 id="custom-middleware">Custom Middleware</h2>
-                                                <p>To create a new middleware, use the make:middleware Quorra command:</p>
-                                                <pre><code>quorra generate-middleware AgeMiddleware</code></pre>
-                                                <p>This command will place a new AgeMiddleware constructor within your <code>app/middlewares</code> directory. In this middleware, we
-                                                will only allow access to the route if the supplied age is greater than 200. Otherwise, we will issue a request not
-                                                acceptable error.</p>
-<pre><code class="language-javascript">
-function AgeMiddleware(app, next){
-    this.__app = app;
-    this.__next = next;
+class Inspire extends Command {
+    constructor() {
+        super();
+        // Command signature
+        this.signature = 'greet {user}';
+    }
+
+    // Execute the command
+    handle() {
+        const user = this.argument('user');
+        console.log('Hi, ', user);
+    }
 }
 
-AgeMiddleware.prototype.handle = function(request, response) {
-    if (request.input.get('age') &lt;= 200) {
-    response.abort(406);
-    } else {
-        this.__next.handle(request, response);
+module.exports = Inspire;</code></pre>
+
+                                                <p>In the <code>constructor</code>, after <code>super()</code> method, you have to fill a <code>signature</code> with your command name and its inputs.
+                                                Then, in the <code>handle()</code> method you can write your code which will be execute when the command will be fired.
+                                                You can find a complete example in <code>app/console/commands/Inspire.js</code> file.</p>
+                                                <blockquote>
+                                                    <p><strong>Note:</strong> <code>'use strict';</code> is required since we are using ES6 classes feature.</p>
+                                                </blockquote>
+
+                                                <h2 id="input-expectations">Defining Input Expectations</h2>
+                                                <p>When writing console commands, it is common to gather input from the user through arguments or options.
+                                                Quorra makes it very convenient to define the input you expect from the user using the signature property on your commands. The signature property allows you to define the name, arguments, and options for the command in a single, expressive, route-like syntax.</p>
+
+                                                <h3 id="arguments">Arguments</h3>
+                                                <p>All user supplied arguments and options are wrapped in curly braces. In the following example, the command defines one <strong>required</strong> argument <code>user</code>:</p>
+                                                <pre><code class="language-javascript">this.signature = 'greet {user}';</code></pre>
+                                                <p>You may also define default values for arguments:</p>
+                                                <pre><code class="language-javascript">this.signature = 'greet {user=foo}';</code></pre>
+
+                                                <h3 id="options">Options</h3>
+                                                <p>Options, like arguments, are another form of user input. Options are prefixed by two hyphens (<code>--</code>) when they are specified on the command line.
+                                                There are two types of options: those that receive a value and those that don't. Options that don't receive a value serve as a boolean "<strong>switch</strong>".
+                                                Let's take a look at an example of this type of option:</p>
+                                                <pre><code class="language-javascript">this.signature = 'greet {user} {--hand}';</code></pre>
+                                                <p>In this example, the <code>--hand</code> switch may be specified when calling the command. If the <code>--hand</code> switch is passed, the value of the option will be <code>true</code>. Otherwise, the value will be <code>false</code>:</p>
+                                                <pre><code>quorra greet John --hand</code></pre>
+
+                                                <p><strong>Options with values</strong></p>
+                                                <p>Next, let's take a look at an option that expects a value. If the user must specify a value for an option, suffix the option name with a <code>=</code> sign:</p>
+                                                <pre><code class="language-javascript">this.signature = 'greet {user} {--hand=}';</code></pre>
+                                                <p>In this example, the user may pass a value for the option like so:</p>
+                                                <pre><code class="language-javascript">quorra greet John --hand=left</code></pre>
+                                                <p>You may assign default values to options by specifying the default value after the option name. If no option value is passed by the user, the default value will be used:</p>
+                                                <pre><code class="language-javascript">this.signature = 'greet {user} {--hand=left}';</code></pre>
+
+                                                <h3 id="input-arrays">Input Arrays</h3>
+                                                <p>If you would like to define arguments or options to expect array inputs, you may use the <code>*</code> character. First, let's take a look at an example that specifies an array argument:</p>
+                                                <pre><code class="language-javascript">this.signature = 'greet {user*}';</code></pre>
+                                                <p>When calling this method, the user arguments may be passed in order to the command line. For example, the following command will set the value of user to <code>['John', 'Mike']</code>:</p>
+                                                <pre><code class="language-javascript">quorra greet John Mike</code></pre>
+                                                <p>When defining an option that expects an array input, each option value passed to the command should be prefixed with the option name:</p>
+<pre><code class="language-javascript">this.signature = 'greet {user} {--hand*}';
+
+quorra greet John --hand=left --hand=right
+</code></pre>
+
+                                                <h2 id="command-io">Command I/O</h2>
+                                                <h3 id="retrieving-input">Retrieving Input</h3>
+                                                <p>While your command is executing, you will obviously need to access the values for the arguments and options accepted by your command.
+                                                To do so, you may use the <code>argument</code> and <code>option</code> methods:</p>
+                                                <pre><code class="language-javascript">// Execute the command
+    handle() {
+        const user = this.argument('user');
     }
-};
+</code></pre>
+                                                <p>If you need to retrieve all of the arguments as an <code>object</code> (<code>dict</code>), call the <code>arguments</code> method:</p>
+                                                <pre><code class="language-javascript">const args = this.arguments();</code></pre>
+                                                <p>Options may be retrieved just as easily as arguments using the <code>option</code> method.
+                                                To retrieve all of the options as an object, call the <code>options</code> method:</p>
+                                                <pre><code class="language-javascript">// Retrieve a specific option...
+const hand = this.option('hand');
 
-module.exports = AgeMiddleware;</code></pre>
-                                                <p>As you can see, if the given age is less than or equal to 200, the middleware will throw an HTTP error; otherwise, the
-                                                request will be passed further into the application. To pass the request deeper into the application (allowing the
-                                                middleware to &quot;pass&quot;), simply call the next callback with the request and response object.</p>
-                                                <p>It's best to envision middleware as a series of &quot;layers&quot; HTTP requests must pass through before they hit your
-                                                application. Each layer can examine the request and even reject it entirely.</p>
+// Retrieve all options...
+const options = this.options();
+</code></pre>
+                                                <p>If the argument or option does not exist, <code>null</code> will be returned.</p>
 
-                                                <h2 id="registering-middleware">Registering Middleware</h2>
-                                                <p>Syntax for registering a custom middleware is:</p>
-                                                <pre><code class="language-javascript">App.middleware(require('&lt;middleware constructor&gt;'));</code></pre>
-                                                <p>You can register your custom middleware with the application in <code>app/routes.js</code> file along with your application routes,
-                                                or you can create a <code>middleware.js</code> file in <code>app</code> directory and include it in the <code>app/start/global.js</code> file like:</p>
-                                                <pre><code class="language-javascript">require(path.join(App.path.app, 'middleware'));</code></pre>
+                                                <h3 id="prompting-input">Prompting For Input</h3>
+                                                <p>Unfortunately at this time there isn't a method to do this, but it's in pipeline. Stay tuned.</p>
+
+                                                <h3 id="writing-output">Writing Output</h3>
+                                                <p>To send output to the console you can simply use the classic <code>console.log()</code> method. In future there will be methods to print colored text.</p>
+                                                <pre><code class="language-javascript">console.log('Hi, ', this.argument('user'));</code></pre>
+
+                                                <h2 id="registering-commands">Registering Commands</h2>
+                                                <p>Once your command is finished, you need to register it with Quorra. All commands are registered in the <code>app/console/kernel.js</code> file. Within this file, you will find a list of commands in the commands property.
+                                                To register your command, simply add the command's class name to the list:</p>
+                                                <pre><code class="language-javascript">'commands': [
+    'app/console/commands/Inspire'
+]</code></pre>
+                                                <h2 id="call-from-code">Call Commands From Your App Code</h2>
+                                                <p>Sometimes you may wish to execute a command outside of the CLI. For example, you may wish to fire it from a route or controller. You may use the <code>run</code> method of the <code>Command</code> class to accomplish this.
+                                                The <code>run</code> method accepts the name of the command as the first argument, and an <code>object</code> of command parameters as the second argument.</p>
+                                                <blockquote>
+                                                    <p><strong>Note:</strong> If you need to pass a <code>switch</code> parameter (option without value), like <code>--hand</code>, set the value of the key to true.
+                                                </blockquote>
+                                                <pre><code class="language-javascript">const Command = App.command;
+Route.get('/', function(req, res){
+    Command.run('greet', {
+        user: ['John', 'Mike'], // Array input
+        '--hand': 'left', // Option
+        '--near': true // Switch
+    });
+});</code></pre>
                                             </div>
                                         </div>
                                     </div>
@@ -410,4 +496,3 @@ module.exports = AgeMiddleware;</code></pre>
         <script src="https://quorrajs.org/assets/js/quorra.js"></script>
     </body>
 </html>
-
