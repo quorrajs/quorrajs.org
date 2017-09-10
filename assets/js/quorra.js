@@ -83,6 +83,7 @@
             navActive = true;
             document.getElementById("overlay").style.display = "block";
             document.getElementById("sidenav").style.width = "70%";
+            document.getElementById("sidenav").style.padding = "0 20px";
             document.getElementById('main-content').style.marginLeft = "70%";
         }
     }
@@ -93,6 +94,7 @@
             navActive = false;
             document.getElementById("overlay").style.display = "none";
             document.getElementById("sidenav").style.width = "0";
+            document.getElementById("sidenav").style.padding = "0";
             document.getElementById('main-content').style.marginLeft = "0";
         }
     }
