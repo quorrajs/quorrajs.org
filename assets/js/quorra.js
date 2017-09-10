@@ -67,4 +67,33 @@
             }
         }
     );
+
+    var closeEvent = 'touchstart';
+    var navActive = false;
+    if (!('ontouchstart' in window)) {
+        closeEvent = 'click';
+    }
+    $('.navbar-toggle').on('click', openNav);
+    $('#overlay').on(closeEvent, closeNav);
+
+    /** side navigation **/
+    /* Set the width of the side navigation to 250px and the left margin of the page content to 250px and add a black background color to body */
+    function openNav() {
+        if(!navActive) {
+            navActive = true;
+            document.getElementById("overlay").style.display = "block";
+            document.getElementById("sidenav").style.width = "70%";
+            document.getElementById('main-content').style.marginLeft = "70%";
+        }
+    }
+
+    /* Set the width of the side navigation to 0 and the left margin of the page content to 0, and the background color of body to white */
+    function closeNav() {
+        if(navActive) {
+            navActive = false;
+            document.getElementById("overlay").style.display = "none";
+            document.getElementById("sidenav").style.width = "0";
+            document.getElementById('main-content').style.marginLeft = "0";
+        }
+    }
 })();

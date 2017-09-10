@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>QuorraJS</title>
+    <link rel="icon" type="image/x-icon" href="/assets/icons/favicon.ico"/>
+    <link href='https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,400italic' rel='stylesheet'
+          type='text/css'>
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/theme.css">
+    <link rel="stylesheet" href="/assets/css/color-defaults.min.css">
+    <link rel="stylesheet" href="/assets/css/swatch-blue-white.css">
+    <link rel="stylesheet" href="/assets/css/swatch-white-blue.css">
+    <link rel="stylesheet" href="/assets/css/prism.css">
+    <link rel="stylesheet" href="/assets/css/fonts.min.css" media="screen">
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-42913540-2', 'auto');
+        ga('send', 'pageview');
+    </script>
+    
+    <script id="search_suggestion_template" type="text/template">
+        <div class="autocomplete-wrapper">
+            {{#_highlightResult.h1}}
+            <div class="h1">
+                {{{ _highlightResult.h1.value }}}
+            </div>
+            {{/_highlightResult.h1}}
+
+            <div class="sub-section">
+                {{#_highlightResult.h2}}
+                <div class="h2">
+                    <span class="hash">#</span> {{{ _highlightResult.h2.value }}}
+                </div>
+                {{/_highlightResult.h2}}
+
+                {{#_highlightResult.h3}}
+                <div class="h3">
+                    > {{{ _highlightResult.h3.value }}}
+                </div>
+                {{/_highlightResult.h3}}
+
+                {{#_highlightResult.h4}}
+                <div class="h4">
+                    > {{{ _highlightResult.h4.value }}}
+                </div>
+                {{/_highlightResult.h4}}
+            </div>
+
+            {{#_highlightResult.content}}
+            <div class="content">
+                {{{ _highlightResult.content.value }}}
+            </div>
+            {{/_highlightResult.content}}
+        </div>
+    </script>
+    <script id="search_empty_template" type="text/template">
+        <div class="autocomplete-wrapper empty">
+            <div class="h2">We didn't find any result for "{{query}}". Sorry!</div>
+        </div>
+    </script>
+    <script id="search_footer_template" type="text/template">
+        <div class="footer">
+            <a target="_blank" href="https://www.algolia.com/">
+                
+                <img width="50" src="/assets/images/algolia.png">
+                
+                <div class="powered">powered by</div>
+                <div style="clear: both"></div>
+            </a>
+        </div>
+    </script>
+    
+</head>
+<body>
+    <div id="sidenav" class="sidenav">
+        <div class="brand">
+            <a href="/">QuorraJS</a>
+        </div>
+        <ul class="side-main-nav">
+            <li><a data-scroll data-options="easing: easeOutQuart"
+                   href="https://medium.com/@quorrajs" target="_blank">Blog</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Community
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="https://github.com/quorrajs" target="_blank">Github</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="https://quorrajs.slack.com" target="_blank">Slack</a></li>
+                    <li><a href="https://gitter.im/quorrajs/quorrajs" target="_blank">Gitter</a></li>
+                    <li><a href="https://twitter.com/quorrajs" target="_blank">Twitter</a></li>
+                </ul>
+            </li>
+        </ul>
+                    <div class="side-doc-nav">
+                <h3>Documentation</h3>
+                                    <div class="category">
+                        <h3>Preface</h3>
+                        <ul>
+                                                            <li class="">
+                                    <a href="/docs/master/preface/quickstart.html">
+                                        Quickstart
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/master/preface/contribution-guide.html">
+                                        Contribution Guide
+                                    </a>
+                                </li>
+                                                    </ul>
+                    </div>
+                                    <div class="category">
+                        <h3>Getting started</h3>
+                        <ul>
+                                                            <li class="">
+                                    <a href="/docs/master/getting-started/installation.html">
+                                        Installation
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/master/getting-started/configuration.html">
+                                        Configuration
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/master/getting-started/request-lifecycle.html">
+                                        Request Lifecycle
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/master/getting-started/routing.html">
+                                        Routing
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/master/getting-started/requests-&amp;-input.html">
+                                        Requests & Input
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/master/getting-started/views-&amp;-responses.html">
+                                        Views & Responses
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/master/getting-started/controllers.html">
+                                        Controllers
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/master/getting-started/errors-&amp;-logging.html">
+                                        Errors & Logging
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/master/getting-started/models-&amp;-orm.html">
+                                        Models & ORM
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/master/getting-started/globals.html">
+                                        Globals
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/master/getting-started/middleware.html">
+                                        Middleware
+                                    </a>
+                                </li>
+                                                    </ul>
+                    </div>
+                                    <div class="category">
+                        <h3>Learning more</h3>
+                        <ul>
+                                                            <li class="">
+                                    <a href="/docs/master/more/security.html">
+                                        Security
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/master/middlewares/session.html">
+                                        Session
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/master/more/mail.html">
+                                        Mail
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/master/more/request.html">
+                                        Request Object
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/master/more/response.html">
+                                        Response Object
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/master/more/service-providers.html">
+                                        Service Providers
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/master/middlewares/body-parser.html">
+                                        Body Parser
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/master/middlewares/query-parser.html">
+                                        Query Parser
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/master/middlewares/cookie-parser.html">
+                                        Cookie Parser
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/master/middlewares/authentication.html">
+                                        Authentication
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/master/middlewares/localization.html">
+                                        Localization
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/master/middlewares/http-method-override.html">
+                                        HTTP Method Override
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/master/middlewares/serve-static.html">
+                                        Server Static
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/master/more/elixir.html">
+                                        Elixir
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/master/more/miscellaneous.html">
+                                        Miscellaneous
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/master/more/testing.html">
+                                        Testing
+                                    </a>
+                                </li>
+                                                    </ul>
+                    </div>
+                                    <div class="category">
+                        <h3>Quorra CLI</h3>
+                        <ul>
+                                                            <li class="">
+                                    <a href="/docs/master/quorra-cli/overview.html">
+                                        Overview
+                                    </a>
+                                </li>
+                                                    </ul>
+                    </div>
+                            </div>
+            </div>
+    <div id="main-content">
+        <span id="overlay"></span>
+        <header id="masthead" class="navbar-small navbar swatch-blue-white" role="banner">
+            <div class="container">
+                <nav class="main">
+                    <a href="/index.html" class="navbar-brand nav-block">
+                        <img src="/assets/icons/logo-icon.png" alt="QuorraJS">
+                        <span>QuorraJS</span>
+                    </a>
+
+                    <div id="search" class="nav-block">
+                        <div class="search">
+                            <input type="text" name="search" class="form-control">
+                            <button type="submit"><i class="fa fa-search"></i></button>
+                        </div>
+                    </div>
+                    <ul class="main-nav nav">
+                        <li><a data-scroll data-options="easing: easeOutQuart"
+                               href="/docs/1.0.0/getting-started/installation.html">Documentation</a></li>
+                        <li><a data-scroll data-options="easing: easeOutQuart"
+                               href="https://medium.com/@quorrajs" target="_blank">Blog</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                Community
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="https://github.com/quorrajs" target="_blank">Github</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="https://quorrajs.slack.com" target="_blank">Slack</a></li>
+                                <li><a href="https://gitter.im/quorrajs/quorrajs" target="_blank">Gitter</a></li>
+                                <li><a href="https://twitter.com/quorrajs" target="_blank">Twitter</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="switcher">
+                        <div class="dropdown">
+                            <button class="btn btn-info dropdown-toggle" type="button" aria-haspopup="true"
+                                    data-toggle="dropdown">
+                                Master
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                                                                                        <li>
+                                        <a href="/docs/master/getting-started/requests-&amp;-input.html">Master</a>
+                                    </li>
+                                                                                                        <li>
+                                        <a href="/docs/1.0.0/getting-started/requests-&amp;-input.html">1.0.0</a>
+                                    </li>
+                                                            </ul>
+                        </div>
+                    </div>
+                    <button type="button" class="navbar-toggle collapsed">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </nav>
+            </div>
+        </header>
+        <div id="content" role="main">
+            <section class="section documentation swatch-white-blue">
+                <div class="container">
+                    <div class="row">
+                                                    <div class="col-md-3 sidebar">
+                                                                    <div class="sidebar-widget widget_categories">
+                                        <h3 class="sidebar-header">Preface</h3>
+                                        <ul>
+                                                                                            <li class="">
+                                                    <a href="/docs/master/preface/quickstart.html">
+                                                        Quickstart
+                                                    </a>
+                                                </li>
+                                                                                            <li class="">
+                                                    <a href="/docs/master/preface/contribution-guide.html">
+                                                        Contribution Guide
+                                                    </a>
+                                                </li>
+                                                                                    </ul>
+                                    </div>
+                                                                    <div class="sidebar-widget widget_categories">
+                                        <h3 class="sidebar-header">Getting started</h3>
+                                        <ul>
+                                                                                            <li class="">
+                                                    <a href="/docs/master/getting-started/installation.html">
+                                                        Installation
+                                                    </a>
+                                                </li>
+                                                                                            <li class="">
+                                                    <a href="/docs/master/getting-started/configuration.html">
+                                                        Configuration
+                                                    </a>
+                                                </li>
+                                                                                            <li class="">
+                                                    <a href="/docs/master/getting-started/request-lifecycle.html">
+                                                        Request Lifecycle
+                                                    </a>
+                                                </li>
+                                                                                            <li class="">
+                                                    <a href="/docs/master/getting-started/routing.html">
+                                                        Routing
+                                                    </a>
+                                                </li>
+                                                                                            <li class="">
+                                                    <a href="/docs/master/getting-started/requests-&amp;-input.html">
+                                                        Requests & Input
+                                                    </a>
+                                                </li>
+                                                                                            <li class="">
+                                                    <a href="/docs/master/getting-started/views-&amp;-responses.html">
+                                                        Views & Responses
+                                                    </a>
+                                                </li>
+                                                                                            <li class="">
+                                                    <a href="/docs/master/getting-started/controllers.html">
+                                                        Controllers
+                                                    </a>
+                                                </li>
+                                                                                            <li class="">
+                                                    <a href="/docs/master/getting-started/errors-&amp;-logging.html">
+                                                        Errors & Logging
+                                                    </a>
+                                                </li>
+                                                                                            <li class="">
+                                                    <a href="/docs/master/getting-started/models-&amp;-orm.html">
+                                                        Models & ORM
+                                                    </a>
+                                                </li>
+                                                                                            <li class="">
+                                                    <a href="/docs/master/getting-started/globals.html">
+                                                        Globals
+                                                    </a>
+                                                </li>
+                                                                                            <li class="">
+                                                    <a href="/docs/master/getting-started/middleware.html">
+                                                        Middleware
+                                                    </a>
+                                                </li>
+                                                                                    </ul>
+                                    </div>
+                                                                    <div class="sidebar-widget widget_categories">
+                                        <h3 class="sidebar-header">Learning more</h3>
+                                        <ul>
+                                                                                            <li class="">
+                                                    <a href="/docs/master/more/security.html">
+                                                        Security
+                                                    </a>
+                                                </li>
+                                                                                            <li class="">
+                                                    <a href="/docs/master/middlewares/session.html">
+                                                        Session
+                                                    </a>
+                                                </li>
+                                                                                            <li class="">
+                                                    <a href="/docs/master/more/mail.html">
+                                                        Mail
+                                                    </a>
+                                                </li>
+                                                                                            <li class="">
+                                                    <a href="/docs/master/more/request.html">
+                                                        Request Object
+                                                    </a>
+                                                </li>
+                                                                                            <li class="">
+                                                    <a href="/docs/master/more/response.html">
+                                                        Response Object
+                                                    </a>
+                                                </li>
+                                                                                            <li class="">
+                                                    <a href="/docs/master/more/service-providers.html">
+                                                        Service Providers
+                                                    </a>
+                                                </li>
+                                                                                            <li class="">
+                                                    <a href="/docs/master/middlewares/body-parser.html">
+                                                        Body Parser
+                                                    </a>
+                                                </li>
+                                                                                            <li class="">
+                                                    <a href="/docs/master/middlewares/query-parser.html">
+                                                        Query Parser
+                                                    </a>
+                                                </li>
+                                                                                            <li class="">
+                                                    <a href="/docs/master/middlewares/cookie-parser.html">
+                                                        Cookie Parser
+                                                    </a>
+                                                </li>
+                                                                                            <li class="">
+                                                    <a href="/docs/master/middlewares/authentication.html">
+                                                        Authentication
+                                                    </a>
+                                                </li>
+                                                                                            <li class="">
+                                                    <a href="/docs/master/middlewares/localization.html">
+                                                        Localization
+                                                    </a>
+                                                </li>
+                                                                                            <li class="">
+                                                    <a href="/docs/master/middlewares/http-method-override.html">
+                                                        HTTP Method Override
+                                                    </a>
+                                                </li>
+                                                                                            <li class="">
+                                                    <a href="/docs/master/middlewares/serve-static.html">
+                                                        Server Static
+                                                    </a>
+                                                </li>
+                                                                                            <li class="">
+                                                    <a href="/docs/master/more/elixir.html">
+                                                        Elixir
+                                                    </a>
+                                                </li>
+                                                                                            <li class="">
+                                                    <a href="/docs/master/more/miscellaneous.html">
+                                                        Miscellaneous
+                                                    </a>
+                                                </li>
+                                                                                            <li class="">
+                                                    <a href="/docs/master/more/testing.html">
+                                                        Testing
+                                                    </a>
+                                                </li>
+                                                                                    </ul>
+                                    </div>
+                                                                    <div class="sidebar-widget widget_categories">
+                                        <h3 class="sidebar-header">Quorra CLI</h3>
+                                        <ul>
+                                                                                            <li class="">
+                                                    <a href="/docs/master/quorra-cli/overview.html">
+                                                        Overview
+                                                    </a>
+                                                </li>
+                                                                                    </ul>
+                                    </div>
+                                                            </div>
+                                                <div class="col-md-9">
+                            <article class="post">
+                                <section class="section swatch-white-blue">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-12 documentation">
+                                                <h1 id="requests-amp-input">Requests &amp; Input</h1>
+<ul>
+<li><a href="#basic-input">Basic Input</a></li>
+<li><a href="#cookies">Cookies</a></li>
+<li><a href="#old-input">Old Input</a></li>
+<li><a href="#files">Files</a></li>
+<li><a href="#request-information">Request Information</a></li>
+</ul>
+<p>Read more about Quorra request object <a href="/docs/1.0.0/more/request.html">here</a>.</p>
+<h2 id="basic-input">Basic Input</h2>
+<p>You may access all user input with a few simple methods. You do not need to worry about the HTTP verb used for the request, as input is accessed in the same way for all verbs.</p>
+<h3 id="retrieving-an-input-value">Retrieving An Input Value</h3>
+<pre><code class="language-javascript">var name = req.input.get('name');</code></pre>
+<h3 id="retrieving-a-default-value-if-the-input-value-is-absent">Retrieving A Default Value If The Input Value Is Absent</h3>
+<pre><code class="language-javascript">var name = req.input.get('name', 'Sally');</code></pre>
+<h3 id="determining-if-an-input-value-is-present">Determining If An Input Value Is Present</h3>
+<pre><code class="language-javascript">if (req.input.has('name'))
+{
+    //
+}</code></pre>
+<h3 id="getting-all-input-for-the-request">Getting All Input For The Request</h3>
+<pre><code class="language-javascript">var input = req.input.all();</code></pre>
+<h3 id="getting-only-some-of-the-request-input">Getting Only Some Of The Request Input</h3>
+<pre><code class="language-javascript">var input = req.input.only('username', 'password');
+
+var input = req.input.except('credit_card');</code></pre>
+<h2 id="cookies">Cookies</h2>
+<p>All cookies created by the Quorra framework are encrypted and signed with an authentication code, meaning they will be
+considered invalid if they have been changed by the client. See <a href="/docs/1.0.0/middlewares/cookie-parser
+.html">Cookie Parser</a> middleware for more.</p>
+<h3 id="retrieving-a-cookie-value">Retrieving A Cookie Value</h3>
+<pre><code class="language-javascript">var value = req.cookies.name;</code></pre>
+<h3 id="attaching-a-new-cookie-to-a-response">Attaching A New Cookie To A Response</h3>
+<pre><code class="language-javascript">res.cookie('name', 'tobi', { domain: '.example.com', path: '/admin', secure: true });
+res.cookie('rememberme', '1', { expires: new Date(Date.now() + 900000), httpOnly: true });</code></pre>
+<h2 id="old-input">Old Input</h2>
+<p>You may need to keep input from one request until the next request. For example, you may need to re-populate a form
+after checking it for validation errors.</p>
+<h3 id="flashing-input-to-the-session">Flashing Input To The Session</h3>
+<pre><code class="language-javascript">req.input.flash();</code></pre>
+<h3 id="flashing-only-some-input-to-the-session">Flashing Only Some Input To The Session</h3>
+<pre><code class="language-javascript">req.input.flashOnly('username', 'email');
+
+req.input.flashExcept('password');</code></pre>
+<h3 id="retrieving-old-data">Retrieving Old Data</h3>
+<pre><code class="language-javascript">req.input.old('username');</code></pre>
+<h2 id="files">Files</h2>
+<blockquote>
+<p><strong>Note:</strong> The bodyParser middleware included with Quorra only handles JSON and urlencoded form submissions, not multipart. For
+file methods to work you may need to add additional file parsing middleware to your application.</p>
+</blockquote>
+<h3 id="retrieving-an-uploaded-file">Retrieving An Uploaded File</h3>
+<pre><code class="language-javascript">var file = req.input.file('photo');</code></pre>
+<p>For example if a file field was named “image”, and a file was uploaded, <code>req.input.file('image')</code> would return
+following File object:</p>
+<pre><code class="language-javascript">{ size: 74643,
+  path: '/tmp/8ef9c52abe857867fd0a4e9a819d1876',
+  name: 'edge.png',
+  type: 'image/png',
+  hash: false,
+  lastModifiedDate: Thu Aug 09 2012 20:07:51 GMT-0700 (PDT),
+  _writeStream:
+   { path: '/tmp/8ef9c52abe857867fd0a4e9a819d1876',
+     fd: 13,
+     writable: false,
+     flags: 'w',
+     encoding: 'binary',
+     mode: 438,
+     bytesWritten: 74643,
+     busy: false,
+     _queue: [],
+     _open: [Function],
+     drainable: true },
+  length: [Getter],
+  filename: [Getter],
+  mime: [Getter] }</code></pre>
+<h3 id="determining-if-a-file-was-uploaded">Determining If A File Was Uploaded</h3>
+<pre><code class="language-javascript">if (req.input.hasFile('photo'))
+{
+    //
+}</code></pre>
+<h2 id="request-information">Request Information</h2>
+<p>The Request object provides many methods for examining the HTTP request for your application and extends the
+Node http request object. Here are some of the highlights.</p>
+<h3 id="retrieving-a-request-header">Retrieving A Request Header</h3>
+<pre><code class="language-javascript">var header = req.header('referer');</code></pre>
+<h3 id="check-if-the-given-types-is-acceptable">Check If The Given type(s) Is Acceptable</h3>
+<pre><code class="language-javascript"> // Accept: text/html
+ req.accepts('html');
+ // =&gt; "html"</code></pre>
+<h3 id="determining-if-the-request-is-over-https">Determining If The Request Is Over HTTPS</h3>
+<pre><code class="language-javascript">if(req.secure) {
+    //
+}</code></pre>
+<h3 id="determine-if-the-request-is-using-ajax">Determine If The Request Is Using AJAX</h3>
+<pre><code class="language-javascript">if(req.xhr) {
+    //
+}</code></pre>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <footer id="footer" role="contentinfo">
+            <section class="section swatch-blue-white no-padding">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <h3>Connect with us</h3>
+                            <div id="swatch_social-2" class="sidebar-widget  widget_swatch_social no-margin">
+                                <ul class="unstyled inline small-screen-center social-icons social-background social-small">
+                                    <li>
+                                        <a target="_blank" href="https://www.facebook.com/quorrajs">
+                                            <i class="fa fa-facebook"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a target="_blank" href="https://twitter.com/quorrajs">
+                                            <i class="fa fa-twitter"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a target="_blank" href="https://github.com/quorrajs">
+                                            <i class="fa fa-github-square"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div id="text-4" class="sidebar-widget widget_text bottom-margin-10">
+                                <div class="textwidget">QuorraJS 2016 ALL RIGHTS RESERVED
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </footer>
+        <a class="go-top hex-alt" href="javascript:void(0)">
+            <i class="fa fa-angle-up"></i>
+        </a>
+    </div>
+    <script src="/assets/js/packages.min.js"></script>
+    <script src="/assets/js/theme.min.js"></script>
+    <script src="/assets/js/prism.js"></script>
+    <script src="/assets/js/algoliasearch.min.js"></script>
+    <script src="/assets/js/typeahead.js"></script>
+    <script src="/assets/js/Hogan.js"></script>
+    <script src="/assets/js/quorra.js"></script>
+    <script>console.log({"cliConfig":[],"exclude":["vendor","website"],"baseUrl":"https:\/\/quorrajs.org","docBaseUrl":"\/docs","currentVersion":"master","versions":["master","1.0.0"],"github":{"user":"quorrajs","repo":"Quorra-docs"},"title":"QuorraJS","subTitle":"NodeJS framework for web riders.","menu":{"sections":{"main":{"name":"Preface","items":{"home":{"text":"Quickstart","relativeUrl":"preface\/quickstart.html"},"contribution guide":{"text":"Contribution Guide","relativeUrl":"preface\/contribution-guide.html"}}},"getting-started":{"name":"Getting started","items":{"installation":{"text":"Installation","relativeUrl":"getting-started\/installation.html"},"configuration":{"text":"Configuration","relativeUrl":"getting-started\/configuration.html"},"request lifecycle":{"text":"Request Lifecycle","relativeUrl":"getting-started\/request-lifecycle.html"},"routing":{"text":"Routing","relativeUrl":"getting-started\/routing.html"},"requests & input":{"text":"Requests & Input","relativeUrl":"getting-started\/requests-&-input.html"},"views & responses":{"text":"Views & Responses","relativeUrl":"getting-started\/views-&-responses.html"},"controllers":{"text":"Controllers","relativeUrl":"getting-started\/controllers.html"},"errors & logging":{"text":"Errors & Logging","relativeUrl":"getting-started\/errors-&-logging.html"},"models & orm":{"text":"Models & ORM","relativeUrl":"getting-started\/models-&-orm.html"},"globals":{"text":"Globals","relativeUrl":"getting-started\/globals.html"},"middleware":{"text":"Middleware","relativeUrl":"getting-started\/middleware.html"}}},"learning more":{"name":"Learning more","items":{"Security":{"text":"Security","relativeUrl":"more\/security.html"},"session":{"text":"Session","relativeUrl":"middlewares\/session.html"},"mail":{"text":"Mail","relativeUrl":"more\/mail.html"},"request object":{"text":"Request Object","relativeUrl":"more\/request.html"},"response object":{"text":"Response Object","relativeUrl":"more\/response.html"},"service providers":{"text":"Service Providers","relativeUrl":"more\/service-providers.html"},"body parser":{"text":"Body Parser","relativeUrl":"middlewares\/body-parser.html"},"query parser":{"text":"Query Parser","relativeUrl":"middlewares\/query-parser.html"},"cookie parser":{"text":"Cookie Parser","relativeUrl":"middlewares\/cookie-parser.html"},"authentication":{"text":"Authentication","relativeUrl":"middlewares\/authentication.html"},"localization":{"text":"Localization","relativeUrl":"middlewares\/localization.html"},"http method override":{"text":"HTTP Method Override","relativeUrl":"middlewares\/http-method-override.html"},"serve static":{"text":"Server Static","relativeUrl":"middlewares\/serve-static.html"},"elixir":{"text":"Elixir","relativeUrl":"more\/elixir.html"},"miscellanous":{"text":"Miscellaneous","relativeUrl":"more\/miscellaneous.html"},"testing":{"text":"Testing","relativeUrl":"more\/testing.html"}}},"other":{"name":"Quorra CLI","items":{"home":{"text":"Overview","relativeUrl":"quorra-cli\/overview.html"}}}}},"template":{"directory":"\/home\/harish\/Dropbox\/Code\/quorra-docs\/website"},"pageList":{"13":"getting-started\/configuration.html","7":"getting-started\/controllers.html","9":"getting-started\/errors-&-logging.html","11":"getting-started\/globals.html","10":"getting-started\/installation.html","3":"getting-started\/middleware.html","8":"getting-started\/models-&-orm.html","5":"getting-started\/request-lifecycle.html","12":"getting-started\/requests-&-input.html","6":"getting-started\/routing.html","4":"getting-started\/views-&-responses.html","2":"index.html","28":"middlewares\/authentication.html","24":"middlewares\/body-parser.html","25":"middlewares\/cookie-parser.html","23":"middlewares\/http-method-override.html","27":"middlewares\/localization.html","30":"middlewares\/query-parser.html","26":"middlewares\/serve-static.html","29":"middlewares\/session.html","21":"more\/elixir.html","20":"more\/mail.html","17":"more\/miscellaneous.html","18":"more\/request.html","14":"more\/response.html","16":"more\/security.html","15":"more\/service-providers.html","19":"more\/testing.html","1":"preface\/contribution-guide.html","0":"preface\/quickstart.html","22":"quorra-cli\/overview.html"},"pageTree":{"getting-started":{"configuration.html":"configuration.html","controllers.html":"controllers.html","errors-&-logging.html":"errors-&-logging.html","globals.html":"globals.html","installation.html":"installation.html","middleware.html":"middleware.html","models-&-orm.html":"models-&-orm.html","request-lifecycle.html":"request-lifecycle.html","requests-&-input.html":"requests-&-input.html","routing.html":"routing.html","views-&-responses.html":"views-&-responses.html"},"index.html":"index.html","middlewares":{"authentication.html":"authentication.html","body-parser.html":"body-parser.html","cookie-parser.html":"cookie-parser.html","http-method-override.html":"http-method-override.html","localization.html":"localization.html","query-parser.html":"query-parser.html","serve-static.html":"serve-static.html","session.html":"session.html"},"more":{"elixir.html":"elixir.html","mail.html":"mail.html","miscellaneous.html":"miscellaneous.html","request.html":"request.html","response.html":"response.html","security.html":"security.html","service-providers.html":"service-providers.html","testing.html":"testing.html"},"preface":{"contribution-guide.html":"contribution-guide.html","quickstart.html":"quickstart.html"},"quorra-cli":{"overview.html":"overview.html"}},"currentFile":"getting-started\/requests-&-input.md","content":"<h1 id=\"requests-amp-input\">Requests &amp; Input<\/h1>\n<ul>\n<li><a href=\"#basic-input\">Basic Input<\/a><\/li>\n<li><a href=\"#cookies\">Cookies<\/a><\/li>\n<li><a href=\"#old-input\">Old Input<\/a><\/li>\n<li><a href=\"#files\">Files<\/a><\/li>\n<li><a href=\"#request-information\">Request Information<\/a><\/li>\n<\/ul>\n<p>Read more about Quorra request object <a href=\"\/docs\/1.0.0\/more\/request.html\">here<\/a>.<\/p>\n<h2 id=\"basic-input\">Basic Input<\/h2>\n<p>You may access all user input with a few simple methods. You do not need to worry about the HTTP verb used for the request, as input is accessed in the same way for all verbs.<\/p>\n<h3 id=\"retrieving-an-input-value\">Retrieving An Input Value<\/h3>\n<pre><code class=\"language-javascript\">var name = req.input.get('name');<\/code><\/pre>\n<h3 id=\"retrieving-a-default-value-if-the-input-value-is-absent\">Retrieving A Default Value If The Input Value Is Absent<\/h3>\n<pre><code class=\"language-javascript\">var name = req.input.get('name', 'Sally');<\/code><\/pre>\n<h3 id=\"determining-if-an-input-value-is-present\">Determining If An Input Value Is Present<\/h3>\n<pre><code class=\"language-javascript\">if (req.input.has('name'))\n{\n    \/\/\n}<\/code><\/pre>\n<h3 id=\"getting-all-input-for-the-request\">Getting All Input For The Request<\/h3>\n<pre><code class=\"language-javascript\">var input = req.input.all();<\/code><\/pre>\n<h3 id=\"getting-only-some-of-the-request-input\">Getting Only Some Of The Request Input<\/h3>\n<pre><code class=\"language-javascript\">var input = req.input.only('username', 'password');\n\nvar input = req.input.except('credit_card');<\/code><\/pre>\n<h2 id=\"cookies\">Cookies<\/h2>\n<p>All cookies created by the Quorra framework are encrypted and signed with an authentication code, meaning they will be\nconsidered invalid if they have been changed by the client. See <a href=\"\/docs\/1.0.0\/middlewares\/cookie-parser\n.html\">Cookie Parser<\/a> middleware for more.<\/p>\n<h3 id=\"retrieving-a-cookie-value\">Retrieving A Cookie Value<\/h3>\n<pre><code class=\"language-javascript\">var value = req.cookies.name;<\/code><\/pre>\n<h3 id=\"attaching-a-new-cookie-to-a-response\">Attaching A New Cookie To A Response<\/h3>\n<pre><code class=\"language-javascript\">res.cookie('name', 'tobi', { domain: '.example.com', path: '\/admin', secure: true });\nres.cookie('rememberme', '1', { expires: new Date(Date.now() + 900000), httpOnly: true });<\/code><\/pre>\n<h2 id=\"old-input\">Old Input<\/h2>\n<p>You may need to keep input from one request until the next request. For example, you may need to re-populate a form\nafter checking it for validation errors.<\/p>\n<h3 id=\"flashing-input-to-the-session\">Flashing Input To The Session<\/h3>\n<pre><code class=\"language-javascript\">req.input.flash();<\/code><\/pre>\n<h3 id=\"flashing-only-some-input-to-the-session\">Flashing Only Some Input To The Session<\/h3>\n<pre><code class=\"language-javascript\">req.input.flashOnly('username', 'email');\n\nreq.input.flashExcept('password');<\/code><\/pre>\n<h3 id=\"retrieving-old-data\">Retrieving Old Data<\/h3>\n<pre><code class=\"language-javascript\">req.input.old('username');<\/code><\/pre>\n<h2 id=\"files\">Files<\/h2>\n<blockquote>\n<p><strong>Note:<\/strong> The bodyParser middleware included with Quorra only handles JSON and urlencoded form submissions, not multipart. For\nfile methods to work you may need to add additional file parsing middleware to your application.<\/p>\n<\/blockquote>\n<h3 id=\"retrieving-an-uploaded-file\">Retrieving An Uploaded File<\/h3>\n<pre><code class=\"language-javascript\">var file = req.input.file('photo');<\/code><\/pre>\n<p>For example if a file field was named \u201cimage\u201d, and a file was uploaded, <code>req.input.file('image')<\/code> would return\nfollowing File object:<\/p>\n<pre><code class=\"language-javascript\">{ size: 74643,\n  path: '\/tmp\/8ef9c52abe857867fd0a4e9a819d1876',\n  name: 'edge.png',\n  type: 'image\/png',\n  hash: false,\n  lastModifiedDate: Thu Aug 09 2012 20:07:51 GMT-0700 (PDT),\n  _writeStream:\n   { path: '\/tmp\/8ef9c52abe857867fd0a4e9a819d1876',\n     fd: 13,\n     writable: false,\n     flags: 'w',\n     encoding: 'binary',\n     mode: 438,\n     bytesWritten: 74643,\n     busy: false,\n     _queue: [],\n     _open: [Function],\n     drainable: true },\n  length: [Getter],\n  filename: [Getter],\n  mime: [Getter] }<\/code><\/pre>\n<h3 id=\"determining-if-a-file-was-uploaded\">Determining If A File Was Uploaded<\/h3>\n<pre><code class=\"language-javascript\">if (req.input.hasFile('photo'))\n{\n    \/\/\n}<\/code><\/pre>\n<h2 id=\"request-information\">Request Information<\/h2>\n<p>The Request object provides many methods for examining the HTTP request for your application and extends the\nNode http request object. Here are some of the highlights.<\/p>\n<h3 id=\"retrieving-a-request-header\">Retrieving A Request Header<\/h3>\n<pre><code class=\"language-javascript\">var header = req.header('referer');<\/code><\/pre>\n<h3 id=\"check-if-the-given-types-is-acceptable\">Check If The Given type(s) Is Acceptable<\/h3>\n<pre><code class=\"language-javascript\"> \/\/ Accept: text\/html\n req.accepts('html');\n \/\/ =&gt; \"html\"<\/code><\/pre>\n<h3 id=\"determining-if-the-request-is-over-https\">Determining If The Request Is Over HTTPS<\/h3>\n<pre><code class=\"language-javascript\">if(req.secure) {\n    \/\/\n}<\/code><\/pre>\n<h3 id=\"determine-if-the-request-is-using-ajax\">Determine If The Request Is Using AJAX<\/h3>\n<pre><code class=\"language-javascript\">if(req.xhr) {\n    \/\/\n}<\/code><\/pre>"});</script>
+</body>
+</html>
+

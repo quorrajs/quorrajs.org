@@ -1,109 +1,312 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>QuorraJS</title>
-        <link rel="icon" type="image/x-icon" href="https://quorrajs.org/assets/icons/favicon.ico" />
-        <link href='https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,400italic' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="https://quorrajs.org/assets/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://quorrajs.org/assets/css/theme.css">
-        <link rel="stylesheet" href="https://quorrajs.org/assets/css/color-defaults.min.css">
-        <link rel="stylesheet" href="https://quorrajs.org/assets/css/swatch-blue-white.css">
-        <link rel="stylesheet" href="https://quorrajs.org/assets/css/swatch-white-blue.css">
-        <link rel="stylesheet" href="https://quorrajs.org/assets/css/prism.css">
-        <link rel="stylesheet" href="https://quorrajs.org/assets/css/fonts.min.css" media="screen">
-        <script>
-            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>QuorraJS</title>
+    <link rel="icon" type="image/x-icon" href="/assets/icons/favicon.ico"/>
+    <link href='https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,400italic' rel='stylesheet'
+          type='text/css'>
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/theme.css">
+    <link rel="stylesheet" href="/assets/css/color-defaults.min.css">
+    <link rel="stylesheet" href="/assets/css/swatch-blue-white.css">
+    <link rel="stylesheet" href="/assets/css/swatch-white-blue.css">
+    <link rel="stylesheet" href="/assets/css/prism.css">
+    <link rel="stylesheet" href="/assets/css/fonts.min.css" media="screen">
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
-            ga('create', 'UA-42913540-2', 'auto');
-            ga('send', 'pageview');
-        </script>
-        
-        <script id="search_suggestion_template" type="text/template">
-            <div class="autocomplete-wrapper">
-                {{#_highlightResult.h1}}
-                <div class="h1">
-                    {{{ _highlightResult.h1.value }}}
-                </div>
-                {{/_highlightResult.h1}}
-
-                <div class="sub-section">
-                    {{#_highlightResult.h2}}
-                    <div class="h2">
-                        <span class="hash">#</span> {{{ _highlightResult.h2.value }}}
-                    </div>
-                    {{/_highlightResult.h2}}
-
-                    {{#_highlightResult.h3}}
-                    <div class="h3">
-                        > {{{ _highlightResult.h3.value }}}
-                    </div>
-                    {{/_highlightResult.h3}}
-
-                    {{#_highlightResult.h4}}
-                    <div class="h4">
-                        > {{{ _highlightResult.h4.value }}}
-                    </div>
-                    {{/_highlightResult.h4}}
-                </div>
-
-                {{#_highlightResult.content}}
-                <div class="content">
-                    {{{ _highlightResult.content.value }}}
-                </div>
-                {{/_highlightResult.content}}
+        ga('create', 'UA-42913540-2', 'auto');
+        ga('send', 'pageview');
+    </script>
+    
+    <script id="search_suggestion_template" type="text/template">
+        <div class="autocomplete-wrapper">
+            {{#_highlightResult.h1}}
+            <div class="h1">
+                {{{ _highlightResult.h1.value }}}
             </div>
-        </script>
-        <script id="search_empty_template" type="text/template">
-            <div class="autocomplete-wrapper empty">
-                <div class="h2">We didn't find any result for "{{query}}". Sorry!</div>
+            {{/_highlightResult.h1}}
+
+            <div class="sub-section">
+                {{#_highlightResult.h2}}
+                <div class="h2">
+                    <span class="hash">#</span> {{{ _highlightResult.h2.value }}}
+                </div>
+                {{/_highlightResult.h2}}
+
+                {{#_highlightResult.h3}}
+                <div class="h3">
+                    > {{{ _highlightResult.h3.value }}}
+                </div>
+                {{/_highlightResult.h3}}
+
+                {{#_highlightResult.h4}}
+                <div class="h4">
+                    > {{{ _highlightResult.h4.value }}}
+                </div>
+                {{/_highlightResult.h4}}
             </div>
-        </script>
-        <script id="search_footer_template" type="text/template">
-            <div class="footer">
-                <a target="_blank" href="https://www.algolia.com/">
-        
-                    <img width="50" src="https://quorrajs.org/assets/images/algolia.png">
-        
-                    <div class="powered">powered by</div>
-                    <div style="clear: both"></div>
+
+            {{#_highlightResult.content}}
+            <div class="content">
+                {{{ _highlightResult.content.value }}}
+            </div>
+            {{/_highlightResult.content}}
+        </div>
+    </script>
+    <script id="search_empty_template" type="text/template">
+        <div class="autocomplete-wrapper empty">
+            <div class="h2">We didn't find any result for "{{query}}". Sorry!</div>
+        </div>
+    </script>
+    <script id="search_footer_template" type="text/template">
+        <div class="footer">
+            <a target="_blank" href="https://www.algolia.com/">
+                
+                <img width="50" src="/assets/images/algolia.png">
+                
+                <div class="powered">powered by</div>
+                <div style="clear: both"></div>
+            </a>
+        </div>
+    </script>
+    
+</head>
+<body>
+    <div id="sidenav" class="sidenav">
+        <div class="brand">
+            <a href="/">QuorraJS</a>
+        </div>
+        <ul class="side-main-nav">
+            <li><a data-scroll data-options="easing: easeOutQuart"
+                   href="https://medium.com/@quorrajs" target="_blank">Blog</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Community
+                    <span class="caret"></span>
                 </a>
+                <ul class="dropdown-menu">
+                    <li><a href="https://github.com/quorrajs" target="_blank">Github</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="https://quorrajs.slack.com" target="_blank">Slack</a></li>
+                    <li><a href="https://gitter.im/quorrajs/quorrajs" target="_blank">Gitter</a></li>
+                    <li><a href="https://twitter.com/quorrajs" target="_blank">Twitter</a></li>
+                </ul>
+            </li>
+        </ul>
+                    <div class="side-doc-nav">
+                <h3>Documentation</h3>
+                                    <div class="category">
+                        <h3>Preface</h3>
+                        <ul>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/preface/quickstart.html">
+                                        Quickstart
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/preface/contribution-guide.html">
+                                        Contribution Guide
+                                    </a>
+                                </li>
+                                                    </ul>
+                    </div>
+                                    <div class="category">
+                        <h3>Getting started</h3>
+                        <ul>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/getting-started/installation.html">
+                                        Installation
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/getting-started/configuration.html">
+                                        Configuration
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/getting-started/request-lifecycle.html">
+                                        Request Lifecycle
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/getting-started/routing.html">
+                                        Routing
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/getting-started/requests-&amp;-input.html">
+                                        Requests & Input
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/getting-started/views-&amp;-responses.html">
+                                        Views & Responses
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/getting-started/controllers.html">
+                                        Controllers
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/getting-started/errors-&amp;-logging.html">
+                                        Errors & Logging
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/getting-started/models-&amp;-orm.html">
+                                        Models & ORM
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/getting-started/globals.html">
+                                        Globals
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/getting-started/middleware.html">
+                                        Middleware
+                                    </a>
+                                </li>
+                                                    </ul>
+                    </div>
+                                    <div class="category">
+                        <h3>Learning more</h3>
+                        <ul>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/more/security.html">
+                                        Security
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/middlewares/session.html">
+                                        Session
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/more/mail.html">
+                                        Mail
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/more/request.html">
+                                        Request Object
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/more/response.html">
+                                        Response Object
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/more/service-providers.html">
+                                        Service Providers
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/middlewares/body-parser.html">
+                                        Body Parser
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/middlewares/query-parser.html">
+                                        Query Parser
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/middlewares/cookie-parser.html">
+                                        Cookie Parser
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/middlewares/authentication.html">
+                                        Authentication
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/middlewares/localization.html">
+                                        Localization
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/middlewares/http-method-override.html">
+                                        HTTP Method Override
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/middlewares/serve-static.html">
+                                        Server Static
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/more/elixir.html">
+                                        Elixir
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/more/miscellaneous.html">
+                                        Miscellaneous
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/more/testing.html">
+                                        Testing
+                                    </a>
+                                </li>
+                                                    </ul>
+                    </div>
+                                    <div class="category">
+                        <h3>Quorra CLI</h3>
+                        <ul>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/quorra-cli/overview.html">
+                                        Overview
+                                    </a>
+                                </li>
+                                                    </ul>
+                    </div>
+                            </div>
             </div>
-        </script>
-        
-    </head>
-    <body>
+    <div id="main-content">
+        <span id="overlay"></span>
         <header id="masthead" class="navbar-small navbar swatch-blue-white" role="banner">
             <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".main-navbar">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a href="https://quorrajs.org/index.html" class="navbar-brand">
-                        <img src="https://quorrajs.org/assets/images/logo.png" alt="QuorraJS">
+                <nav class="main">
+                    <a href="/index.html" class="navbar-brand nav-block">
+                        <img src="/assets/icons/logo-icon.png" alt="QuorraJS">
+                        <span>QuorraJS</span>
                     </a>
-                </div>
-                <div id="search" class="nav navbar-nav">
-                    <div class="search">
-                        <button type="submit"><i class="fa fa-search"></i></button>
-                        <input type="text" name="search" class="form-control">
+
+                    <div id="search" class="nav-block">
+                        <div class="search">
+                            <input type="text" name="search" class="form-control">
+                            <button type="submit"><i class="fa fa-search"></i></button>
+                        </div>
                     </div>
-                </div>
-                <nav class="collapse navbar-collapse main-navbar" role="navigation">
-                    <ul class="nav navbar-nav navbar-right">
+                    <ul class="main-nav nav">
                         <li><a data-scroll data-options="easing: easeOutQuart"
-                               href="https://quorrajs.org/docs/1.0.0/getting-started/installation.html">Documentation</a></li>
+                               href="/docs/1.0.0/getting-started/installation.html">Documentation</a></li>
                         <li><a data-scroll data-options="easing: easeOutQuart"
                                href="https://medium.com/@quorrajs" target="_blank">Blog</a></li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community</a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                Community
+                                <span class="caret"></span>
+                            </a>
                             <ul class="dropdown-menu">
                                 <li><a href="https://github.com/quorrajs" target="_blank">Github</a></li>
                                 <li role="separator" class="divider"></li>
@@ -113,6 +316,28 @@
                             </ul>
                         </li>
                     </ul>
+                    <div class="switcher">
+                        <div class="dropdown">
+                            <button class="btn btn-info dropdown-toggle" type="button" aria-haspopup="true"
+                                    data-toggle="dropdown">
+                                1.0.0
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                                                                                        <li>
+                                        <a href="/docs/master/more/request.html">Master</a>
+                                    </li>
+                                                                                                        <li>
+                                        <a href="/docs/1.0.0/more/request.html">1.0.0</a>
+                                    </li>
+                                                            </ul>
+                        </div>
+                    </div>
+                    <button type="button" class="navbar-toggle collapsed">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
                 </nav>
             </div>
         </header>
@@ -682,13 +907,15 @@ req.routeParameter('name')
         <a class="go-top hex-alt" href="javascript:void(0)">
             <i class="fa fa-angle-up"></i>
         </a>
-        <script src="https://quorrajs.org/assets/js/packages.min.js"></script>
-        <script src="https://quorrajs.org/assets/js/theme.min.js"></script>
-        <script src="https://quorrajs.org/assets/js/prism.js"></script>
-        <script src="https://quorrajs.org/assets/js/algoliasearch.min.js"></script>
-        <script src="https://quorrajs.org/assets/js/typeahead.js"></script>
-        <script src="https://quorrajs.org/assets/js/Hogan.js"></script>
-        <script src="https://quorrajs.org/assets/js/quorra.js"></script>
-    </body>
+    </div>
+    <script src="/assets/js/packages.min.js"></script>
+    <script src="/assets/js/theme.min.js"></script>
+    <script src="/assets/js/prism.js"></script>
+    <script src="/assets/js/algoliasearch.min.js"></script>
+    <script src="/assets/js/typeahead.js"></script>
+    <script src="/assets/js/Hogan.js"></script>
+    <script src="/assets/js/quorra.js"></script>
+    <script>console.log({"cliConfig":[],"exclude":["vendor","website"],"baseUrl":"https:\/\/quorrajs.org","docBaseUrl":"\/docs","currentVersion":"1.0.0","versions":["master","1.0.0"],"github":{"user":"quorrajs","repo":"Quorra-docs"},"title":"QuorraJS","subTitle":"NodeJS framework for web riders.","menu":{"sections":{"main":{"name":"Preface","items":{"home":{"text":"Quickstart","relativeUrl":"preface\/quickstart.html"},"contribution guide":{"text":"Contribution Guide","relativeUrl":"preface\/contribution-guide.html"}}},"getting-started":{"name":"Getting started","items":{"installation":{"text":"Installation","relativeUrl":"getting-started\/installation.html"},"configuration":{"text":"Configuration","relativeUrl":"getting-started\/configuration.html"},"request lifecycle":{"text":"Request Lifecycle","relativeUrl":"getting-started\/request-lifecycle.html"},"routing":{"text":"Routing","relativeUrl":"getting-started\/routing.html"},"requests & input":{"text":"Requests & Input","relativeUrl":"getting-started\/requests-&-input.html"},"views & responses":{"text":"Views & Responses","relativeUrl":"getting-started\/views-&-responses.html"},"controllers":{"text":"Controllers","relativeUrl":"getting-started\/controllers.html"},"errors & logging":{"text":"Errors & Logging","relativeUrl":"getting-started\/errors-&-logging.html"},"models & orm":{"text":"Models & ORM","relativeUrl":"getting-started\/models-&-orm.html"},"globals":{"text":"Globals","relativeUrl":"getting-started\/globals.html"},"middleware":{"text":"Middleware","relativeUrl":"getting-started\/middleware.html"}}},"learning more":{"name":"Learning more","items":{"Security":{"text":"Security","relativeUrl":"more\/security.html"},"session":{"text":"Session","relativeUrl":"middlewares\/session.html"},"mail":{"text":"Mail","relativeUrl":"more\/mail.html"},"request object":{"text":"Request Object","relativeUrl":"more\/request.html"},"response object":{"text":"Response Object","relativeUrl":"more\/response.html"},"service providers":{"text":"Service Providers","relativeUrl":"more\/service-providers.html"},"body parser":{"text":"Body Parser","relativeUrl":"middlewares\/body-parser.html"},"query parser":{"text":"Query Parser","relativeUrl":"middlewares\/query-parser.html"},"cookie parser":{"text":"Cookie Parser","relativeUrl":"middlewares\/cookie-parser.html"},"authentication":{"text":"Authentication","relativeUrl":"middlewares\/authentication.html"},"localization":{"text":"Localization","relativeUrl":"middlewares\/localization.html"},"http method override":{"text":"HTTP Method Override","relativeUrl":"middlewares\/http-method-override.html"},"serve static":{"text":"Server Static","relativeUrl":"middlewares\/serve-static.html"},"elixir":{"text":"Elixir","relativeUrl":"more\/elixir.html"},"miscellanous":{"text":"Miscellaneous","relativeUrl":"more\/miscellaneous.html"},"testing":{"text":"Testing","relativeUrl":"more\/testing.html"}}},"other":{"name":"Quorra CLI","items":{"home":{"text":"Overview","relativeUrl":"quorra-cli\/overview.html"}}}}},"template":{"directory":"\/home\/harish\/Dropbox\/Code\/quorra-docs\/website"},"pageList":{"13":"getting-started\/configuration.html","7":"getting-started\/controllers.html","9":"getting-started\/errors-&-logging.html","11":"getting-started\/globals.html","10":"getting-started\/installation.html","3":"getting-started\/middleware.html","8":"getting-started\/models-&-orm.html","5":"getting-started\/request-lifecycle.html","12":"getting-started\/requests-&-input.html","6":"getting-started\/routing.html","4":"getting-started\/views-&-responses.html","2":"index.html","28":"middlewares\/authentication.html","24":"middlewares\/body-parser.html","25":"middlewares\/cookie-parser.html","23":"middlewares\/http-method-override.html","27":"middlewares\/localization.html","30":"middlewares\/query-parser.html","26":"middlewares\/serve-static.html","29":"middlewares\/session.html","21":"more\/elixir.html","20":"more\/mail.html","17":"more\/miscellaneous.html","18":"more\/request.html","14":"more\/response.html","16":"more\/security.html","15":"more\/service-providers.html","19":"more\/testing.html","1":"preface\/contribution-guide.html","0":"preface\/quickstart.html","22":"quorra-cli\/overview.html"},"pageTree":{"getting-started":{"configuration.html":"configuration.html","controllers.html":"controllers.html","errors-&-logging.html":"errors-&-logging.html","globals.html":"globals.html","installation.html":"installation.html","middleware.html":"middleware.html","models-&-orm.html":"models-&-orm.html","request-lifecycle.html":"request-lifecycle.html","requests-&-input.html":"requests-&-input.html","routing.html":"routing.html","views-&-responses.html":"views-&-responses.html"},"index.html":"index.html","middlewares":{"authentication.html":"authentication.html","body-parser.html":"body-parser.html","cookie-parser.html":"cookie-parser.html","http-method-override.html":"http-method-override.html","localization.html":"localization.html","query-parser.html":"query-parser.html","serve-static.html":"serve-static.html","session.html":"session.html"},"more":{"elixir.html":"elixir.html","mail.html":"mail.html","miscellaneous.html":"miscellaneous.html","request.html":"request.html","response.html":"response.html","security.html":"security.html","service-providers.html":"service-providers.html","testing.html":"testing.html"},"preface":{"contribution-guide.html":"contribution-guide.html","quickstart.html":"quickstart.html"},"quorra-cli":{"overview.html":"overview.html"}},"currentFile":"more\/request.md","content":"<h1 id=\"request\">Request<\/h1>\n<ul>\n<li><a href=\"#introduction\">Introduction<\/a><\/li>\n<li><a href=\"#properties\">Properties<\/a><\/li>\n<li><a href=\"#methods\">Methods<\/a><\/li>\n<\/ul>\n<h2 id=\"introduction\">Introduction<\/h2>\n<p>The req object represents the HTTP request and has properties for the request query string, parameters, body, HTTP\nheaders, and so on. In this documentation and by convention, the object is always referred to as req (and the HTTP\nresponse is res) but its actual name is determined by the parameters to the callback function in which you\u2019re working.<\/p>\n<p>For example:<\/p>\n<pre><code class=\"language-javascript\">Route.get('\/user\/{id}', function(req, res) {\n  res.send('user ' + req.params.id);\n});<\/code><\/pre>\n<p>But you could just as well have:<\/p>\n<pre><code class=\"language-javascript\">Route.get('\/user\/{id}', function(request, response) {\n  response.send('user ' + request.params.id);\n});<\/code><\/pre>\n<h2 id=\"properties\">Properties<\/h2>\n<h3 id=\"reqapp\">req.app<\/h3>\n<p>This property holds a reference to the instance of the Quorra application which process the request.<\/p>\n<h3 id=\"reqbody\">req.body<\/h3>\n<p>Contains key-value pairs of data submitted in the request body. It is populated only when you enable bodyParser\nmiddleware in <code>app\/config\/middleware.js<\/code>.<\/p>\n<h3 id=\"reqcookies\">req.cookies<\/h3>\n<p>When using enable cookieParser middleware in <code>app\/config\/middleware.js<\/code>, this property is an object that contains\ncookies sent by the request. If the request contains no cookies, it defaults to {}.<\/p>\n<pre><code class=\"language-javascript\">\/\/ Cookie: name=anchu\nreq.cookies.name\n\/\/ =&gt; \"anchu\"<\/code><\/pre>\n<h3 id=\"reqfresh\">req.fresh<\/h3>\n<p>Indicates whether the request is \u201cfresh.\u201d It is the opposite of <code>req.stale<\/code>.<\/p>\n<p>It is true if the cache-control request header doesn\u2019t have a no-cache directive and any of the following is true:<\/p>\n<ul>\n<li>The <code>if-modified-since<\/code> request header is specified and <code>last-modified<\/code> request header is equal to or earlier than\nthe <code>modified<\/code> response header.<\/li>\n<li>The <code>if-none-match<\/code> request header is *.<\/li>\n<li>The <code>if-none-match<\/code> request header, after being parsed into its directives, does not match the etag response header.<\/li>\n<\/ul>\n<p>For more information, issues, or concerns, see <a href=\"#https:\/\/github.com\/jshttp\/fresh\">fresh<\/a>.<\/p>\n<h3 id=\"reqhost\">req.host<\/h3>\n<p>Contains the hostname derived from the Host HTTP header.<\/p>\n<p>When the <a href=\"\/docs\/1.0.0\/more\/miscellaneous.html#quorra-behind-proxies\">trust proxy setting<\/a> is set to a non-falsey value, the value of the\nX-Forwarded-Host header field will be\nused instead. This header can be set by the client or by the proxy.<\/p>\n<pre><code class=\"language-javascript\">\/\/ Host: \"example.com:3000\"\nreq.hostname\n\/\/ =&gt; \"example.com\"<\/code><\/pre>\n<h3 id=\"reqip\">req.ip<\/h3>\n<p>The remote IP address of the request.<\/p>\n<p>When the <a href=\"\/docs\/1.0.0\/more\/miscellaneous.html#quorra-behind-proxies\">trust proxy setting<\/a> is set to a non-falsey value, the\nvalue is\nderived from the left-most entry in the <code>X-Forwarded-For<\/code> header. This header can be set by the client or by the proxy.<\/p>\n<pre><code class=\"language-javascript\">req.ip\n\/\/ =&gt; \"127.0.0.1\"<\/code><\/pre>\n<h3 id=\"reqips\">req.ips<\/h3>\n<p>When the <a href=\"\/docs\/1.0.0\/more\/miscellaneous.html#quorra-behind-proxies\">trust proxy setting<\/a> is set to a non-falsey value, this property\ncontains an array of IP addresses specified in the <code>X-Forwarded-For<\/code> request header. Otherwise, it contains an empty\narray. This header can be set by the client or by the proxy.<\/p>\n<p>For example, if <code>X-Forwarded-For<\/code> is client, proxy1, proxy2, <code>req.ips<\/code> would be <code>[\"client\", \"proxy1\", \"proxy2\"]<\/code>, where\n<code>proxy2<\/code> is the furthest downstream.<\/p>\n<h3 id=\"reqmethod\">req.method<\/h3>\n<p>Contains a string corresponding to the HTTP method of the request: GET, POST, PUT, and so on.<\/p>\n<h3 id=\"reqrouteparameters\">req.routeParameters<\/h3>\n<p>An object containing properties mapped to the named route \u201cparameters\u201d. For example, if you have the route\n<code>\/user\/{name}<\/code>, then the \u201cname\u201d property is available as <code>req.routeParameters.name<\/code>. This object defaults to {}.<\/p>\n<pre><code class=\"language-javascript\">\/\/ GET \/user\/clu\nreq.routeParameters.name\n\/\/ =&gt; \"clu\"<\/code><\/pre>\n<h3 id=\"reqpath\">req.path<\/h3>\n<p>Contains the path part of the request URL.<\/p>\n<pre><code class=\"language-javascript\">\/\/ example.com\/users?sort=desc\nreq.path\n\/\/ =&gt; \"\/users\"<\/code><\/pre>\n<h3 id=\"reqprotocol\">req.protocol<\/h3>\n<p>The request protocol string, http or https when requested with TLS.<\/p>\n<p>When the <a href=\"\/docs\/1.0.0\/more\/miscellaneous.html#quorra-behind-proxies\">trust proxy setting<\/a> is set to a non-falsey value, the value of the\n<code>X-Forwarded-Proto<\/code> header field will be trusted and used if present. This header can be set by the client or by the\nproxy.<\/p>\n<pre><code class=\"language-javascript\">req.protocol\n\/\/ =&gt; \"http\"<\/code><\/pre>\n<h3 id=\"reqquery\">req.query<\/h3>\n<p>An object contains a property for each query string parameter in the route when <code>queryParser<\/code> middleware is enabled. If\nthere is no query string, it is the empty object, {}.<\/p>\n<pre><code class=\"language-javascript\">\/\/ GET \/search?q=tobi+ferret\nreq.query.q\n\/\/ =&gt; \"tobi ferret\"\n\n\/\/ GET \/shoes?order=desc&amp;shoe[color]=blue&amp;shoe[type]=converse\nreq.query.order\n\/\/ =&gt; \"desc\"\n\nreq.query.shoe.color\n\/\/ =&gt; \"blue\"\n\nreq.query.shoe.type\n\/\/ =&gt; \"converse\"<\/code><\/pre>\n<h3 id=\"reqroute\">req.route<\/h3>\n<p>The currently-matched route, a string. For example:<\/p>\n<pre><code class=\"language-javascript\">app.get('\/user\/{id?}', function userIdHandler(req, res) {\n  console.log(req.route);\n  res.send('GET');\n});<\/code><\/pre>\n<p>Example output from the previous snippet:<\/p>\n<pre><code class=\"language-javascript\">{ __uri: 'user\/{id?}',\n  __action: { uses: [Function: userIdHandler] },\n  __methods: [ 'GET', 'HEAD' ],\n  __wheres: {},\n  __compiled:\n   { staticPrefix: '\/user',\n     regex: { \/^\\\/user(?:\\\/([^\\\/]+))?$\/ xregexp: [Object] },\n     tokens: [ [Object], [Object] ],\n     pathVariables: [ 'id' ],\n     hostRegex: null,\n     hostTokens: [],\n     hostVariables: [],\n     variables: [ 'id' ] },\n  __filter:\n   { __sorted: { 'router.before': [Object] },\n     __wildcards: {},\n     __filters:\n      { 'positron.app.down': [Object],\n        'router.before': [Object],\n        'router.filter: auth': [Object],\n        'router.filter: csrf': [Object] },\n     __patternFilters: {},\n     __regexFilters: {} },\n  __host: '',\n  __requirements: [],\n  __defaults: [ id: null ],\n  __path: '\/user\/{id}' }<\/code><\/pre>\n<h3 id=\"reqsecure\">req.secure<\/h3>\n<p>A Boolean that is true if a TLS connection is established. Equivalent to:<\/p>\n<pre><code class=\"language-javascript\">'https' == req.protocol;<\/code><\/pre>\n<h3 id=\"reqsignedcookies\">req.signedCookies<\/h3>\n<p>When <code>cookieParser<\/code> middleware is enabled, this property contains signed cookies sent by the request, unsigned and\nready for use. Signed cookies reside in a different object to show developer intent; otherwise, a malicious attack\ncould be placed on req.cookie values (which are easy to spoof). Note that signing a cookie does not make it \u201chidden\u201d\nor encrypted; but simply prevents tampering (because the secret used to sign is private). If no signed cookies are\nsent, the property defaults to {}.<\/p>\n<pre><code class=\"language-javascript\">\/\/ Cookie: user=tobi.CP7AWaXDfAKIRfH49dQzKJx7sKzzSoPq7\/AcBBRVwlI3\nreq.signedCookies.user\n\/\/ =&gt; \"tobi\"<\/code><\/pre>\n<p>For more information, issues, or concerns, see <a href=\"https:\/\/github.com\/expressjs\/cookie-parser\">cookie-parser<\/a>.<\/p>\n<h3 id=\"reqstale\">req.stale<\/h3>\n<p>Indicates whether the request is \u201cstale,\u201d and is the opposite of req.fresh. For more information, see req.fresh.<\/p>\n<pre><code class=\"language-javascript\">req.stale\n\/\/ =&gt; true<\/code><\/pre>\n<h3 id=\"reqsubdomains\">req.subdomains<\/h3>\n<p>An array of subdomains in the domain name of the request.<\/p>\n<pre><code class=\"language-javascript\">\/\/ Host: \"tobi.ferrets.example.com\"\nreq.subdomains\n\/\/ =&gt; [\"ferrets\", \"tobi\"]<\/code><\/pre>\n<h3 id=\"reqxhr\">req.xhr<\/h3>\n<p>A Boolean value that is true if the request\u2019s \u201cX-Requested-With\u201d header field is \u201cXMLHttpRequest\u201d, indicating that\nthe request was issued by a client library such as jQuery.<\/p>\n<pre><code class=\"language-javascript\">req.xhr\n\/\/ =&gt; true<\/code><\/pre>\n<h2 id=\"methods\">Methods<\/h2>\n<h3 id=\"reqacceptstypes\">req.accepts(types)<\/h3>\n<p>Checks if the specified content types are acceptable, based on the request\u2019s Accept HTTP header field. The method\nreturns the best match, or if none of the specified content types is acceptable, returns false (in which case, the\napplication should respond with 406 &quot;Not Acceptable&quot;).<\/p>\n<p>The type value may be a single MIME type string (such as \u201capplication\/json\u201d), an extension name such as \u201cjson\u201d, a\ncomma-delimited list, or an array. For a list or array, the method returns the best match (if any).<\/p>\n<pre><code class=\"language-javascript\">\/\/ Accept: text\/html\nreq.accepts('html');\n\/\/ =&gt; \"html\"\n\n\/\/ Accept: text\/*, application\/json\nreq.accepts('html');\n\/\/ =&gt; \"html\"\nreq.accepts('text\/html');\n\/\/ =&gt; \"text\/html\"\nreq.accepts(['json', 'text']);\n\/\/ =&gt; \"json\"\nreq.accepts('application\/json');\n\/\/ =&gt; \"application\/json\"\n\n\/\/ Accept: text\/*, application\/json\nreq.accepts('image\/png');\nreq.accepts('png');\n\/\/ =&gt; undefined\n\n\/\/ Accept: text\/*;q=.5, application\/json\nreq.accepts(['html', 'json']);\n\/\/ =&gt; \"json\"<\/code><\/pre>\n<p>For more information, or if you have issues or concerns, see <a href=\"https:\/\/github.com\/jshttp\/accepts\">accepts<\/a>.<\/p>\n<h3 id=\"reqacceptscharsetscharset--\">req.acceptsCharsets(charset [, ...])<\/h3>\n<p>Returns the first accepted charset of the specified character sets, based on the request\u2019s <code>Accept-Charset<\/code> HTTP header\nfield. If none of the specified charsets is accepted, returns false.<\/p>\n<p>For more information, or if you have issues or concerns, see <a href=\"https:\/\/github.com\/jshttp\/accepts\">accepts<\/a>.<\/p>\n<h3 id=\"reqacceptsencodingsencoding--\">req.acceptsEncodings(encoding [, ...])<\/h3>\n<p>Returns the first accepted encoding of the specified encodings, based on the request\u2019s <code>Accept-Encoding<\/code> HTTP header\nfield. If none of the specified encodings is accepted, returns false.<\/p>\n<p>For more information, or if you have issues or concerns, see <a href=\"https:\/\/github.com\/jshttp\/accepts\">accepts<\/a>.<\/p>\n<h3 id=\"reqacceptslanguageslang--\">req.acceptsLanguages(lang [, ...])<\/h3>\n<p>Returns the first accepted language of the specified languages, based on the request\u2019s <code>Accept-Language<\/code> HTTP header\nfield. If none of the specified languages is accepted, returns false.<\/p>\n<p>For more information, or if you have issues or concerns, see <a href=\"https:\/\/github.com\/jshttp\/accepts\">accepts<\/a>.<\/p>\n<h3 id=\"reqgetfield\">req.get(field)<\/h3>\n<p>Returns the specified HTTP request header field (case-insensitive match). The Referrer and Referer fields are\ninterchangeable.<\/p>\n<pre><code class=\"language-javascript\">req.get('Content-Type');\n\/\/ =&gt; \"text\/plain\"\n\nreq.get('content-type');\n\/\/ =&gt; \"text\/plain\"\n\nreq.get('Something');\n\/\/ =&gt; undefined\nAliased as req.header(field).<\/code><\/pre>\n<h3 id=\"reqinputall\">req.input.all()<\/h3>\n<p>Gets all input values for the request<\/p>\n<h3 id=\"reqinputexcept\">req.input.except<\/h3>\n<p>Get a subset of the items from the input data.<\/p>\n<pre><code class=\"language-javascript\">var input = req.input.except('username');\n\nvar input = req.input.except('username', 'password');\n\nvar input = req.input.except(['username', 'password']);<\/code><\/pre>\n<h3 id=\"reqinputflash\">req.input.flash()<\/h3>\n<p>You may need to keep input from one request until the next request. For example, you may need to re-populate a form\nafter checking it for validation errors. This will work only if you have enabled session middleware in\n(<code>app\/config\/middleware.js<\/code>)<\/p>\n<p>Flashes all input items to the session<\/p>\n<pre><code class=\"language-javascript\">req.input.flash();<\/code><\/pre>\n<blockquote>\n<p><strong>Note:<\/strong> You may flash other data across requests using the <a href=\"\/docs\/1.0.0\/middlewares\/session.html\">session<\/a> middleware methods.<\/p>\n<\/blockquote>\n<h3 id=\"reqinputflashexceptname\">req.input.flashExcept(name)<\/h3>\n<p>You may need to keep input from one request until the next request. For example, you may need to re-populate a form\nafter checking it for validation errors. This will work only if you have enabled session middleware in\n(<code>app\/config\/middleware.js<\/code>)<\/p>\n<p>Flashes a subset of input items to the session<\/p>\n<pre><code class=\"language-javascript\">req.input.flashExcept('password');<\/code><\/pre>\n<h3 id=\"reqinputflashonlyname\">req.input.flashOnly(name)<\/h3>\n<p>You may need to keep input from one request until the next request. For example, you may need to re-populate a form\nafter checking it for validation errors. This will work only if you have enabled session middleware in\n(<code>app\/config\/middleware.js<\/code>)<\/p>\n<p>Flashes a subset of input items to the session<\/p>\n<pre><code class=\"language-javascript\">req.input.flashOnly('username', 'email');<\/code><\/pre>\n<h3 id=\"reqinputfilename\">req.input.file(name)<\/h3>\n<p>Retrieves a file from the request.<\/p>\n<blockquote>\n<p><strong>Note:<\/strong> The bodyParser middleware included with Quorra only handles JSON and urlencoded form submissions, not multipart. For\nthis method to work you may need to add additional file parsing middleware to your application.<\/p>\n<\/blockquote>\n<pre><code class=\"language-javascript\">var file = req.input.file('photo');<\/code><\/pre>\n<h3 id=\"reqinputgetname--defaultvalue\">req.input.get(name, [, defaultValue])<\/h3>\n<p>Gets the value of a request input param <code>name<\/code> when present or <code>defaultValue<\/code>.<\/p>\n<ul>\n<li>Checks body params, ex: id=12, {&quot;id&quot;:12}<\/li>\n<li>Checks query string params, ex: ?id=12<\/li>\n<\/ul>\n<p>Lookup is performed in the following order:<\/p>\n<ul>\n<li>req.body<\/li>\n<li>req.query<\/li>\n<\/ul>\n<p><code>bodyParser<\/code> middleware must be loaded for <code>req.param()<\/code> to work predictably. Refer req.body for details.<\/p>\n<h3 id=\"reqinputhas\">req.input.has()<\/h3>\n<p>Determines if the request contains a non-empty value for an input item.<\/p>\n<pre><code class=\"language-javascript\">if (req.input.has('name'))\n{\n    \/\/\n}<\/code><\/pre>\n<h3 id=\"reqinputhasfilename\">req.input.hasFile([name])<\/h3>\n<p>Determines if the uploaded data contains a file.<\/p>\n<p>The bodyParser middleware included with Quorra only handles JSON and urlencoded form submissions, not multipart. For\nthis method to work you may need to add additional file parsing middleware to your application.<\/p>\n<pre><code class=\"language-javascript\">var file = req.input.hasFile('photo');\n\nvar file = req.input.hasFile('photo', 'fbPic');\n\nvar file = req.input.hasFile(['photo', 'fbPic']);<\/code><\/pre>\n<h3 id=\"reqinputold\">req.input.old()<\/h3>\n<p>You may need to keep input from one request until the next request. For example, you may need to re-populate a form\nafter checking it for validation errors. This will work only if you have enabled session middleware in\n(<code>app\/config\/middleware.js<\/code>)<\/p>\n<p>You can retrieve the old flashed data with this method.<\/p>\n<pre><code class=\"language-javascript\">var oldUsername = req.input.old('username')<\/code><\/pre>\n<h3 id=\"reqinputonlyname\">req.input.only([name])<\/h3>\n<p>Get a subset of the items from the input data.<\/p>\n<pre><code class=\"language-javascript\">var input = req.input.only('username');\n\nvar input = req.input.only('username', 'password');\n\nvar input = req.input.only(['username', 'password']);<\/code><\/pre>\n<h3 id=\"reqistype\">req.is(type)<\/h3>\n<p>Returns true if the incoming request\u2019s \u201cContent-Type\u201d HTTP header field matches the MIME type specified by the type\nparameter. Returns false otherwise.<\/p>\n<pre><code class=\"language-javascript\">\/\/ With Content-Type: text\/html; charset=utf-8\nreq.is('html');\nreq.is('text\/html');\nreq.is('text\/*');\n\/\/ =&gt; true\n\n\/\/ When Content-Type is application\/json\nreq.is('json');\nreq.is('application\/json');\nreq.is('application\/*');\n\/\/ =&gt; true\n\nreq.is('html');\n\/\/ =&gt; false<\/code><\/pre>\n<p>For more information, or if you have issues or concerns, see <a href=\"https:\/\/github.com\/jshttp\/type-is\">type-is.<\/a><\/p>\n<h3 id=\"reqparamname--defaultvalue\">req.param(name [, defaultValue])<\/h3>\n<p>Return the value of param name when present.<\/p>\n<pre><code class=\"language-javascript\">\/\/ ?name=tobi\nreq.param('name')\n\/\/ =&gt; \"tobi\"\n\n\/\/ POST name=tobi\nreq.param('name')\n\/\/ =&gt; \"tobi\"\n\n\/\/ \/user\/tobi for \/user\/:name\nreq.param('name')\n\/\/ =&gt; \"tobi\"<\/code><\/pre>\n<p>Lookup is performed in the following order:<\/p>\n<ul>\n<li>req.routeParameters<\/li>\n<li>req.body<\/li>\n<li>req.query<\/li>\n<\/ul>\n<p>Optionally, you can specify defaultValue to set a default value if the parameter is not found in any of the request\nobjects.<\/p>\n<p>Direct access to <code>req.body<\/code>, <code>req.routeParameters<\/code>, and <code>req.query<\/code> should be favoured for clarity - unless you truly\naccept input from each object.<\/p>\n<p><code>bodyParser<\/code> middleware must be loaded for <code>req.param()<\/code> to work predictably. Refer req.body for details.<\/p>\n<h3 id=\"reqrouteparametername--defaultvalue\">req.routeParameter(name, [, defaultValue])<\/h3>\n<p>Return the route parameter for the specified key from <code>req.routeParameters<\/code> object. Optionally, you can specify\ndefaultValue to set a default value if the parameter is not found in any of the request routeParameters object.<\/p>\n<pre><code class=\"language-javascript\">\/\/ \/user\/tobi for \/user\/:name\nreq.routeParameter('name')\n\/\/ =&gt; \"tobi\"<\/code><\/pre>"});</script>
+</body>
 </html>
 

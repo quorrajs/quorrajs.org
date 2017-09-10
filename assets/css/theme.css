@@ -4865,8 +4865,7 @@ pre, pre[class*="language-"] {
   -o-transition: all 0.2s;
   -webkit-transition: all 0.2s;
   transition: all 0.2s;
-  top: -2px;
-  margin-right: 4px;
+  margin-right: 10px;
 }
 #masthead .navbar-brand.text-image {
   margin-right: 4px;
@@ -5192,10 +5191,6 @@ pre, pre[class*="language-"] {
     float: none;
     width: 100%;
     text-align: center;
-  }
-
-  .menu-sidebar {
-    display: none;
   }
 }
 /* - No header masthead - */
@@ -14181,16 +14176,70 @@ header h2 span {
     margin-top: 13px;
     margin-bottom: 13px;
 }
+nav.main {
+    display: -webkit-box;
+    display: flex;
+    width: 100%;
+}
+nav.main .nav-block {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+}
+nav.main .main-nav{
+    list-style: none;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    margin: 0;
+    padding: 0 15px 0 0;
+    float: right;
+}
+.main-nav>li:last-of-type a {
+    padding-right: 0;
+}
+.main-nav>li:first-of-type a {
+    padding-left: 0;
+}
+nav.main .navbar-toggle {
+    margin-right: 0;
+}
+.switcher {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+.switcher .button {
+    margin-right: 15px;
+    margin-top: 12px;
+    line-height: 22px;
+}
 #masthead .navbar-brand {
     padding-right: 15px;
 }
+#masthead .navbar-brand span {
+    font-family: Urba;
+    font-size: 35px;
+    line-height: normal;
+    vertical-align: middle;
+    margin-top: 2px;
+}
 #search {
-    width: 58.3%;
+    vertical-align: middle;
+    height: 60px;
+    -webkit-box-flex: 1;
+    flex: 1;
+    padding-right: 15px;
 }
 .search {
     border-radius: 4px;
     transition: all .3s ease-in-out;
     background: rgba(255,255,255,0.1);
+    width: 100%;
 }
 .search input {
     font-size: 15px;
@@ -14203,6 +14252,7 @@ header h2 span {
     outline: none;
 }
 .search button {
+    position: absolute;
     text-align: center;
     background: none!important;
     border: none;
@@ -14210,7 +14260,6 @@ header h2 span {
     padding: 8px 4px 8px 8px;
     float: left;
     height: 26px;
-    top: 3px;
     transition: all .3s ease-in-out;
     width: 26px;
     cursor: default;
@@ -14224,32 +14273,33 @@ header h2 span {
 .search button i {
     font-size: 18px;
 }
-.search {
-    margin: 13px 0;
-    position: relative;
+.navbar-toggle {
+    display: none;
 }
-@media (max-width: 1200px) {
-    #search {
-        width: 49.5%;
+@media (max-width: 981px) {
+    nav.main .main-nav{
+        display: none;
     }
-}
-@media (max-width: 990px) {
-    #search {
-        width: 100%;
-        margin: 0;
-        margin-left: -10px;
+    .navbar-toggle {
+        display: block;
     }
-
-    .search {
-        width: 100%;
-        margin: 0;
+    .sidebar {
+        display: none;
     }
-
-    #masthead.navbar {
-        min-height: 109px;
+    .section.documentation {
+        padding: 15px 0 30px 0;
     }
 }
-
+@media (max-width: 660px) {
+    #masthead .navbar-brand span {
+        display: none;
+    }
+}
+@media (max-width: 500px) {
+    .switcher {
+        display: none;
+    }
+}
 @keyframes bounceRight {
     0% {
         transform: translateX(0px);
@@ -14357,7 +14407,9 @@ header h2 span {
 .twitter-typeahead {
     position: relative;
     color: #444;
-    width: 90%
+    width: 100%;
+    float: right;
+    left: 30px;
 }
 
 .twitter-typeahead .tt-hint {
@@ -14365,6 +14417,7 @@ header h2 span {
 }
 
 .twitter-typeahead .tt-dropdown-menu {
+    left: -30px!important;
     margin: 21px 0 0 0;
     width: 100%;
     padding: 0;
@@ -14494,4 +14547,79 @@ header h2 span {
 
 .twitter-typeahead .suggestion_typehead.brand_in .keyword_in {
     color: #888;
+}
+
+/* The side navigation menu */
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    transition: 0.5s;
+    background: #3367d5;
+    padding: 0 20px;
+    color: #fff;
+}
+.sidenav a {
+    color: #fff;
+}
+.sidenav .brand {
+    font-family: Urba;
+    font-size: 40px;
+    line-height: normal;
+    padding: 22px 0;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,.25);
+}
+.sidenav .side-main-nav {
+    list-style: none;
+    padding: 25px 0;
+    margin: 0;
+    border-bottom: 1px solid rgba(255,255,255,.1);
+    line-height: 2;
+    font-weight: 700;
+}
+.sidenav .side-doc-nav {
+    padding: 25px 0;
+    margin: 0;
+}
+.side-doc-nav ul {
+    list-style: none;
+    padding: 0;
+    border-top: 1px dashed rgba(0,0,0,.1);
+}
+.side-doc-nav ul li {
+    color: rgba(255,255,255,.9);
+    font-size: 14px;
+    line-height: 2;
+}
+.side-doc-nav h3 {
+    font-size: 18px;
+    font-weight: 700;
+}
+.side-doc-nav .category h3 {
+    font-size: 17px;
+    margin-bottom: 15px;
+}
+#main-content {
+    transition: margin-left .5s;
+}
+#overlay {
+    display: none;
+    position: fixed;
+    background: rgba(255,255,255,.75);
+    width: 100%;
+    height: 100%;
+    z-index: 999999;
+    transition: all .1s ease;
+    -webkit-animation-duration: .5s;
+    animation-duration: .5s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
+    cursor: pointer;
 }

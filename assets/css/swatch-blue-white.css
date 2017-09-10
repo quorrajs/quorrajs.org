@@ -262,9 +262,12 @@
     color: #fff;
   }
   .swatch-blue-white.navbar .dropdown-menu, [class*="swatch-"] .swatch-blue-white.navbar .dropdown-menu {
-    background: #598599;
+    background: #3367d5;
     border-radius: 0;
     box-shadow: none;
+  }
+  .swatch-blue-white.navbar .dropdown-menu.sm-color {
+      background: #598599;
   }
   .swatch-blue-white.navbar .dropdown-menu > li > a, [class*="swatch-"] .swatch-blue-white.navbar .dropdown-menu > li > a {
     border-radius: 0;

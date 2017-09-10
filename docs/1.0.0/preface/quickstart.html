@@ -1,109 +1,312 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>QuorraJS</title>
-        <link rel="icon" type="image/x-icon" href="https://quorrajs.org/assets/icons/favicon.ico" />
-        <link href='https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,400italic' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="https://quorrajs.org/assets/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://quorrajs.org/assets/css/theme.css">
-        <link rel="stylesheet" href="https://quorrajs.org/assets/css/color-defaults.min.css">
-        <link rel="stylesheet" href="https://quorrajs.org/assets/css/swatch-blue-white.css">
-        <link rel="stylesheet" href="https://quorrajs.org/assets/css/swatch-white-blue.css">
-        <link rel="stylesheet" href="https://quorrajs.org/assets/css/prism.css">
-        <link rel="stylesheet" href="https://quorrajs.org/assets/css/fonts.min.css" media="screen">
-        <script>
-            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>QuorraJS</title>
+    <link rel="icon" type="image/x-icon" href="/assets/icons/favicon.ico"/>
+    <link href='https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,400italic' rel='stylesheet'
+          type='text/css'>
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/theme.css">
+    <link rel="stylesheet" href="/assets/css/color-defaults.min.css">
+    <link rel="stylesheet" href="/assets/css/swatch-blue-white.css">
+    <link rel="stylesheet" href="/assets/css/swatch-white-blue.css">
+    <link rel="stylesheet" href="/assets/css/prism.css">
+    <link rel="stylesheet" href="/assets/css/fonts.min.css" media="screen">
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
-            ga('create', 'UA-42913540-2', 'auto');
-            ga('send', 'pageview');
-        </script>
-        
-        <script id="search_suggestion_template" type="text/template">
-            <div class="autocomplete-wrapper">
-                {{#_highlightResult.h1}}
-                <div class="h1">
-                    {{{ _highlightResult.h1.value }}}
-                </div>
-                {{/_highlightResult.h1}}
-
-                <div class="sub-section">
-                    {{#_highlightResult.h2}}
-                    <div class="h2">
-                        <span class="hash">#</span> {{{ _highlightResult.h2.value }}}
-                    </div>
-                    {{/_highlightResult.h2}}
-
-                    {{#_highlightResult.h3}}
-                    <div class="h3">
-                        > {{{ _highlightResult.h3.value }}}
-                    </div>
-                    {{/_highlightResult.h3}}
-
-                    {{#_highlightResult.h4}}
-                    <div class="h4">
-                        > {{{ _highlightResult.h4.value }}}
-                    </div>
-                    {{/_highlightResult.h4}}
-                </div>
-
-                {{#_highlightResult.content}}
-                <div class="content">
-                    {{{ _highlightResult.content.value }}}
-                </div>
-                {{/_highlightResult.content}}
+        ga('create', 'UA-42913540-2', 'auto');
+        ga('send', 'pageview');
+    </script>
+    
+    <script id="search_suggestion_template" type="text/template">
+        <div class="autocomplete-wrapper">
+            {{#_highlightResult.h1}}
+            <div class="h1">
+                {{{ _highlightResult.h1.value }}}
             </div>
-        </script>
-        <script id="search_empty_template" type="text/template">
-            <div class="autocomplete-wrapper empty">
-                <div class="h2">We didn't find any result for "{{query}}". Sorry!</div>
+            {{/_highlightResult.h1}}
+
+            <div class="sub-section">
+                {{#_highlightResult.h2}}
+                <div class="h2">
+                    <span class="hash">#</span> {{{ _highlightResult.h2.value }}}
+                </div>
+                {{/_highlightResult.h2}}
+
+                {{#_highlightResult.h3}}
+                <div class="h3">
+                    > {{{ _highlightResult.h3.value }}}
+                </div>
+                {{/_highlightResult.h3}}
+
+                {{#_highlightResult.h4}}
+                <div class="h4">
+                    > {{{ _highlightResult.h4.value }}}
+                </div>
+                {{/_highlightResult.h4}}
             </div>
-        </script>
-        <script id="search_footer_template" type="text/template">
-            <div class="footer">
-                <a target="_blank" href="https://www.algolia.com/">
-        
-                    <img width="50" src="https://quorrajs.org/assets/images/algolia.png">
-        
-                    <div class="powered">powered by</div>
-                    <div style="clear: both"></div>
+
+            {{#_highlightResult.content}}
+            <div class="content">
+                {{{ _highlightResult.content.value }}}
+            </div>
+            {{/_highlightResult.content}}
+        </div>
+    </script>
+    <script id="search_empty_template" type="text/template">
+        <div class="autocomplete-wrapper empty">
+            <div class="h2">We didn't find any result for "{{query}}". Sorry!</div>
+        </div>
+    </script>
+    <script id="search_footer_template" type="text/template">
+        <div class="footer">
+            <a target="_blank" href="https://www.algolia.com/">
+                
+                <img width="50" src="/assets/images/algolia.png">
+                
+                <div class="powered">powered by</div>
+                <div style="clear: both"></div>
+            </a>
+        </div>
+    </script>
+    
+</head>
+<body>
+    <div id="sidenav" class="sidenav">
+        <div class="brand">
+            <a href="/">QuorraJS</a>
+        </div>
+        <ul class="side-main-nav">
+            <li><a data-scroll data-options="easing: easeOutQuart"
+                   href="https://medium.com/@quorrajs" target="_blank">Blog</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Community
+                    <span class="caret"></span>
                 </a>
+                <ul class="dropdown-menu">
+                    <li><a href="https://github.com/quorrajs" target="_blank">Github</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="https://quorrajs.slack.com" target="_blank">Slack</a></li>
+                    <li><a href="https://gitter.im/quorrajs/quorrajs" target="_blank">Gitter</a></li>
+                    <li><a href="https://twitter.com/quorrajs" target="_blank">Twitter</a></li>
+                </ul>
+            </li>
+        </ul>
+                    <div class="side-doc-nav">
+                <h3>Documentation</h3>
+                                    <div class="category">
+                        <h3>Preface</h3>
+                        <ul>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/preface/quickstart.html">
+                                        Quickstart
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/preface/contribution-guide.html">
+                                        Contribution Guide
+                                    </a>
+                                </li>
+                                                    </ul>
+                    </div>
+                                    <div class="category">
+                        <h3>Getting started</h3>
+                        <ul>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/getting-started/installation.html">
+                                        Installation
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/getting-started/configuration.html">
+                                        Configuration
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/getting-started/request-lifecycle.html">
+                                        Request Lifecycle
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/getting-started/routing.html">
+                                        Routing
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/getting-started/requests-&amp;-input.html">
+                                        Requests & Input
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/getting-started/views-&amp;-responses.html">
+                                        Views & Responses
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/getting-started/controllers.html">
+                                        Controllers
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/getting-started/errors-&amp;-logging.html">
+                                        Errors & Logging
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/getting-started/models-&amp;-orm.html">
+                                        Models & ORM
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/getting-started/globals.html">
+                                        Globals
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/getting-started/middleware.html">
+                                        Middleware
+                                    </a>
+                                </li>
+                                                    </ul>
+                    </div>
+                                    <div class="category">
+                        <h3>Learning more</h3>
+                        <ul>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/more/security.html">
+                                        Security
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/middlewares/session.html">
+                                        Session
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/more/mail.html">
+                                        Mail
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/more/request.html">
+                                        Request Object
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/more/response.html">
+                                        Response Object
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/more/service-providers.html">
+                                        Service Providers
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/middlewares/body-parser.html">
+                                        Body Parser
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/middlewares/query-parser.html">
+                                        Query Parser
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/middlewares/cookie-parser.html">
+                                        Cookie Parser
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/middlewares/authentication.html">
+                                        Authentication
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/middlewares/localization.html">
+                                        Localization
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/middlewares/http-method-override.html">
+                                        HTTP Method Override
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/middlewares/serve-static.html">
+                                        Server Static
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/more/elixir.html">
+                                        Elixir
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/more/miscellaneous.html">
+                                        Miscellaneous
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/more/testing.html">
+                                        Testing
+                                    </a>
+                                </li>
+                                                    </ul>
+                    </div>
+                                    <div class="category">
+                        <h3>Quorra CLI</h3>
+                        <ul>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/quorra-cli/overview.html">
+                                        Overview
+                                    </a>
+                                </li>
+                                                    </ul>
+                    </div>
+                            </div>
             </div>
-        </script>
-        
-    </head>
-    <body>
+    <div id="main-content">
+        <span id="overlay"></span>
         <header id="masthead" class="navbar-small navbar swatch-blue-white" role="banner">
             <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".main-navbar">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a href="https://quorrajs.org/index.html" class="navbar-brand">
-                        <img src="https://quorrajs.org/assets/images/logo.png" alt="QuorraJS">
+                <nav class="main">
+                    <a href="/index.html" class="navbar-brand nav-block">
+                        <img src="/assets/icons/logo-icon.png" alt="QuorraJS">
+                        <span>QuorraJS</span>
                     </a>
-                </div>
-                <div id="search" class="nav navbar-nav">
-                    <div class="search">
-                        <button type="submit"><i class="fa fa-search"></i></button>
-                        <input type="text" name="search" class="form-control">
+
+                    <div id="search" class="nav-block">
+                        <div class="search">
+                            <input type="text" name="search" class="form-control">
+                            <button type="submit"><i class="fa fa-search"></i></button>
+                        </div>
                     </div>
-                </div>
-                <nav class="collapse navbar-collapse main-navbar" role="navigation">
-                    <ul class="nav navbar-nav navbar-right">
+                    <ul class="main-nav nav">
                         <li><a data-scroll data-options="easing: easeOutQuart"
-                               href="https://quorrajs.org/docs/1.0.0/getting-started/installation.html">Documentation</a></li>
+                               href="/docs/1.0.0/getting-started/installation.html">Documentation</a></li>
                         <li><a data-scroll data-options="easing: easeOutQuart"
                                href="https://medium.com/@quorrajs" target="_blank">Blog</a></li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community</a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                Community
+                                <span class="caret"></span>
+                            </a>
                             <ul class="dropdown-menu">
                                 <li><a href="https://github.com/quorrajs" target="_blank">Github</a></li>
                                 <li role="separator" class="divider"></li>
@@ -113,6 +316,28 @@
                             </ul>
                         </li>
                     </ul>
+                    <div class="switcher">
+                        <div class="dropdown">
+                            <button class="btn btn-info dropdown-toggle" type="button" aria-haspopup="true"
+                                    data-toggle="dropdown">
+                                1.0.0
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                                                                                        <li>
+                                        <a href="/docs/master/preface/quickstart.html">Master</a>
+                                    </li>
+                                                                                                        <li>
+                                        <a href="/docs/1.0.0/preface/quickstart.html">1.0.0</a>
+                                    </li>
+                                                            </ul>
+                        </div>
+                    </div>
+                    <button type="button" class="navbar-toggle collapsed">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
                 </nav>
             </div>
         </header>
@@ -454,13 +679,15 @@ framework.</p>
         <a class="go-top hex-alt" href="javascript:void(0)">
             <i class="fa fa-angle-up"></i>
         </a>
-        <script src="https://quorrajs.org/assets/js/packages.min.js"></script>
-        <script src="https://quorrajs.org/assets/js/theme.min.js"></script>
-        <script src="https://quorrajs.org/assets/js/prism.js"></script>
-        <script src="https://quorrajs.org/assets/js/algoliasearch.min.js"></script>
-        <script src="https://quorrajs.org/assets/js/typeahead.js"></script>
-        <script src="https://quorrajs.org/assets/js/Hogan.js"></script>
-        <script src="https://quorrajs.org/assets/js/quorra.js"></script>
-    </body>
+    </div>
+    <script src="/assets/js/packages.min.js"></script>
+    <script src="/assets/js/theme.min.js"></script>
+    <script src="/assets/js/prism.js"></script>
+    <script src="/assets/js/algoliasearch.min.js"></script>
+    <script src="/assets/js/typeahead.js"></script>
+    <script src="/assets/js/Hogan.js"></script>
+    <script src="/assets/js/quorra.js"></script>
+    <script>console.log({"cliConfig":[],"exclude":["vendor","website"],"baseUrl":"https:\/\/quorrajs.org","docBaseUrl":"\/docs","currentVersion":"1.0.0","versions":["master","1.0.0"],"github":{"user":"quorrajs","repo":"Quorra-docs"},"title":"QuorraJS","subTitle":"NodeJS framework for web riders.","menu":{"sections":{"main":{"name":"Preface","items":{"home":{"text":"Quickstart","relativeUrl":"preface\/quickstart.html"},"contribution guide":{"text":"Contribution Guide","relativeUrl":"preface\/contribution-guide.html"}}},"getting-started":{"name":"Getting started","items":{"installation":{"text":"Installation","relativeUrl":"getting-started\/installation.html"},"configuration":{"text":"Configuration","relativeUrl":"getting-started\/configuration.html"},"request lifecycle":{"text":"Request Lifecycle","relativeUrl":"getting-started\/request-lifecycle.html"},"routing":{"text":"Routing","relativeUrl":"getting-started\/routing.html"},"requests & input":{"text":"Requests & Input","relativeUrl":"getting-started\/requests-&-input.html"},"views & responses":{"text":"Views & Responses","relativeUrl":"getting-started\/views-&-responses.html"},"controllers":{"text":"Controllers","relativeUrl":"getting-started\/controllers.html"},"errors & logging":{"text":"Errors & Logging","relativeUrl":"getting-started\/errors-&-logging.html"},"models & orm":{"text":"Models & ORM","relativeUrl":"getting-started\/models-&-orm.html"},"globals":{"text":"Globals","relativeUrl":"getting-started\/globals.html"},"middleware":{"text":"Middleware","relativeUrl":"getting-started\/middleware.html"}}},"learning more":{"name":"Learning more","items":{"Security":{"text":"Security","relativeUrl":"more\/security.html"},"session":{"text":"Session","relativeUrl":"middlewares\/session.html"},"mail":{"text":"Mail","relativeUrl":"more\/mail.html"},"request object":{"text":"Request Object","relativeUrl":"more\/request.html"},"response object":{"text":"Response Object","relativeUrl":"more\/response.html"},"service providers":{"text":"Service Providers","relativeUrl":"more\/service-providers.html"},"body parser":{"text":"Body Parser","relativeUrl":"middlewares\/body-parser.html"},"query parser":{"text":"Query Parser","relativeUrl":"middlewares\/query-parser.html"},"cookie parser":{"text":"Cookie Parser","relativeUrl":"middlewares\/cookie-parser.html"},"authentication":{"text":"Authentication","relativeUrl":"middlewares\/authentication.html"},"localization":{"text":"Localization","relativeUrl":"middlewares\/localization.html"},"http method override":{"text":"HTTP Method Override","relativeUrl":"middlewares\/http-method-override.html"},"serve static":{"text":"Server Static","relativeUrl":"middlewares\/serve-static.html"},"elixir":{"text":"Elixir","relativeUrl":"more\/elixir.html"},"miscellanous":{"text":"Miscellaneous","relativeUrl":"more\/miscellaneous.html"},"testing":{"text":"Testing","relativeUrl":"more\/testing.html"}}},"other":{"name":"Quorra CLI","items":{"home":{"text":"Overview","relativeUrl":"quorra-cli\/overview.html"}}}}},"template":{"directory":"\/home\/harish\/Dropbox\/Code\/quorra-docs\/website"},"pageList":{"13":"getting-started\/configuration.html","7":"getting-started\/controllers.html","9":"getting-started\/errors-&-logging.html","11":"getting-started\/globals.html","10":"getting-started\/installation.html","3":"getting-started\/middleware.html","8":"getting-started\/models-&-orm.html","5":"getting-started\/request-lifecycle.html","12":"getting-started\/requests-&-input.html","6":"getting-started\/routing.html","4":"getting-started\/views-&-responses.html","2":"index.html","28":"middlewares\/authentication.html","24":"middlewares\/body-parser.html","25":"middlewares\/cookie-parser.html","23":"middlewares\/http-method-override.html","27":"middlewares\/localization.html","30":"middlewares\/query-parser.html","26":"middlewares\/serve-static.html","29":"middlewares\/session.html","21":"more\/elixir.html","20":"more\/mail.html","17":"more\/miscellaneous.html","18":"more\/request.html","14":"more\/response.html","16":"more\/security.html","15":"more\/service-providers.html","19":"more\/testing.html","1":"preface\/contribution-guide.html","0":"preface\/quickstart.html","22":"quorra-cli\/overview.html"},"pageTree":{"getting-started":{"configuration.html":"configuration.html","controllers.html":"controllers.html","errors-&-logging.html":"errors-&-logging.html","globals.html":"globals.html","installation.html":"installation.html","middleware.html":"middleware.html","models-&-orm.html":"models-&-orm.html","request-lifecycle.html":"request-lifecycle.html","requests-&-input.html":"requests-&-input.html","routing.html":"routing.html","views-&-responses.html":"views-&-responses.html"},"index.html":"index.html","middlewares":{"authentication.html":"authentication.html","body-parser.html":"body-parser.html","cookie-parser.html":"cookie-parser.html","http-method-override.html":"http-method-override.html","localization.html":"localization.html","query-parser.html":"query-parser.html","serve-static.html":"serve-static.html","session.html":"session.html"},"more":{"elixir.html":"elixir.html","mail.html":"mail.html","miscellaneous.html":"miscellaneous.html","request.html":"request.html","response.html":"response.html","security.html":"security.html","service-providers.html":"service-providers.html","testing.html":"testing.html"},"preface":{"contribution-guide.html":"contribution-guide.html","quickstart.html":"quickstart.html"},"quorra-cli":{"overview.html":"overview.html"}},"currentFile":"preface\/quickstart.md","content":"<h1 id=\"quorra-quickstart\">Quorra Quickstart<\/h1>\n<ul>\n<li><a href=\"#installation\">Installation<\/a><\/li>\n<li><a href=\"#routing\">Routing<\/a><\/li>\n<li><a href=\"#creating-a-view\">Creating A View<\/a><\/li>\n<li><a href=\"#waterline-ormodm\">Waterline ORM<\/a><\/li>\n<li><a href=\"#displaying-data\">Displaying Data<\/a><\/li>\n<\/ul>\n<h2 id=\"installation\">Installation<\/h2>\n<p>First, download the Quorra cli using npm.<\/p>\n<pre><code>npm install -g quorra-cli<\/code><\/pre>\n<p>Once installed, the simple <code>quorra new<\/code> command will create a fresh Quorra installation in the directory you specify.\nFor instance, <code>quorra new blog<\/code> would create a directory named <code>blog<\/code> containing a fresh Quorra installation with all\ndependencies installed.<\/p>\n<h3 id=\"permissions\">Permissions<\/h3>\n<p>Quorra may require one set of permissions to be configured: folders within <code>app\/storage<\/code> require write access by the web\nserver.<\/p>\n<h3 id=\"serving-quorra\">Serving Quorra<\/h3>\n<p>You can use the <code>ride<\/code> Quorra-cli command to serve Quorra applicaton:<\/p>\n<pre><code>quorra ride<\/code><\/pre>\n<p>By default the HTTP-server will listen to port 3000. However if that port is already in use or you wish to serve\nmultiple applications this way, you might want to specify what port to use. Just add the --port argument:<\/p>\n<pre><code>quorra ride --port 8080<\/code><\/pre>\n<p>You can configure your default Quorra port in <code>app\/config\/app.js<\/code><\/p>\n<h3 id=\"directory-structure\">Directory Structure<\/h3>\n<p>After installing the framework, take a glance around the project to familiarize yourself with the directory structure.\nThe app directory contains folders such as controllers, and models. Most of your application's code will reside\nsomewhere in this directory. You may also wish to explore the <code>app\/config<\/code> directory and the configuration options that\nare available to you.<\/p>\n<h2 id=\"routing\">Routing<\/h2>\n<p>To get started, let's create our first route. In Quorra, the simplest route is a route to a Closure. Pop open the\n<code>app\/routes.js<\/code> file and add the following route to the bottom of the file:<\/p>\n<pre><code class=\"language-javascript\">Route.get('users', function(req, res)\n{\n     res.send('Users!');\n});<\/code><\/pre>\n<p>Now, if you hit the <code>\/users<\/code> route in your web browser, you should see <code>Users!<\/code> displayed as the response. Great! You've\njust created your first route.<\/p>\n<p>Routes can also be attached to controllers. For example:<\/p>\n<pre><code class=\"language-javascript\">Route.get('users', 'UserController@getIndex');<\/code><\/pre>\n<p>This route informs the framework that requests to the <code>\/users<\/code> route should call the <code>getIndex<\/code> method on the\n<code>UserController<\/code>. For more information on controller routing, check out the <a href=\"\/docs\/1.0.0\/getting-started\/controllers.html\">controller documentation<\/a>.<\/p>\n<h2 id=\"creating-a-view\">Creating A View<\/h2>\n<p>Next, we'll create a simple view to display our user data. Views live in the <code>resources\/views<\/code> directory and contain\nthe HTML of your application. We're going to place two new views in this directory: <code>layout.jade<\/code> and <code>users.jade<\/code>\nFirst, let's create our layout.jade file:<\/p>\n<pre><code>doctype html\nhtml\n  head\n    title='Quorra Quickstart'\n  body\n    block content<\/code><\/pre>\n<p>Next, we'll create our <code>users.jade<\/code> view:<\/p>\n<pre><code>extends layout\n\nblock content\n  p Users!<\/code><\/pre>\n<p>Here we use <a href=\"https:\/\/github.com\/visionmedia\/jade\">jade<\/a> templating system, Quorra comes pre-installed with jade\ntemplate engine. You can configure template engines for your application in <code>app\/config\/view.js<\/code>. Quorra uses module\n<a href=\"https:\/\/github.com\/tj\/consolidate.js\">consolidate<\/a>, a template engine consolidation library and supports all the\ntemplate engines <a href=\"https:\/\/github.com\/tj\/consolidate\n.js#supported-template-engines\">supported by the consolidate library<\/a>.<\/p>\n<p>Now that we have our views, let's send it from our \/users route as the response. Instead of sending <code>Users!<\/code> from the\nroute, return the view instead:<\/p>\n<pre><code class=\"language-javascript\">Route.get('users', function(req, res)\n{\n    res.view('users');\n});<\/code><\/pre>\n<p>Wonderful! Now you have setup a simple view that extends a layout. Next, let's start working on our database layer.<\/p>\n<h2 id=\"waterline-ormodm\">Waterline ORM\/ODM<\/h2>\n<p>Quorra makes connecting with databases and running queries extremely simple. Quorra comes installed with a powerful\nORM\/ODM called <a href=\"https:\/\/github.com\/balderdashy\/waterline\">Waterline<\/a>, a datastore-agnostic tool that dramatically\nsimplifies interaction with one or more databases.<\/p>\n<p>First, let's define a model. An waterline model can be used to query an associated database table. Don't worry, it\nwill all make sense soon! Models are typically stored in the <code>app\/models<\/code> directory. Let's define a <code>User.js<\/code> model in\nthat directory like so:<\/p>\n<pre><code class=\"language-javascript\">\/\/ path: app\/models\/user.js\nvar User = {\n    attributes: {\n       ...\n    }\n};\n\nmodule.exports = User;<\/code><\/pre>\n<p>Note that we do not have to tell Waterline which table to use.<\/p>\n<p>Using your preferred database administration tool, insert a few rows into your user table, and we'll use Waterline to\nretrieve them and pass them to our view.<\/p>\n<p>Now let's modify our <code>\/users<\/code> route to look like this:<\/p>\n<pre><code class=\"language-javascript\">Route.get('users', function(req, res)\n{\n    User.find(function (err, users) {\n        res.view('users', {users: users});\n    });\n});<\/code><\/pre>\n<p>Let's walk through this route. First, the all method on the User model will retrieve all of the rows in the users\ntable. Next, we're passing these records to the view via view method along with the view name. Now the <code>users<\/code> data\nis available to the view.<\/p>\n<p>Awesome. Now we're ready to display the users in our view!<\/p>\n<h2 id=\"displaying-data\">Displaying Data<\/h2>\n<p>Now that we have made the users available to our view, we can display them like so:<\/p>\n<pre><code>extends layout\n\nblock content\n each val in users\n    p= val.name<\/code><\/pre>\n<p>Now, you should be able to hit the <code>\/users<\/code> route and see the names of your users displayed in the response.<\/p>\n<p>This is just the beginning. In this tutorial, you've seen the very basics of Quorra, but there are so many more\nexciting things to learn. Keep reading through the documentation and dig deeper into the powerful features of Quorra\nframework.<\/p>"});</script>
+</body>
 </html>
 

@@ -1,109 +1,312 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>QuorraJS</title>
-        <link rel="icon" type="image/x-icon" href="https://quorrajs.org/assets/icons/favicon.ico" />
-        <link href='https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,400italic' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="https://quorrajs.org/assets/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://quorrajs.org/assets/css/theme.css">
-        <link rel="stylesheet" href="https://quorrajs.org/assets/css/color-defaults.min.css">
-        <link rel="stylesheet" href="https://quorrajs.org/assets/css/swatch-blue-white.css">
-        <link rel="stylesheet" href="https://quorrajs.org/assets/css/swatch-white-blue.css">
-        <link rel="stylesheet" href="https://quorrajs.org/assets/css/prism.css">
-        <link rel="stylesheet" href="https://quorrajs.org/assets/css/fonts.min.css" media="screen">
-        <script>
-            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>QuorraJS</title>
+    <link rel="icon" type="image/x-icon" href="/assets/icons/favicon.ico"/>
+    <link href='https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,400italic' rel='stylesheet'
+          type='text/css'>
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/theme.css">
+    <link rel="stylesheet" href="/assets/css/color-defaults.min.css">
+    <link rel="stylesheet" href="/assets/css/swatch-blue-white.css">
+    <link rel="stylesheet" href="/assets/css/swatch-white-blue.css">
+    <link rel="stylesheet" href="/assets/css/prism.css">
+    <link rel="stylesheet" href="/assets/css/fonts.min.css" media="screen">
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
-            ga('create', 'UA-42913540-2', 'auto');
-            ga('send', 'pageview');
-        </script>
-        
-        <script id="search_suggestion_template" type="text/template">
-            <div class="autocomplete-wrapper">
-                {{#_highlightResult.h1}}
-                <div class="h1">
-                    {{{ _highlightResult.h1.value }}}
-                </div>
-                {{/_highlightResult.h1}}
-
-                <div class="sub-section">
-                    {{#_highlightResult.h2}}
-                    <div class="h2">
-                        <span class="hash">#</span> {{{ _highlightResult.h2.value }}}
-                    </div>
-                    {{/_highlightResult.h2}}
-
-                    {{#_highlightResult.h3}}
-                    <div class="h3">
-                        > {{{ _highlightResult.h3.value }}}
-                    </div>
-                    {{/_highlightResult.h3}}
-
-                    {{#_highlightResult.h4}}
-                    <div class="h4">
-                        > {{{ _highlightResult.h4.value }}}
-                    </div>
-                    {{/_highlightResult.h4}}
-                </div>
-
-                {{#_highlightResult.content}}
-                <div class="content">
-                    {{{ _highlightResult.content.value }}}
-                </div>
-                {{/_highlightResult.content}}
+        ga('create', 'UA-42913540-2', 'auto');
+        ga('send', 'pageview');
+    </script>
+    
+    <script id="search_suggestion_template" type="text/template">
+        <div class="autocomplete-wrapper">
+            {{#_highlightResult.h1}}
+            <div class="h1">
+                {{{ _highlightResult.h1.value }}}
             </div>
-        </script>
-        <script id="search_empty_template" type="text/template">
-            <div class="autocomplete-wrapper empty">
-                <div class="h2">We didn't find any result for "{{query}}". Sorry!</div>
+            {{/_highlightResult.h1}}
+
+            <div class="sub-section">
+                {{#_highlightResult.h2}}
+                <div class="h2">
+                    <span class="hash">#</span> {{{ _highlightResult.h2.value }}}
+                </div>
+                {{/_highlightResult.h2}}
+
+                {{#_highlightResult.h3}}
+                <div class="h3">
+                    > {{{ _highlightResult.h3.value }}}
+                </div>
+                {{/_highlightResult.h3}}
+
+                {{#_highlightResult.h4}}
+                <div class="h4">
+                    > {{{ _highlightResult.h4.value }}}
+                </div>
+                {{/_highlightResult.h4}}
             </div>
-        </script>
-        <script id="search_footer_template" type="text/template">
-            <div class="footer">
-                <a target="_blank" href="https://www.algolia.com/">
-        
-                    <img width="50" src="https://quorrajs.org/assets/images/algolia.png">
-        
-                    <div class="powered">powered by</div>
-                    <div style="clear: both"></div>
+
+            {{#_highlightResult.content}}
+            <div class="content">
+                {{{ _highlightResult.content.value }}}
+            </div>
+            {{/_highlightResult.content}}
+        </div>
+    </script>
+    <script id="search_empty_template" type="text/template">
+        <div class="autocomplete-wrapper empty">
+            <div class="h2">We didn't find any result for "{{query}}". Sorry!</div>
+        </div>
+    </script>
+    <script id="search_footer_template" type="text/template">
+        <div class="footer">
+            <a target="_blank" href="https://www.algolia.com/">
+                
+                <img width="50" src="/assets/images/algolia.png">
+                
+                <div class="powered">powered by</div>
+                <div style="clear: both"></div>
+            </a>
+        </div>
+    </script>
+    
+</head>
+<body>
+    <div id="sidenav" class="sidenav">
+        <div class="brand">
+            <a href="/">QuorraJS</a>
+        </div>
+        <ul class="side-main-nav">
+            <li><a data-scroll data-options="easing: easeOutQuart"
+                   href="https://medium.com/@quorrajs" target="_blank">Blog</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Community
+                    <span class="caret"></span>
                 </a>
+                <ul class="dropdown-menu">
+                    <li><a href="https://github.com/quorrajs" target="_blank">Github</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="https://quorrajs.slack.com" target="_blank">Slack</a></li>
+                    <li><a href="https://gitter.im/quorrajs/quorrajs" target="_blank">Gitter</a></li>
+                    <li><a href="https://twitter.com/quorrajs" target="_blank">Twitter</a></li>
+                </ul>
+            </li>
+        </ul>
+                    <div class="side-doc-nav">
+                <h3>Documentation</h3>
+                                    <div class="category">
+                        <h3>Preface</h3>
+                        <ul>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/preface/quickstart.html">
+                                        Quickstart
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/preface/contribution-guide.html">
+                                        Contribution Guide
+                                    </a>
+                                </li>
+                                                    </ul>
+                    </div>
+                                    <div class="category">
+                        <h3>Getting started</h3>
+                        <ul>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/getting-started/installation.html">
+                                        Installation
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/getting-started/configuration.html">
+                                        Configuration
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/getting-started/request-lifecycle.html">
+                                        Request Lifecycle
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/getting-started/routing.html">
+                                        Routing
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/getting-started/requests-&amp;-input.html">
+                                        Requests & Input
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/getting-started/views-&amp;-responses.html">
+                                        Views & Responses
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/getting-started/controllers.html">
+                                        Controllers
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/getting-started/errors-&amp;-logging.html">
+                                        Errors & Logging
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/getting-started/models-&amp;-orm.html">
+                                        Models & ORM
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/getting-started/globals.html">
+                                        Globals
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/getting-started/middleware.html">
+                                        Middleware
+                                    </a>
+                                </li>
+                                                    </ul>
+                    </div>
+                                    <div class="category">
+                        <h3>Learning more</h3>
+                        <ul>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/more/security.html">
+                                        Security
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/middlewares/session.html">
+                                        Session
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/more/mail.html">
+                                        Mail
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/more/request.html">
+                                        Request Object
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/more/response.html">
+                                        Response Object
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/more/service-providers.html">
+                                        Service Providers
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/middlewares/body-parser.html">
+                                        Body Parser
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/middlewares/query-parser.html">
+                                        Query Parser
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/middlewares/cookie-parser.html">
+                                        Cookie Parser
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/middlewares/authentication.html">
+                                        Authentication
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/middlewares/localization.html">
+                                        Localization
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/middlewares/http-method-override.html">
+                                        HTTP Method Override
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/middlewares/serve-static.html">
+                                        Server Static
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/more/elixir.html">
+                                        Elixir
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/more/miscellaneous.html">
+                                        Miscellaneous
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/more/testing.html">
+                                        Testing
+                                    </a>
+                                </li>
+                                                    </ul>
+                    </div>
+                                    <div class="category">
+                        <h3>Quorra CLI</h3>
+                        <ul>
+                                                            <li class="">
+                                    <a href="/docs/1.0.0/quorra-cli/overview.html">
+                                        Overview
+                                    </a>
+                                </li>
+                                                    </ul>
+                    </div>
+                            </div>
             </div>
-        </script>
-        
-    </head>
-    <body>
+    <div id="main-content">
+        <span id="overlay"></span>
         <header id="masthead" class="navbar-small navbar swatch-blue-white" role="banner">
             <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".main-navbar">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a href="https://quorrajs.org/index.html" class="navbar-brand">
-                        <img src="https://quorrajs.org/assets/images/logo.png" alt="QuorraJS">
+                <nav class="main">
+                    <a href="/index.html" class="navbar-brand nav-block">
+                        <img src="/assets/icons/logo-icon.png" alt="QuorraJS">
+                        <span>QuorraJS</span>
                     </a>
-                </div>
-                <div id="search" class="nav navbar-nav">
-                    <div class="search">
-                        <button type="submit"><i class="fa fa-search"></i></button>
-                        <input type="text" name="search" class="form-control">
+
+                    <div id="search" class="nav-block">
+                        <div class="search">
+                            <input type="text" name="search" class="form-control">
+                            <button type="submit"><i class="fa fa-search"></i></button>
+                        </div>
                     </div>
-                </div>
-                <nav class="collapse navbar-collapse main-navbar" role="navigation">
-                    <ul class="nav navbar-nav navbar-right">
+                    <ul class="main-nav nav">
                         <li><a data-scroll data-options="easing: easeOutQuart"
-                               href="https://quorrajs.org/docs/1.0.0/getting-started/installation.html">Documentation</a></li>
+                               href="/docs/1.0.0/getting-started/installation.html">Documentation</a></li>
                         <li><a data-scroll data-options="easing: easeOutQuart"
                                href="https://medium.com/@quorrajs" target="_blank">Blog</a></li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community</a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                Community
+                                <span class="caret"></span>
+                            </a>
                             <ul class="dropdown-menu">
                                 <li><a href="https://github.com/quorrajs" target="_blank">Github</a></li>
                                 <li role="separator" class="divider"></li>
@@ -113,6 +316,28 @@
                             </ul>
                         </li>
                     </ul>
+                    <div class="switcher">
+                        <div class="dropdown">
+                            <button class="btn btn-info dropdown-toggle" type="button" aria-haspopup="true"
+                                    data-toggle="dropdown">
+                                1.0.0
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                                                                                        <li>
+                                        <a href="/docs/master/more/security.html">Master</a>
+                                    </li>
+                                                                                                        <li>
+                                        <a href="/docs/1.0.0/more/security.html">1.0.0</a>
+                                    </li>
+                                                            </ul>
+                        </div>
+                    </div>
+                    <button type="button" class="navbar-toggle collapsed">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
                 </nav>
             </div>
         </header>
@@ -516,13 +741,15 @@
         <a class="go-top hex-alt" href="javascript:void(0)">
             <i class="fa fa-angle-up"></i>
         </a>
-        <script src="https://quorrajs.org/assets/js/packages.min.js"></script>
-        <script src="https://quorrajs.org/assets/js/theme.min.js"></script>
-        <script src="https://quorrajs.org/assets/js/prism.js"></script>
-        <script src="https://quorrajs.org/assets/js/algoliasearch.min.js"></script>
-        <script src="https://quorrajs.org/assets/js/typeahead.js"></script>
-        <script src="https://quorrajs.org/assets/js/Hogan.js"></script>
-        <script src="https://quorrajs.org/assets/js/quorra.js"></script>
-    </body>
+    </div>
+    <script src="/assets/js/packages.min.js"></script>
+    <script src="/assets/js/theme.min.js"></script>
+    <script src="/assets/js/prism.js"></script>
+    <script src="/assets/js/algoliasearch.min.js"></script>
+    <script src="/assets/js/typeahead.js"></script>
+    <script src="/assets/js/Hogan.js"></script>
+    <script src="/assets/js/quorra.js"></script>
+    <script>console.log({"cliConfig":[],"exclude":["vendor","website"],"baseUrl":"https:\/\/quorrajs.org","docBaseUrl":"\/docs","currentVersion":"1.0.0","versions":["master","1.0.0"],"github":{"user":"quorrajs","repo":"Quorra-docs"},"title":"QuorraJS","subTitle":"NodeJS framework for web riders.","menu":{"sections":{"main":{"name":"Preface","items":{"home":{"text":"Quickstart","relativeUrl":"preface\/quickstart.html"},"contribution guide":{"text":"Contribution Guide","relativeUrl":"preface\/contribution-guide.html"}}},"getting-started":{"name":"Getting started","items":{"installation":{"text":"Installation","relativeUrl":"getting-started\/installation.html"},"configuration":{"text":"Configuration","relativeUrl":"getting-started\/configuration.html"},"request lifecycle":{"text":"Request Lifecycle","relativeUrl":"getting-started\/request-lifecycle.html"},"routing":{"text":"Routing","relativeUrl":"getting-started\/routing.html"},"requests & input":{"text":"Requests & Input","relativeUrl":"getting-started\/requests-&-input.html"},"views & responses":{"text":"Views & Responses","relativeUrl":"getting-started\/views-&-responses.html"},"controllers":{"text":"Controllers","relativeUrl":"getting-started\/controllers.html"},"errors & logging":{"text":"Errors & Logging","relativeUrl":"getting-started\/errors-&-logging.html"},"models & orm":{"text":"Models & ORM","relativeUrl":"getting-started\/models-&-orm.html"},"globals":{"text":"Globals","relativeUrl":"getting-started\/globals.html"},"middleware":{"text":"Middleware","relativeUrl":"getting-started\/middleware.html"}}},"learning more":{"name":"Learning more","items":{"Security":{"text":"Security","relativeUrl":"more\/security.html"},"session":{"text":"Session","relativeUrl":"middlewares\/session.html"},"mail":{"text":"Mail","relativeUrl":"more\/mail.html"},"request object":{"text":"Request Object","relativeUrl":"more\/request.html"},"response object":{"text":"Response Object","relativeUrl":"more\/response.html"},"service providers":{"text":"Service Providers","relativeUrl":"more\/service-providers.html"},"body parser":{"text":"Body Parser","relativeUrl":"middlewares\/body-parser.html"},"query parser":{"text":"Query Parser","relativeUrl":"middlewares\/query-parser.html"},"cookie parser":{"text":"Cookie Parser","relativeUrl":"middlewares\/cookie-parser.html"},"authentication":{"text":"Authentication","relativeUrl":"middlewares\/authentication.html"},"localization":{"text":"Localization","relativeUrl":"middlewares\/localization.html"},"http method override":{"text":"HTTP Method Override","relativeUrl":"middlewares\/http-method-override.html"},"serve static":{"text":"Server Static","relativeUrl":"middlewares\/serve-static.html"},"elixir":{"text":"Elixir","relativeUrl":"more\/elixir.html"},"miscellanous":{"text":"Miscellaneous","relativeUrl":"more\/miscellaneous.html"},"testing":{"text":"Testing","relativeUrl":"more\/testing.html"}}},"other":{"name":"Quorra CLI","items":{"home":{"text":"Overview","relativeUrl":"quorra-cli\/overview.html"}}}}},"template":{"directory":"\/home\/harish\/Dropbox\/Code\/quorra-docs\/website"},"pageList":{"13":"getting-started\/configuration.html","7":"getting-started\/controllers.html","9":"getting-started\/errors-&-logging.html","11":"getting-started\/globals.html","10":"getting-started\/installation.html","3":"getting-started\/middleware.html","8":"getting-started\/models-&-orm.html","5":"getting-started\/request-lifecycle.html","12":"getting-started\/requests-&-input.html","6":"getting-started\/routing.html","4":"getting-started\/views-&-responses.html","2":"index.html","28":"middlewares\/authentication.html","24":"middlewares\/body-parser.html","25":"middlewares\/cookie-parser.html","23":"middlewares\/http-method-override.html","27":"middlewares\/localization.html","30":"middlewares\/query-parser.html","26":"middlewares\/serve-static.html","29":"middlewares\/session.html","21":"more\/elixir.html","20":"more\/mail.html","17":"more\/miscellaneous.html","18":"more\/request.html","14":"more\/response.html","16":"more\/security.html","15":"more\/service-providers.html","19":"more\/testing.html","1":"preface\/contribution-guide.html","0":"preface\/quickstart.html","22":"quorra-cli\/overview.html"},"pageTree":{"getting-started":{"configuration.html":"configuration.html","controllers.html":"controllers.html","errors-&-logging.html":"errors-&-logging.html","globals.html":"globals.html","installation.html":"installation.html","middleware.html":"middleware.html","models-&-orm.html":"models-&-orm.html","request-lifecycle.html":"request-lifecycle.html","requests-&-input.html":"requests-&-input.html","routing.html":"routing.html","views-&-responses.html":"views-&-responses.html"},"index.html":"index.html","middlewares":{"authentication.html":"authentication.html","body-parser.html":"body-parser.html","cookie-parser.html":"cookie-parser.html","http-method-override.html":"http-method-override.html","localization.html":"localization.html","query-parser.html":"query-parser.html","serve-static.html":"serve-static.html","session.html":"session.html"},"more":{"elixir.html":"elixir.html","mail.html":"mail.html","miscellaneous.html":"miscellaneous.html","request.html":"request.html","response.html":"response.html","security.html":"security.html","service-providers.html":"service-providers.html","testing.html":"testing.html"},"preface":{"contribution-guide.html":"contribution-guide.html","quickstart.html":"quickstart.html"},"quorra-cli":{"overview.html":"overview.html"}},"currentFile":"more\/security.md","content":"<h1 id=\"security\">Security<\/h1>\n<ul>\n<li><a href=\"#configuration\">Configuration<\/a><\/li>\n<li><a href=\"#storing-passwords\">Storing Passwords<\/a><\/li>\n<li><a href=\"#authenticating-users\">Authenticating Users<\/a><\/li>\n<li><a href=\"#manually\">Manually Logging In Users<\/a><\/li>\n<li><a href=\"#protecting-routes\">Protecting Routes<\/a><\/li>\n<li><a href=\"#http-basic-authentication\">HTTP Basic Authentication<\/a><\/li>\n<li><a href=\"#encryption\">Encryption<\/a><\/li>\n<\/ul>\n<h2 id=\"configuration\">Configuration<\/h2>\n<p>Quorra aims to make implementing authentication very simple. In fact, almost everything is configured for you out of the box. The authentication configuration file is located at <code>app\/config\/auth.js<\/code>, which contains well documented auth related options for tweaking the behavior of the authentication facilities.<\/p>\n<p>By default, Quorra includes a <code>User<\/code> model in your <code>app\/models<\/code> directory. Please remember when building the Schema for this Model to ensure that the password field is a minimum of 60 characters.<\/p>\n<blockquote>\n<p><strong>Note:<\/strong> Don't forget to set auth and session middlewares to true in the <code>app\/config\/middleware.js<\/code> file to enable authentication support in your application.<\/p>\n<\/blockquote>\n<h2 id=\"storing-passwords\">Storing Passwords<\/h2>\n<p>The Quorra <code>Hash<\/code> service provides secure Bcrypt hashing which wraps the popular <a href=\"https:\/\/www.npmjs.com\/package\/bcryptjs\">bcryptjs<\/a> npm module:<\/p>\n<h3 id=\"hashing-a-password-using-bcrypt\">Hashing A Password Using Bcrypt<\/h3>\n<pre><code class=\"language-javascript\">    App.hash.make('password', function (err, hash) {\n        \/\/ Use hashed password\n    });<\/code><\/pre>\n<h3 id=\"verifying-a-password-against-a-hash\">Verifying A Password Against A Hash<\/h3>\n<pre><code class=\"language-javascript\">    App.hash.check('password', hashedPassword, function (err, result) {\n        if(result) {\n            \/\/ The passwords match...\n        }\n    });<\/code><\/pre>\n<h2 id=\"authenticating-users\">Authenticating Users<\/h2>\n<p>To log a user into your application, you may use the <code>auth.attempt<\/code> method.<\/p>\n<pre><code class=\"language-javascript\">    req.auth.attempt({email: 'email', password: 'password'}, function (result) {\n        if(result) {\n            \/\/ direct user to appropriate page\n        }\n    });<\/code><\/pre>\n<p>Take note that <code>email<\/code> is not a required option, it is merely used for example. You should use whatever column name corresponds to a &quot;username&quot; in your database.<\/p>\n<h3 id=\"determining-if-a-user-is-authenticated\">Determining If A User Is Authenticated<\/h3>\n<p>To determine if the user is already logged into your application, you may use the <code>check<\/code> method:<\/p>\n<pre><code class=\"language-javascript\">    req.auth.check(function (result) {\n        if(result) {\n            \/\/ The user is logged in...\n        }\n    })<\/code><\/pre>\n<h3 id=\"authenticating-a-user-and-quotrememberingquot-them\">Authenticating A User And &quot;Remembering&quot; Them<\/h3>\n<p>If you would like to provide &quot;remember me&quot; functionality in your application, you may pass <code>true<\/code> as the third argument to the <code>attempt<\/code> method, which will keep the user authenticated indefinitely (or until they manually logout). Of course, your <code>users<\/code> table must include the string <code>remember_token<\/code> column, which will be used to store the &quot;remember me&quot; token.<\/p>\n<pre><code class=\"language-javascript\">    req.auth.attempt({email: 'email', password: 'password'}, function (result) {\n        if(result) {\n            \/\/ The user is being remembered...\n        }\n    }, true);<\/code><\/pre>\n<blockquote>\n<p><strong>Note:<\/strong> If the <code>attempt<\/code> method returns callback with <code>true<\/code>, the user is considered logged into the application.<\/p>\n<\/blockquote>\n<h3 id=\"determining-if-user-authenticated-via-remember\">Determining If User Authenticated Via Remember<\/h3>\n<p>If you are &quot;remembering&quot; user logins, you may use the <code>viaRemember<\/code> method to determine if the user was authenticated using the &quot;remember me&quot; cookie:<\/p>\n<pre><code class=\"language-javascript\">    if (req.auth.viaRemember())\n    {\n        \/\/\n    }<\/code><\/pre>\n<h3 id=\"authenticating-a-user-with-conditions\">Authenticating A User With Conditions<\/h3>\n<p>You also may add extra conditions to the authenticating query:<\/p>\n<pre><code class=\"language-javascript\">    req.auth.attempt({email: 'email', password: 'password', active: true}, function (result) {\n        if(result) {\n            \/\/ The user is active, not suspended, and exists.\n        }\n    });<\/code><\/pre>\n<blockquote>\n<p><strong>Note:<\/strong> For added protection against session fixation, the user's session ID will automatically be regenerated after authenticating.<\/p>\n<\/blockquote>\n<h3 id=\"accessing-the-logged-in-user\">Accessing The Logged In User<\/h3>\n<p>Once a user is authenticated, you may access the User record:<\/p>\n<pre><code class=\"language-javascript\">    req.auth.user(function (user) {\n        var email = user.email;\n    });<\/code><\/pre>\n<p>To retrieve the authenticated user's ID, you may use the <code>id<\/code> method:<\/p>\n<pre><code class=\"language-javascript\">    var id = req.auth.id();<\/code><\/pre>\n<p>To simply log a user into the application by their ID, use the <code>loginUsingId<\/code> method:<\/p>\n<pre><code class=\"language-javascript\">    req.auth.loginUsingId(1, function (user) {\n        \/\/ login success\n    });<\/code><\/pre>\n<h3 id=\"validating-user-credentials-without-login\">Validating User Credentials Without Login<\/h3>\n<p>The <code>validate<\/code> method allows you to validate a user's credentials without actually logging them into the application:<\/p>\n<pre><code class=\"language-javascript\">    req.auth.validate(credentials, function (result) {\n        if(result) {\n            \/\/\n        }\n    })<\/code><\/pre>\n<h3 id=\"logging-a-user-in-for-a-single-request\">Logging A User In For A Single Request<\/h3>\n<p>You may also use the <code>once<\/code> method to log a user into the application for a single request. No sessions or cookies will be utilized.<\/p>\n<pre><code class=\"language-javascript\">    req.auth.once(credentials, function (result) {\n        if(result) {\n            \/\/\n        }\n    });<\/code><\/pre>\n<h3 id=\"logging-a-user-out-of-the-application\">Logging A User Out Of The Application<\/h3>\n<pre><code class=\"language-javascript\">    req.auth.logout(function() {\n        \/\/\n    });<\/code><\/pre>\n<h2 id=\"manually-logging-in-users\">Manually Logging In Users<\/h2>\n<p>If you need to log an existing user object into your application, you may simply call the <code>login<\/code> method with the object:<\/p>\n<pre><code class=\"language-javascript\">    User.findOne(1).exec(function (err, user) {\n        req.auth.login(user, function () {\n            \/\/ user logged in\n        });\n    });<\/code><\/pre>\n<p>This is equivalent to logging in a user via credentials using the <code>attempt<\/code> method.<\/p>\n<h2 id=\"protecting-routes\">Protecting Routes<\/h2>\n<p>Route filters may be used to allow only authenticated users to access a given route. Quorra provides the <code>auth<\/code> filter by default, and it is defined in <code>app\/filters.js<\/code>.<\/p>\n<h4 id=\"protecting-a-route\">Protecting A Route<\/h4>\n<pre><code class=\"language-javascript\">    Route.get('profile', {before: 'auth', uses: function()\n    {\n        \/\/ Only authenticated users may enter...\n    }});<\/code><\/pre>\n<h3 id=\"csrf-protection\">CSRF Protection<\/h3>\n<p>Quorra provides an easy method of protecting your application from cross-site request forgeries.<\/p>\n<h4 id=\"inserting-csrf-token-into-form\">Inserting CSRF Token Into Form<\/h4>\n<p>Pass csrfToken to view after generating it with method <code>request.csrfToken<\/code> from a route.<\/p>\n<p>For example<\/p>\n<pre><code class=\"language-javascript\">    Route.get('\/register', function(req, res) {\n        res.view('form', { csrfToken: req.csrfToken() });\n    });<\/code><\/pre>\n<p>Use csrf token in your view<\/p>\n<pre><code class=\"language-javascript\">    &lt;input type=\"hidden\" name=\"_token\" value=\"{{ csrfToken }}\"&gt;<\/code><\/pre>\n<h4 id=\"validate-the-submitted-csrf-token\">Validate The Submitted CSRF Token<\/h4>\n<pre><code class=\"language-javascript\">    Route.post('register', {before: 'csrf', uses: function(req, res) {\n        \/\/'You gave a valid CSRF token!';\n    }});<\/code><\/pre>\n<h2 id=\"http-basic-authentication\">HTTP Basic Authentication<\/h2>\n<p>HTTP Basic Authentication provides a quick way to authenticate users of your application without setting up a dedicated &quot;login&quot; page. To get started, attach the <code>auth.basic<\/code> filter to your route:<\/p>\n<h4 id=\"protecting-a-route-with-http-basic\">Protecting A Route With HTTP Basic<\/h4>\n<pre><code class=\"language-javascript\">    Route.get('profile', {before: 'auth.basic', uses: function(req, res) {\n        \/\/ Only authenticated users may enter...\n    }});<\/code><\/pre>\n<p>By default, the <code>basic<\/code> filter will use the <code>email<\/code> column on the user record when authenticating. If you wish to use another column you may pass the column name as the second parameter to the <code>basic<\/code> method in your <code>app\/filters.js<\/code> file:<\/p>\n<pre><code class=\"language-javascript\">    Route.filter('auth.basic', function(request, response, next) {\n        req.auth.basic(function (result) {\n            if (result) {\n                next();\n            } else {\n                var error = new Error('Invalid credentials');\n\n                error.status = 401;\n                response.setHeader('WWW-Authenticate', 'Basic');\n                response.abort(error);\n            }\n        }, 'username');\n    });<\/code><\/pre>\n<h4 id=\"setting-up-a-stateless-http-basic-filter\">Setting Up A Stateless HTTP Basic Filter<\/h4>\n<p>You may also use HTTP Basic Authentication without setting a user identifier cookie in the session, which is particularly useful for API authentication. To do so, define a filter that executes the <code>onceBasic<\/code> method:<\/p>\n<pre><code class=\"language-javascript\">    Route.filter('basic.once', function(request, response, next) {\n        req.auth.onceBasic(function (result) {\n            if (result) {\n                next();\n            } else {\n                var error = new Error('Invalid credentials');\n\n                error.status = 401;\n                response.setHeader('WWW-Authenticate', 'Basic');\n                response.abort(error);\n            }\n        });\n    });<\/code><\/pre>\n<h2 id=\"encryption\">Encryption<\/h2>\n<p>Quorra provides facilities for strong AES encryption:<\/p>\n<h4 id=\"encrypting-a-value\">Encrypting A Value<\/h4>\n<pre><code class=\"language-javascript\">    var encrypted = App.encrypter.encrypt('secret');<\/code><\/pre>\n<blockquote>\n<p><strong>Note:<\/strong> Be sure to set a random string in the <code>key<\/code> option of the <code>app\/config\/app.js<\/code> file. Otherwise, encrypted values will not be secure.<\/p>\n<\/blockquote>\n<h4 id=\"decrypting-a-value\">Decrypting A Value<\/h4>\n<pre><code class=\"language-javascript\">    var  decrypted = App.encrypter.decrypt(encrypted);<\/code><\/pre>"});</script>
+</body>
 </html>
 

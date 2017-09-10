@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>QuorraJS</title>
+    <link rel="icon" type="image/x-icon" href="/assets/icons/favicon.ico"/>
+    <link href='https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,400italic' rel='stylesheet'
+          type='text/css'>
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/theme.css">
+    <link rel="stylesheet" href="/assets/css/color-defaults.min.css">
+    <link rel="stylesheet" href="/assets/css/swatch-blue-white.css">
+    <link rel="stylesheet" href="/assets/css/swatch-white-blue.css">
+    <link rel="stylesheet" href="/assets/css/prism.css">
+    <link rel="stylesheet" href="/assets/css/fonts.min.css" media="screen">
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-42913540-2', 'auto');
+        ga('send', 'pageview');
+    </script>
+    
+    <script id="search_suggestion_template" type="text/template">
+        <div class="autocomplete-wrapper">
+            {{#_highlightResult.h1}}
+            <div class="h1">
+                {{{ _highlightResult.h1.value }}}
+            </div>
+            {{/_highlightResult.h1}}
+
+            <div class="sub-section">
+                {{#_highlightResult.h2}}
+                <div class="h2">
+                    <span class="hash">#</span> {{{ _highlightResult.h2.value }}}
+                </div>
+                {{/_highlightResult.h2}}
+
+                {{#_highlightResult.h3}}
+                <div class="h3">
+                    > {{{ _highlightResult.h3.value }}}
+                </div>
+                {{/_highlightResult.h3}}
+
+                {{#_highlightResult.h4}}
+                <div class="h4">
+                    > {{{ _highlightResult.h4.value }}}
+                </div>
+                {{/_highlightResult.h4}}
+            </div>
+
+            {{#_highlightResult.content}}
+            <div class="content">
+                {{{ _highlightResult.content.value }}}
+            </div>
+            {{/_highlightResult.content}}
+        </div>
+    </script>
+    <script id="search_empty_template" type="text/template">
+        <div class="autocomplete-wrapper empty">
+            <div class="h2">We didn't find any result for "{{query}}". Sorry!</div>
+        </div>
+    </script>
+    <script id="search_footer_template" type="text/template">
+        <div class="footer">
+            <a target="_blank" href="https://www.algolia.com/">
+                
+                <img width="50" src="/assets/images/algolia.png">
+                
+                <div class="powered">powered by</div>
+                <div style="clear: both"></div>
+            </a>
+        </div>
+    </script>
+    
+</head>
+<body>
+    <div id="sidenav" class="sidenav">
+        <div class="brand">
+            <a href="/">QuorraJS</a>
+        </div>
+        <ul class="side-main-nav">
+            <li><a data-scroll data-options="easing: easeOutQuart"
+                   href="https://medium.com/@quorrajs" target="_blank">Blog</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Community
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="https://github.com/quorrajs" target="_blank">Github</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="https://quorrajs.slack.com" target="_blank">Slack</a></li>
+                    <li><a href="https://gitter.im/quorrajs/quorrajs" target="_blank">Gitter</a></li>
+                    <li><a href="https://twitter.com/quorrajs" target="_blank">Twitter</a></li>
+                </ul>
+            </li>
+        </ul>
+                    <div class="side-doc-nav">
+                <h3>Documentation</h3>
+                                    <div class="category">
+                        <h3>Preface</h3>
+                        <ul>
+                                                            <li class="">
+                                    <a href="/docs/master/preface/quickstart.html">
+                                        Quickstart
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/master/preface/contribution-guide.html">
+                                        Contribution Guide
+                                    </a>
+                                </li>
+                                                    </ul>
+                    </div>
+                                    <div class="category">
+                        <h3>Getting started</h3>
+                        <ul>
+                                                            <li class="">
+                                    <a href="/docs/master/getting-started/installation.html">
+                                        Installation
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/master/getting-started/configuration.html">
+                                        Configuration
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/master/getting-started/request-lifecycle.html">
+                                        Request Lifecycle
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/master/getting-started/routing.html">
+                                        Routing
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/master/getting-started/requests-&amp;-input.html">
+                                        Requests & Input
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/master/getting-started/views-&amp;-responses.html">
+                                        Views & Responses
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/master/getting-started/controllers.html">
+                                        Controllers
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/master/getting-started/errors-&amp;-logging.html">
+                                        Errors & Logging
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/master/getting-started/models-&amp;-orm.html">
+                                        Models & ORM
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/master/getting-started/globals.html">
+                                        Globals
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/master/getting-started/middleware.html">
+                                        Middleware
+                                    </a>
+                                </li>
+                                                    </ul>
+                    </div>
+                                    <div class="category">
+                        <h3>Learning more</h3>
+                        <ul>
+                                                            <li class="">
+                                    <a href="/docs/master/more/security.html">
+                                        Security
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/master/middlewares/session.html">
+                                        Session
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/master/more/mail.html">
+                                        Mail
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/master/more/request.html">
+                                        Request Object
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/master/more/response.html">
+                                        Response Object
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/master/more/service-providers.html">
+                                        Service Providers
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/master/middlewares/body-parser.html">
+                                        Body Parser
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/master/middlewares/query-parser.html">
+                                        Query Parser
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/master/middlewares/cookie-parser.html">
+                                        Cookie Parser
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/master/middlewares/authentication.html">
+                                        Authentication
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/master/middlewares/localization.html">
+                                        Localization
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/master/middlewares/http-method-override.html">
+                                        HTTP Method Override
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/master/middlewares/serve-static.html">
+                                        Server Static
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/master/more/elixir.html">
+                                        Elixir
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/master/more/miscellaneous.html">
+                                        Miscellaneous
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="/docs/master/more/testing.html">
+                                        Testing
+                                    </a>
+                                </li>
+                                                    </ul>
+                    </div>
+                                    <div class="category">
+                        <h3>Quorra CLI</h3>
+                        <ul>
+                                                            <li class="">
+                                    <a href="/docs/master/quorra-cli/overview.html">
+                                        Overview
+                                    </a>
+                                </li>
+                                                    </ul>
+                    </div>
+                            </div>
+            </div>
+    <div id="main-content">
+        <span id="overlay"></span>
+        <header id="masthead" class="navbar-small navbar swatch-blue-white" role="banner">
+            <div class="container">
+                <nav class="main">
+                    <a href="/index.html" class="navbar-brand nav-block">
+                        <img src="/assets/icons/logo-icon.png" alt="QuorraJS">
+                        <span>QuorraJS</span>
+                    </a>
+
+                    <div id="search" class="nav-block">
+                        <div class="search">
+                            <input type="text" name="search" class="form-control">
+                            <button type="submit"><i class="fa fa-search"></i></button>
+                        </div>
+                    </div>
+                    <ul class="main-nav nav">
+                        <li><a data-scroll data-options="easing: easeOutQuart"
+                               href="/docs/1.0.0/getting-started/installation.html">Documentation</a></li>
+                        <li><a data-scroll data-options="easing: easeOutQuart"
+                               href="https://medium.com/@quorrajs" target="_blank">Blog</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                Community
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="https://github.com/quorrajs" target="_blank">Github</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="https://quorrajs.slack.com" target="_blank">Slack</a></li>
+                                <li><a href="https://gitter.im/quorrajs/quorrajs" target="_blank">Gitter</a></li>
+                                <li><a href="https://twitter.com/quorrajs" target="_blank">Twitter</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="switcher">
+                        <div class="dropdown">
+                            <button class="btn btn-info dropdown-toggle" type="button" aria-haspopup="true"
+                                    data-toggle="dropdown">
+                                Master
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                                                                                        <li>
+                                        <a href="/docs/master/more/response.html">Master</a>
+                                    </li>
+                                                                                                        <li>
+                                        <a href="/docs/1.0.0/more/response.html">1.0.0</a>
+                                    </li>
+                                                            </ul>
+                        </div>
+                    </div>
+                    <button type="button" class="navbar-toggle collapsed">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </nav>
+            </div>
+        </header>
+        <div id="content" role="main">
+            <section class="section documentation swatch-white-blue">
+                <div class="container">
+                    <div class="row">
+                                                    <div class="col-md-3 sidebar">
+                                                                    <div class="sidebar-widget widget_categories">
+                                        <h3 class="sidebar-header">Preface</h3>
+                                        <ul>
+                                                                                            <li class="">
+                                                    <a href="/docs/master/preface/quickstart.html">
+                                                        Quickstart
+                                                    </a>
+                                                </li>
+                                                                                            <li class="">
+                                                    <a href="/docs/master/preface/contribution-guide.html">
+                                                        Contribution Guide
+                                                    </a>
+                                                </li>
+                                                                                    </ul>
+                                    </div>
+                                                                    <div class="sidebar-widget widget_categories">
+                                        <h3 class="sidebar-header">Getting started</h3>
+                                        <ul>
+                                                                                            <li class="">
+                                                    <a href="/docs/master/getting-started/installation.html">
+                                                        Installation
+                                                    </a>
+                                                </li>
+                                                                                            <li class="">
+                                                    <a href="/docs/master/getting-started/configuration.html">
+                                                        Configuration
+                                                    </a>
+                                                </li>
+                                                                                            <li class="">
+                                                    <a href="/docs/master/getting-started/request-lifecycle.html">
+                                                        Request Lifecycle
+                                                    </a>
+                                                </li>
+                                                                                            <li class="">
+                                                    <a href="/docs/master/getting-started/routing.html">
+                                                        Routing
+                                                    </a>
+                                                </li>
+                                                                                            <li class="">
+                                                    <a href="/docs/master/getting-started/requests-&amp;-input.html">
+                                                        Requests & Input
+                                                    </a>
+                                                </li>
+                                                                                            <li class="">
+                                                    <a href="/docs/master/getting-started/views-&amp;-responses.html">
+                                                        Views & Responses
+                                                    </a>
+                                                </li>
+                                                                                            <li class="">
+                                                    <a href="/docs/master/getting-started/controllers.html">
+                                                        Controllers
+                                                    </a>
+                                                </li>
+                                                                                            <li class="">
+                                                    <a href="/docs/master/getting-started/errors-&amp;-logging.html">
+                                                        Errors & Logging
+                                                    </a>
+                                                </li>
+                                                                                            <li class="">
+                                                    <a href="/docs/master/getting-started/models-&amp;-orm.html">
+                                                        Models & ORM
+                                                    </a>
+                                                </li>
+                                                                                            <li class="">
+                                                    <a href="/docs/master/getting-started/globals.html">
+                                                        Globals
+                                                    </a>
+                                                </li>
+                                                                                            <li class="">
+                                                    <a href="/docs/master/getting-started/middleware.html">
+                                                        Middleware
+                                                    </a>
+                                                </li>
+                                                                                    </ul>
+                                    </div>
+                                                                    <div class="sidebar-widget widget_categories">
+                                        <h3 class="sidebar-header">Learning more</h3>
+                                        <ul>
+                                                                                            <li class="">
+                                                    <a href="/docs/master/more/security.html">
+                                                        Security
+                                                    </a>
+                                                </li>
+                                                                                            <li class="">
+                                                    <a href="/docs/master/middlewares/session.html">
+                                                        Session
+                                                    </a>
+                                                </li>
+                                                                                            <li class="">
+                                                    <a href="/docs/master/more/mail.html">
+                                                        Mail
+                                                    </a>
+                                                </li>
+                                                                                            <li class="">
+                                                    <a href="/docs/master/more/request.html">
+                                                        Request Object
+                                                    </a>
+                                                </li>
+                                                                                            <li class="">
+                                                    <a href="/docs/master/more/response.html">
+                                                        Response Object
+                                                    </a>
+                                                </li>
+                                                                                            <li class="">
+                                                    <a href="/docs/master/more/service-providers.html">
+                                                        Service Providers
+                                                    </a>
+                                                </li>
+                                                                                            <li class="">
+                                                    <a href="/docs/master/middlewares/body-parser.html">
+                                                        Body Parser
+                                                    </a>
+                                                </li>
+                                                                                            <li class="">
+                                                    <a href="/docs/master/middlewares/query-parser.html">
+                                                        Query Parser
+                                                    </a>
+                                                </li>
+                                                                                            <li class="">
+                                                    <a href="/docs/master/middlewares/cookie-parser.html">
+                                                        Cookie Parser
+                                                    </a>
+                                                </li>
+                                                                                            <li class="">
+                                                    <a href="/docs/master/middlewares/authentication.html">
+                                                        Authentication
+                                                    </a>
+                                                </li>
+                                                                                            <li class="">
+                                                    <a href="/docs/master/middlewares/localization.html">
+                                                        Localization
+                                                    </a>
+                                                </li>
+                                                                                            <li class="">
+                                                    <a href="/docs/master/middlewares/http-method-override.html">
+                                                        HTTP Method Override
+                                                    </a>
+                                                </li>
+                                                                                            <li class="">
+                                                    <a href="/docs/master/middlewares/serve-static.html">
+                                                        Server Static
+                                                    </a>
+                                                </li>
+                                                                                            <li class="">
+                                                    <a href="/docs/master/more/elixir.html">
+                                                        Elixir
+                                                    </a>
+                                                </li>
+                                                                                            <li class="">
+                                                    <a href="/docs/master/more/miscellaneous.html">
+                                                        Miscellaneous
+                                                    </a>
+                                                </li>
+                                                                                            <li class="">
+                                                    <a href="/docs/master/more/testing.html">
+                                                        Testing
+                                                    </a>
+                                                </li>
+                                                                                    </ul>
+                                    </div>
+                                                                    <div class="sidebar-widget widget_categories">
+                                        <h3 class="sidebar-header">Quorra CLI</h3>
+                                        <ul>
+                                                                                            <li class="">
+                                                    <a href="/docs/master/quorra-cli/overview.html">
+                                                        Overview
+                                                    </a>
+                                                </li>
+                                                                                    </ul>
+                                    </div>
+                                                            </div>
+                                                <div class="col-md-9">
+                            <article class="post">
+                                <section class="section swatch-white-blue">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-12 documentation">
+                                                <h1 id="response">Response</h1>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#properties">Properties</a></li>
+<li><a href="#methods">Methods</a></li>
+</ul>
+<h2 id="introduction">Introduction</h2>
+<p>The res object represents the HTTP response that an Quorra app sends when it gets an HTTP request.</p>
+<p>In this documentation and by convention, the object is always referred to as res (and the HTTP request is req) but
+its actual name is determined by the parameters to the callback function in which you’re working.</p>
+<p>For example:</p>
+<pre><code class="language-javascript">Route.get('/user/{id}', function(req, res) {
+  res.send('user ' + req.params.id);
+});</code></pre>
+<p>But you could just as well have:</p>
+<pre><code class="language-javascript">Route.get('/user/{id}', function(request, response) {
+  response.send('user ' + request.params.id);
+});</code></pre>
+<h2 id="properties">Properties</h2>
+<h3 id="reslocals">res.locals</h3>
+<p>An object that contains response local variables scoped to the request, and therefore available only to the view(s)
+rendered during that request / response cycle (if any). Otherwise, this property is identical to <a href="/docs/1.0.0/more/miscellaneous.html#application-locals">app.locals</a>.</p>
+<p>This property is useful for exposing request-level information such as the request path name, authenticated user,
+user settings, and so on.</p>
+<pre><code class="language-javascript">function myMiddleware(app, next){
+    this.__app = app;
+    this.__next = next;
+}
+
+myMiddleware.prototype.handle = function(request, response){
+    response.locals.user = req.user;
+    response.locals.authenticated = ! req.user.anonymous;
+    this.__next();
+}
+
+App.middleware(myMiddleware);</code></pre>
+<h2 id="methods">Methods</h2>
+<h3 id="resabortstatuscode--message">res.abort(statusCode [, message])</h3>
+<p>Some exceptions describe HTTP error codes from the server. For example, this may be a &quot;page not found&quot; error (404),
+an &quot;unauthorized error&quot; (401) or even a developer generated 500 error. In order to return such a response, use the
+following:</p>
+<pre><code class="language-javascript">res.abort(404);</code></pre>
+<p>Optionally, you may provide a response:</p>
+<pre><code class="language-javascript">res.abort(403, 'Unauthorized action.');</code></pre>
+<p>This method may be used at any time during the request's lifecycle.</p>
+<h3 id="resappendfield--value">res.append(field [, value])</h3>
+<p>Appends the specified value to the HTTP response header field. If the header is not already set, it creates the
+header with the specified value. The value parameter can be a string or an array.</p>
+<blockquote>
+<p><strong>Note:</strong> calling <code>res.set()</code> after <code>res.append()</code> will reset the previously-set header value.</p>
+</blockquote>
+<pre><code class="language-javascript">res.append('Link', ['&lt;http://localhost/&gt;', '&lt;http://localhost:3000/&gt;']);
+res.append('Set-Cookie', 'foo=bar; Path=/; HttpOnly');
+res.append('Warning', '199 Miscellaneous warning');</code></pre>
+<h3 id="resattachmentfilename">res.attachment([filename])</h3>
+<p>Sets the HTTP response Content-Disposition header field to “attachment”. If a filename is given, then it sets the
+<code>Content-Type</code> based on the extension name via <code>res.type()</code>, and sets the <code>Content-Disposition</code> “filename=” parameter.</p>
+<pre><code class="language-javascript">res.attachment();
+// Content-Disposition: attachment
+
+res.attachment('path/to/logo.png');
+// Content-Disposition: attachment; filename="logo.png"
+// Content-Type: image/png</code></pre>
+<h3 id="rescookiename-value--options">res.cookie(name, value [, options])</h3>
+<p>Sets cookie name to value. The value parameter may be a string or object converted to JSON.</p>
+<p>The options parameter is an object that can have the following properties.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>domain</td>
+<td>String</td>
+<td>Domain name for the cookie. Defaults to the domain name of the app.</td>
+</tr>
+<tr>
+<td>encode</td>
+<td>Function</td>
+<td>A synchronous function used for cookie value encoding. Defaults to encodeURIComponent.</td>
+</tr>
+<tr>
+<td>expires</td>
+<td>Date</td>
+<td>Expiry date of the cookie in GMT. If not specified or set to 0, creates a session cookie.</td>
+</tr>
+<tr>
+<td>httpOnly</td>
+<td>Boolean</td>
+<td>Flags the cookie to be accessible only by the web server.</td>
+</tr>
+<tr>
+<td>maxAge</td>
+<td>String</td>
+<td>Convenient option for setting the expiry time relative to the current time in milliseconds.</td>
+</tr>
+<tr>
+<td>path</td>
+<td>String</td>
+<td>Path for the cookie. Defaults to “/”.</td>
+</tr>
+<tr>
+<td>secure</td>
+<td>Boolean</td>
+<td>Marks the cookie to be used with HTTPS only.</td>
+</tr>
+<tr>
+<td>signed</td>
+<td>Boolean</td>
+<td>Indicates if the cookie should be signed.</td>
+</tr>
+</tbody>
+</table>
+<p>All res.cookie() does is set the HTTP Set-Cookie header with the options provided. Any option not specified defaults
+to the value stated in RFC 6265.
+For example:</p>
+<pre><code class="language-javascript">res.cookie('name', 'tobi', { domain: '.example.com', path: '/admin', secure: true });
+res.cookie('rememberme', '1', { expires: new Date(Date.now() + 900000), httpOnly: true });</code></pre>
+<p>The encode option allows you to choose the function used for cookie value encoding. Does not support asynchronous
+functions.</p>
+<p>Example use case: You need to set a domain wide cookie for another site in your organization to use. This other site
+(not under your administrative control) does not use URI encoded cookie values.</p>
+<pre><code class="language-javascript">//Default encoding
+res.cookie('some_cross_domain_cookie', 'http://mysubdomain.example.com',{domain:'example.com'});
+// Result: 'some_cross_domain_cookie=http%3A%2F%2Fmysubdomain.example.com; Domain=example.com; Path=/'
+
+//Custom encoding
+res.cookie('some_cross_domain_cookie', 'http://mysubdomain.example.com',{domain:'example.com', encode: String});
+// Result: 'some_cross_domain_cookie=http://mysubdomain.example.com; Domain=example.com; Path=/;'</code></pre>
+<p>The maxAge option is a convenience option for setting “expires” relative to the current time in milliseconds. The
+following is equivalent to the second example above.</p>
+<pre><code class="language-javascript">res.cookie('rememberme', '1', { maxAge: 900000, httpOnly: true });</code></pre>
+<p>You can pass an object as the value parameter; it is then serialized as JSON and parsed by <code>bodyParser</code> middleware.</p>
+<pre><code class="language-javascript">res.cookie('cart', { items: [1,2,3] });
+res.cookie('cart', { items: [1,2,3] }, { maxAge: 900000 });</code></pre>
+<p>When cookieParser middleware is enabled, this method also supports signed cookies. Simply include the signed option
+set to true. Then res.cookie() will use the application encryption key in <code>app/config/app.js</code> to sign the value.</p>
+<pre><code class="language-javascript">res.cookie('name', 'tobi', { signed: true });</code></pre>
+<p>Later you may access this value through the req.signedCookie object.</p>
+<h3 id="resclearcookiename--options">res.clearCookie(name [, options])</h3>
+<p>Clears the cookie specified by name. For details about the options object, see res.cookie().</p>
+<pre><code class="language-javascript">res.cookie('name', 'tobi', { path: '/admin' });
+res.clearCookie('name', { path: '/admin' });</code></pre>
+<h3 id="resdownloadpath--filename--fn">res.download(path [, filename] [, fn])</h3>
+<p>Transfers the file at path as an “attachment”. Typically, browsers will prompt the user for download. By default,
+the Content-Disposition header “filename=” parameter is path (this typically appears in the browser dialog). Override
+this default with the filename parameter.</p>
+<p>When an error occurs or transfer is complete, the method calls the optional callback function fn. This method uses
+<code>res.sendFile()</code> to transfer the file.</p>
+<pre><code class="language-javascript">res.download('/report-12345.pdf');
+
+res.download('/report-12345.pdf', 'report.pdf');
+
+res.download('/report-12345.pdf', 'report.pdf', function(err){
+  if (err) {
+    // Handle error, but keep in mind the response may be partially-sent
+    // so check res.headersSent
+  } else {
+    // decrement a download credit, etc.
+  }
+});</code></pre>
+<h3 id="resenddata--encoding">res.end([data] [, encoding])</h3>
+<p>Ends the response process. This method actually comes from Node core, specifically the response.end() method of http
+.ServerResponse.</p>
+<p>Use to quickly end the response without any data. If you need to respond with data, instead use methods such as <code>res .send()</code> and <code>res.json()</code>.</p>
+<pre><code class="language-javascript">res.end();
+res.status(404).end();</code></pre>
+<h3 id="resformatobject">res.format(object)</h3>
+<p>Performs content-negotiation on the Accept HTTP header on the request object, when present. It uses req.accepts() to
+select a handler for the request, based on the acceptable types ordered by their quality values. If the header is not
+specified, the first callback is invoked. When no match is found, the server responds with 406 “Not Acceptable”, or
+invokes the default callback.</p>
+<p>The Content-Type response header is set when a callback is selected. However, you may alter this within the callback
+using methods such as <code>res.set()</code> or <code>res.type()</code>.</p>
+<p>The following example would respond with <code>{ "message": "hey" }</code> when the Accept header field is set to
+<code>application/json</code> or <code>*/json</code> (however if it is <code>*/*</code>, then the response will be <code>hey</code>).</p>
+<pre><code class="language-javascript">res.format({
+  'text/plain': function(){
+    res.send('hey');
+  },
+
+  'text/html': function(){
+    res.send('&lt;p&gt;hey&lt;/p&gt;');
+  },
+
+  'application/json': function(){
+    res.send({ message: 'hey' });
+  },
+
+  'default': function() {
+    // log the request and respond with 406
+    res.status(406).send('Not Acceptable');
+  }
+});</code></pre>
+<p>In addition to canonicalized MIME types, you may also use extension names mapped to these types for a slightly less
+verbose implementation:</p>
+<pre><code class="language-javascript">res.format({
+  text: function(){
+    res.send('hey');
+  },
+
+  html: function(){
+    res.send('&lt;p&gt;hey&lt;/p&gt;');
+  },
+
+  json: function(){
+    res.send({ message: 'hey' });
+  }
+});</code></pre>
+<h3 id="resgetfield">res.get(field)</h3>
+<p>Returns the HTTP response header specified by field. The match is case-insensitive.</p>
+<pre><code class="language-javascript">res.get('Content-Type');
+// =&gt; "text/plain"</code></pre>
+<h3 id="resjsonbody">res.json([body])</h3>
+<p>Sends a JSON response. This method is identical to res.send() with an object or array as the parameter. However, you
+can use it to convert other values to JSON, such as null, and undefined. (although these are technically not valid
+JSON).</p>
+<pre><code class="language-javascript">res.json(null);
+res.json({ user: 'tobi' });
+res.status(500).json({ error: 'message' });</code></pre>
+<h3 id="resjsonpbody">res.jsonp([body])</h3>
+<p>Sends a JSON response with <code>JSONP</code> support. This method is identical to <code>res.json()</code>, except that it opts-in to <code>JSONP</code>
+callback support.</p>
+<pre><code class="language-javascript">res.jsonp(null);
+// =&gt; null
+
+res.jsonp({ user: 'tobi' });
+// =&gt; { "user": "tobi" }
+
+res.status(500).jsonp({ error: 'message' });
+// =&gt; { "error": "message" }</code></pre>
+<p>By default, the <code>JSONP</code> callback name is simply <code>callback</code>. Override this with the <code>jsonpCallbackName</code> configuration in
+<code>app/config/response.js</code>.</p>
+<p>The following are some examples of <code>JSONP</code> responses using the same code:</p>
+<pre><code class="language-javascript">// ?callback=foo
+res.jsonp({ user: 'tobi' });
+// =&gt; foo({ "user": "tobi" })
+
+App.config.set('response.jsonpCallbackName', 'cb');
+
+// ?cb=foo
+res.status(500).jsonp({ error: 'message' });
+// =&gt; foo({ "error": "message" })</code></pre>
+<h3 id="reslinkslinks">res.links(links)</h3>
+<p>Joins the links provided as properties of the parameter to populate the response’s Link HTTP header field.</p>
+<pre><code class="language-javascript">res.links({
+  next: 'http://api.example.com/users?page=2',
+  last: 'http://api.example.com/users?page=5'
+});
+
+yields:
+
+```javascript
+Link: &lt;http://api.example.com/users?page=2&gt;; rel="next",
+      &lt;http://api.example.com/users?page=5&gt;; rel="last"</code></pre>
+<h3 id="reslocationpath">res.location(path)</h3>
+<p>Sets the response Location HTTP header to the specified path parameter.</p>
+<pre><code class="language-javascript">res.location('/foo/bar');
+res.location('http://example.com');
+res.location('back');</code></pre>
+<p>A path value of <code>back</code> has a special meaning, it refers to the URL specified in the <code>Referer</code> header of the request. If
+the <code>Referer</code> header was not specified, it refers to “/”.</p>
+<p>Quorra passes the specified URL string as-is to the browser in the Location header, without any validation or
+manipulation, except in case of back.</p>
+<p>Browsers take the responsibility of deriving the intended URL from the current URL or the referring URL, and the URL
+specified in the Location header; and redirect the user accordingly.</p>
+<h3 id="resredirectstatus-path">res.redirect([status,] path)</h3>
+<p>Redirects to the URL derived from the specified path, with specified HTTP status code status. If you don’t specify
+status, the status code defaults to “302 “Found”.</p>
+<pre><code class="language-javascript">res.redirect('/foo/bar');
+res.redirect('http://example.com');
+res.redirect(301, 'http://example.com');
+res.redirect('../login');</code></pre>
+<p>Redirects can be a fully-qualified URL for redirecting to a different site:</p>
+<pre><code class="language-javascript">res.redirect('http://google.com');</code></pre>
+<p>Redirects can be relative to the root of the host name. For example, if the application is on <code>http://example .com/admin/post/new</code>, the following would redirect to the URL <code>http://example.com/admin</code>:</p>
+<pre><code class="language-javascript">res.redirect('/admin');</code></pre>
+<p>Redirects can be relative to the current URL. For example, from <code>http://example.com/blog/admin/</code> (notice the trailing
+slash), the following would redirect to the URL <code>http://example.com/blog/admin/post/new</code>.</p>
+<pre><code class="language-javascript">res.redirect('post/new');</code></pre>
+<p>Redirecting to <code>post/new</code> from <code>http://example.com/blog/admin</code> (no trailing slash), will redirect to <code>http://example .com/blog/post/new</code>.</p>
+<p>If you found the above behavior confusing, think of path segments as directories (with trailing slashes) and files,
+it will start to make sense.</p>
+<p>Path-relative redirects are also possible. If you were on <code>http://example.com/admin/post/new</code>, the following would
+redirect to <code>http//example.com/admin/post</code>:</p>
+<pre><code class="language-javascript">res.redirect('..');</code></pre>
+<p>A back redirection redirects the request back to the referer, defaulting to / when the referer is missing.</p>
+<pre><code class="language-javascript">res.redirect('back');</code></pre>
+<h3 id="ressendbody">res.send([body])</h3>
+<p>Sends the HTTP response.</p>
+<p>The body parameter can be a Buffer object, a String, an object, or an Array. For example:</p>
+<pre><code class="language-javascript">res.send(new Buffer('whoop'));
+res.send({ some: 'json' });
+res.send('&lt;p&gt;some html&lt;/p&gt;');
+res.status(404).send('Sorry, we cannot find that!');
+res.status(500).send({ error: 'something blew up' });</code></pre>
+<p>This method performs many useful tasks for simple non-streaming responses: For example, it automatically assigns the
+Content-Length HTTP response header field (unless previously defined) and provides automatic HEAD and HTTP cache
+freshness support.</p>
+<p>When the parameter is a Buffer object, the method sets the Content-Type response header field to
+<code>application/octet-stream</code>, unless previously defined as shown below:</p>
+<pre><code class="language-javascript">res.set('Content-Type', 'text/html');
+res.send(new Buffer('&lt;p&gt;some html&lt;/p&gt;'));</code></pre>
+<p>When the parameter is a String, the method sets the Content-Type to “text/html”:</p>
+<pre><code class="language-javascript">res.send('&lt;p&gt;some html&lt;/p&gt;');</code></pre>
+<p>When the parameter is an Array or Object, Quorra responds with the JSON representation:</p>
+<pre><code class="language-javascript">res.send({ user: 'tobi' });
+res.send([1,2,3]);</code></pre>
+<h3 id="ressendfilepath--options--fn">res.sendFile(path [, options] [, fn])</h3>
+<p>Transfers the file at the given path. Sets the Content-Type response HTTP header field based on the filename’s
+extension. Unless the root option is set in the options object, path must be an absolute path to the file.</p>
+<p>The following table provides details on the options parameter.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>maxAge</td>
+<td>Sets the max-age property of the Cache-Control header in milliseconds or a string in ms format</td>
+<td>0</td>
+</tr>
+<tr>
+<td>root</td>
+<td>Root directory for relative filenames.</td>
+<td></td>
+</tr>
+<tr>
+<td>lastModified</td>
+<td>Sets the Last-Modified header to the last modified date of the file on the OS. Set false to disable it.</td>
+<td></td>
+</tr>
+<tr>
+<td>headers</td>
+<td>Object containing HTTP headers to serve with the file.</td>
+<td></td>
+</tr>
+<tr>
+<td>dotfiles</td>
+<td>Option for serving dotfiles. Possible values are “allow”, “deny”, “ignore”.</td>
+<td>“ignore”</td>
+</tr>
+</tbody>
+</table>
+<p>The method invokes the callback function fn(err) when the transfer is complete or when an error occurs. If the
+callback function is specified and an error occurs, the callback function must explicitly handle the response process
+either by ending the request-response cycle, or by passing control to the next route.</p>
+<p>Here is an example of using res.sendFile with all its arguments.</p>
+<pre><code class="language-javascript">Route.get('/file/{name}', function (req, res, next) {
+
+  var options = {
+    root: __dirname + '/../public/',
+    dotfiles: 'deny',
+    headers: {
+        'x-timestamp': Date.now(),
+        'x-sent': true
+    }
+  };
+
+  var fileName = req.routeParameters.name;
+
+  res.sendFile(fileName, options, function (err) {
+    if (err) {
+      console.log(err);
+      res.status(err.status).end();
+    }
+    else {
+      console.log('Sent:', fileName);
+    }
+  });
+
+});</code></pre>
+<p>res.sendFile provides fine-grained support for file serving as illustrated in the following example:</p>
+<pre><code class="language-javascript">Route.get('/user/{uid}/photos/{file}', function(req, res){
+  var uid = req.routeParameters.uid
+    , file = req.routeParameters.file;
+
+  user.mayViewFilesFrom(uid, function(yes){
+    if (yes) {
+      res.sendFile('/uploads/' + uid + '/' + file);
+    } else {
+      res.status(403).send('Sorry! you cant see that.');
+    }
+  });
+});</code></pre>
+<p>For more information, or if you have issues or concerns, see res.send().</p>
+<h3 id="ressendstatusstatuscode">res.sendStatus(statusCode)</h3>
+<p>Set the response HTTP status code to statusCode and send its string representation as the response body.</p>
+<pre><code class="language-javascript">res.sendStatus(200); // equivalent to res.status(200).send('OK')
+res.sendStatus(403); // equivalent to res.status(403).send('Forbidden')
+res.sendStatus(404); // equivalent to res.status(404).send('Not Found')
+res.sendStatus(500); // equivalent to res.status(500).send('Internal Server Error')</code></pre>
+<p>If an unsupported status code is specified, the HTTP status is still set to statusCode and the string version of the
+code is sent as the response body.</p>
+<pre><code class="language-javascript">res.sendStatus(2000); // equivalent to res.status(2000).send('2000')</code></pre>
+<p><a href="http://en.wikipedia.org/wiki/List_of_HTTP_status_codes">More about HTTP Status Codes</a></p>
+<h3 id="ressetfield--value">res.set(field [, value])</h3>
+<p>Sets the response’s HTTP header field to value. To set multiple fields at once, pass an object as the parameter.</p>
+<pre><code class="language-javascript">res.set('Content-Type', 'text/plain');
+
+res.set({
+  'Content-Type': 'text/plain',
+  'Content-Length': '123',
+  'ETag': '12345'
+});</code></pre>
+<p>Aliased as <code>res.header(field [, value])</code>.</p>
+<h3 id="resstatuscode">res.status(code)</h3>
+<p>Use this method to set the HTTP status for the response. It is a chainable alias of Node’s response.statusCode.</p>
+<pre><code class="language-javascript">res.status(403).end();
+res.status(400).send('Bad Request');
+res.status(404).sendFile('/absolute/path/to/404.png');</code></pre>
+<h3 id="restypetype">res.type(type)</h3>
+<p>Sets the Content-Type HTTP header to the MIME type as determined by <code>mime.lookup()</code> for the specified type. If type
+contains the <code>/</code> character, then it sets the <code>Content-Type</code> to <code>type</code>.</p>
+<pre><code class="language-javascript">res.type('.html');              // =&gt; 'text/html'
+res.type('html');               // =&gt; 'text/html'
+res.type('json');               // =&gt; 'application/json'
+res.type('application/json');   // =&gt; 'application/json'
+res.type('png');                // =&gt; image/png:</code></pre>
+<h3 id="resvaryfield">res.vary(field)</h3>
+<p>Adds the field to the Vary response header, if it is not there already.</p>
+<pre><code class="language-javascript">res.vary('User-Agent').render('docs');</code></pre>
+<h3 id="resviewview--locals--callback">res.view(view [, locals] [, callback])</h3>
+<p>Renders a view and sends the rendered HTML string to the client. Optional parameters:</p>
+<ul>
+<li>view, view file relative to path <code>applicationRoot/resources/views</code></li>
+<li>locals, an object whose properties define local variables for the view.</li>
+<li>callback, a callback function. If provided, the method returns both the possible error and rendered string, but does
+not perform an automated response. When an error occurs, the method invokes next(err) internally.</li>
+</ul>
+<blockquote>
+<p><strong>Note:</strong> The local variable <code>cache</code> enables view caching. Set it to true, to cache the view or caching will be
+determined by the configuration <code>cache</code> in <code>app/config/view.js</code>.</p>
+</blockquote>
+<pre><code class="language-javascript">// send the rendered view to the client
+res.view('index');
+
+// if a callback is specified, the rendered HTML string has to be sent explicitly
+res.view('index', function(err, html) {
+  res.send(html);
+});
+
+// pass a local variable to the view
+res.view('user', { name: 'Tobi' }, function(err, html) {
+  // ...
+});</code></pre>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <footer id="footer" role="contentinfo">
+            <section class="section swatch-blue-white no-padding">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <h3>Connect with us</h3>
+                            <div id="swatch_social-2" class="sidebar-widget  widget_swatch_social no-margin">
+                                <ul class="unstyled inline small-screen-center social-icons social-background social-small">
+                                    <li>
+                                        <a target="_blank" href="https://www.facebook.com/quorrajs">
+                                            <i class="fa fa-facebook"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a target="_blank" href="https://twitter.com/quorrajs">
+                                            <i class="fa fa-twitter"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a target="_blank" href="https://github.com/quorrajs">
+                                            <i class="fa fa-github-square"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div id="text-4" class="sidebar-widget widget_text bottom-margin-10">
+                                <div class="textwidget">QuorraJS 2016 ALL RIGHTS RESERVED
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </footer>
+        <a class="go-top hex-alt" href="javascript:void(0)">
+            <i class="fa fa-angle-up"></i>
+        </a>
+    </div>
+    <script src="/assets/js/packages.min.js"></script>
+    <script src="/assets/js/theme.min.js"></script>
+    <script src="/assets/js/prism.js"></script>
+    <script src="/assets/js/algoliasearch.min.js"></script>
+    <script src="/assets/js/typeahead.js"></script>
+    <script src="/assets/js/Hogan.js"></script>
+    <script src="/assets/js/quorra.js"></script>
+    <script>console.log({"cliConfig":[],"exclude":["vendor","website"],"baseUrl":"https:\/\/quorrajs.org","docBaseUrl":"\/docs","currentVersion":"master","versions":["master","1.0.0"],"github":{"user":"quorrajs","repo":"Quorra-docs"},"title":"QuorraJS","subTitle":"NodeJS framework for web riders.","menu":{"sections":{"main":{"name":"Preface","items":{"home":{"text":"Quickstart","relativeUrl":"preface\/quickstart.html"},"contribution guide":{"text":"Contribution Guide","relativeUrl":"preface\/contribution-guide.html"}}},"getting-started":{"name":"Getting started","items":{"installation":{"text":"Installation","relativeUrl":"getting-started\/installation.html"},"configuration":{"text":"Configuration","relativeUrl":"getting-started\/configuration.html"},"request lifecycle":{"text":"Request Lifecycle","relativeUrl":"getting-started\/request-lifecycle.html"},"routing":{"text":"Routing","relativeUrl":"getting-started\/routing.html"},"requests & input":{"text":"Requests & Input","relativeUrl":"getting-started\/requests-&-input.html"},"views & responses":{"text":"Views & Responses","relativeUrl":"getting-started\/views-&-responses.html"},"controllers":{"text":"Controllers","relativeUrl":"getting-started\/controllers.html"},"errors & logging":{"text":"Errors & Logging","relativeUrl":"getting-started\/errors-&-logging.html"},"models & orm":{"text":"Models & ORM","relativeUrl":"getting-started\/models-&-orm.html"},"globals":{"text":"Globals","relativeUrl":"getting-started\/globals.html"},"middleware":{"text":"Middleware","relativeUrl":"getting-started\/middleware.html"}}},"learning more":{"name":"Learning more","items":{"Security":{"text":"Security","relativeUrl":"more\/security.html"},"session":{"text":"Session","relativeUrl":"middlewares\/session.html"},"mail":{"text":"Mail","relativeUrl":"more\/mail.html"},"request object":{"text":"Request Object","relativeUrl":"more\/request.html"},"response object":{"text":"Response Object","relativeUrl":"more\/response.html"},"service providers":{"text":"Service Providers","relativeUrl":"more\/service-providers.html"},"body parser":{"text":"Body Parser","relativeUrl":"middlewares\/body-parser.html"},"query parser":{"text":"Query Parser","relativeUrl":"middlewares\/query-parser.html"},"cookie parser":{"text":"Cookie Parser","relativeUrl":"middlewares\/cookie-parser.html"},"authentication":{"text":"Authentication","relativeUrl":"middlewares\/authentication.html"},"localization":{"text":"Localization","relativeUrl":"middlewares\/localization.html"},"http method override":{"text":"HTTP Method Override","relativeUrl":"middlewares\/http-method-override.html"},"serve static":{"text":"Server Static","relativeUrl":"middlewares\/serve-static.html"},"elixir":{"text":"Elixir","relativeUrl":"more\/elixir.html"},"miscellanous":{"text":"Miscellaneous","relativeUrl":"more\/miscellaneous.html"},"testing":{"text":"Testing","relativeUrl":"more\/testing.html"}}},"other":{"name":"Quorra CLI","items":{"home":{"text":"Overview","relativeUrl":"quorra-cli\/overview.html"}}}}},"template":{"directory":"\/home\/harish\/Dropbox\/Code\/quorra-docs\/website"},"pageList":{"13":"getting-started\/configuration.html","7":"getting-started\/controllers.html","9":"getting-started\/errors-&-logging.html","11":"getting-started\/globals.html","10":"getting-started\/installation.html","3":"getting-started\/middleware.html","8":"getting-started\/models-&-orm.html","5":"getting-started\/request-lifecycle.html","12":"getting-started\/requests-&-input.html","6":"getting-started\/routing.html","4":"getting-started\/views-&-responses.html","2":"index.html","28":"middlewares\/authentication.html","24":"middlewares\/body-parser.html","25":"middlewares\/cookie-parser.html","23":"middlewares\/http-method-override.html","27":"middlewares\/localization.html","30":"middlewares\/query-parser.html","26":"middlewares\/serve-static.html","29":"middlewares\/session.html","21":"more\/elixir.html","20":"more\/mail.html","17":"more\/miscellaneous.html","18":"more\/request.html","14":"more\/response.html","16":"more\/security.html","15":"more\/service-providers.html","19":"more\/testing.html","1":"preface\/contribution-guide.html","0":"preface\/quickstart.html","22":"quorra-cli\/overview.html"},"pageTree":{"getting-started":{"configuration.html":"configuration.html","controllers.html":"controllers.html","errors-&-logging.html":"errors-&-logging.html","globals.html":"globals.html","installation.html":"installation.html","middleware.html":"middleware.html","models-&-orm.html":"models-&-orm.html","request-lifecycle.html":"request-lifecycle.html","requests-&-input.html":"requests-&-input.html","routing.html":"routing.html","views-&-responses.html":"views-&-responses.html"},"index.html":"index.html","middlewares":{"authentication.html":"authentication.html","body-parser.html":"body-parser.html","cookie-parser.html":"cookie-parser.html","http-method-override.html":"http-method-override.html","localization.html":"localization.html","query-parser.html":"query-parser.html","serve-static.html":"serve-static.html","session.html":"session.html"},"more":{"elixir.html":"elixir.html","mail.html":"mail.html","miscellaneous.html":"miscellaneous.html","request.html":"request.html","response.html":"response.html","security.html":"security.html","service-providers.html":"service-providers.html","testing.html":"testing.html"},"preface":{"contribution-guide.html":"contribution-guide.html","quickstart.html":"quickstart.html"},"quorra-cli":{"overview.html":"overview.html"}},"currentFile":"more\/response.md","content":"<h1 id=\"response\">Response<\/h1>\n<ul>\n<li><a href=\"#introduction\">Introduction<\/a><\/li>\n<li><a href=\"#properties\">Properties<\/a><\/li>\n<li><a href=\"#methods\">Methods<\/a><\/li>\n<\/ul>\n<h2 id=\"introduction\">Introduction<\/h2>\n<p>The res object represents the HTTP response that an Quorra app sends when it gets an HTTP request.<\/p>\n<p>In this documentation and by convention, the object is always referred to as res (and the HTTP request is req) but\nits actual name is determined by the parameters to the callback function in which you\u2019re working.<\/p>\n<p>For example:<\/p>\n<pre><code class=\"language-javascript\">Route.get('\/user\/{id}', function(req, res) {\n  res.send('user ' + req.params.id);\n});<\/code><\/pre>\n<p>But you could just as well have:<\/p>\n<pre><code class=\"language-javascript\">Route.get('\/user\/{id}', function(request, response) {\n  response.send('user ' + request.params.id);\n});<\/code><\/pre>\n<h2 id=\"properties\">Properties<\/h2>\n<h3 id=\"reslocals\">res.locals<\/h3>\n<p>An object that contains response local variables scoped to the request, and therefore available only to the view(s)\nrendered during that request \/ response cycle (if any). Otherwise, this property is identical to <a href=\"\/docs\/1.0.0\/more\/miscellaneous.html#application-locals\">app.locals<\/a>.<\/p>\n<p>This property is useful for exposing request-level information such as the request path name, authenticated user,\nuser settings, and so on.<\/p>\n<pre><code class=\"language-javascript\">function myMiddleware(app, next){\n    this.__app = app;\n    this.__next = next;\n}\n\nmyMiddleware.prototype.handle = function(request, response){\n    response.locals.user = req.user;\n    response.locals.authenticated = ! req.user.anonymous;\n    this.__next();\n}\n\nApp.middleware(myMiddleware);<\/code><\/pre>\n<h2 id=\"methods\">Methods<\/h2>\n<h3 id=\"resabortstatuscode--message\">res.abort(statusCode [, message])<\/h3>\n<p>Some exceptions describe HTTP error codes from the server. For example, this may be a &quot;page not found&quot; error (404),\nan &quot;unauthorized error&quot; (401) or even a developer generated 500 error. In order to return such a response, use the\nfollowing:<\/p>\n<pre><code class=\"language-javascript\">res.abort(404);<\/code><\/pre>\n<p>Optionally, you may provide a response:<\/p>\n<pre><code class=\"language-javascript\">res.abort(403, 'Unauthorized action.');<\/code><\/pre>\n<p>This method may be used at any time during the request's lifecycle.<\/p>\n<h3 id=\"resappendfield--value\">res.append(field [, value])<\/h3>\n<p>Appends the specified value to the HTTP response header field. If the header is not already set, it creates the\nheader with the specified value. The value parameter can be a string or an array.<\/p>\n<blockquote>\n<p><strong>Note:<\/strong> calling <code>res.set()<\/code> after <code>res.append()<\/code> will reset the previously-set header value.<\/p>\n<\/blockquote>\n<pre><code class=\"language-javascript\">res.append('Link', ['&lt;http:\/\/localhost\/&gt;', '&lt;http:\/\/localhost:3000\/&gt;']);\nres.append('Set-Cookie', 'foo=bar; Path=\/; HttpOnly');\nres.append('Warning', '199 Miscellaneous warning');<\/code><\/pre>\n<h3 id=\"resattachmentfilename\">res.attachment([filename])<\/h3>\n<p>Sets the HTTP response Content-Disposition header field to \u201cattachment\u201d. If a filename is given, then it sets the\n<code>Content-Type<\/code> based on the extension name via <code>res.type()<\/code>, and sets the <code>Content-Disposition<\/code> \u201cfilename=\u201d parameter.<\/p>\n<pre><code class=\"language-javascript\">res.attachment();\n\/\/ Content-Disposition: attachment\n\nres.attachment('path\/to\/logo.png');\n\/\/ Content-Disposition: attachment; filename=\"logo.png\"\n\/\/ Content-Type: image\/png<\/code><\/pre>\n<h3 id=\"rescookiename-value--options\">res.cookie(name, value [, options])<\/h3>\n<p>Sets cookie name to value. The value parameter may be a string or object converted to JSON.<\/p>\n<p>The options parameter is an object that can have the following properties.<\/p>\n<table>\n<thead>\n<tr>\n<th>Property<\/th>\n<th>Type<\/th>\n<th>Description<\/th>\n<\/tr>\n<\/thead>\n<tbody>\n<tr>\n<td>domain<\/td>\n<td>String<\/td>\n<td>Domain name for the cookie. Defaults to the domain name of the app.<\/td>\n<\/tr>\n<tr>\n<td>encode<\/td>\n<td>Function<\/td>\n<td>A synchronous function used for cookie value encoding. Defaults to encodeURIComponent.<\/td>\n<\/tr>\n<tr>\n<td>expires<\/td>\n<td>Date<\/td>\n<td>Expiry date of the cookie in GMT. If not specified or set to 0, creates a session cookie.<\/td>\n<\/tr>\n<tr>\n<td>httpOnly<\/td>\n<td>Boolean<\/td>\n<td>Flags the cookie to be accessible only by the web server.<\/td>\n<\/tr>\n<tr>\n<td>maxAge<\/td>\n<td>String<\/td>\n<td>Convenient option for setting the expiry time relative to the current time in milliseconds.<\/td>\n<\/tr>\n<tr>\n<td>path<\/td>\n<td>String<\/td>\n<td>Path for the cookie. Defaults to \u201c\/\u201d.<\/td>\n<\/tr>\n<tr>\n<td>secure<\/td>\n<td>Boolean<\/td>\n<td>Marks the cookie to be used with HTTPS only.<\/td>\n<\/tr>\n<tr>\n<td>signed<\/td>\n<td>Boolean<\/td>\n<td>Indicates if the cookie should be signed.<\/td>\n<\/tr>\n<\/tbody>\n<\/table>\n<p>All res.cookie() does is set the HTTP Set-Cookie header with the options provided. Any option not specified defaults\nto the value stated in RFC 6265.\nFor example:<\/p>\n<pre><code class=\"language-javascript\">res.cookie('name', 'tobi', { domain: '.example.com', path: '\/admin', secure: true });\nres.cookie('rememberme', '1', { expires: new Date(Date.now() + 900000), httpOnly: true });<\/code><\/pre>\n<p>The encode option allows you to choose the function used for cookie value encoding. Does not support asynchronous\nfunctions.<\/p>\n<p>Example use case: You need to set a domain wide cookie for another site in your organization to use. This other site\n(not under your administrative control) does not use URI encoded cookie values.<\/p>\n<pre><code class=\"language-javascript\">\/\/Default encoding\nres.cookie('some_cross_domain_cookie', 'http:\/\/mysubdomain.example.com',{domain:'example.com'});\n\/\/ Result: 'some_cross_domain_cookie=http%3A%2F%2Fmysubdomain.example.com; Domain=example.com; Path=\/'\n\n\/\/Custom encoding\nres.cookie('some_cross_domain_cookie', 'http:\/\/mysubdomain.example.com',{domain:'example.com', encode: String});\n\/\/ Result: 'some_cross_domain_cookie=http:\/\/mysubdomain.example.com; Domain=example.com; Path=\/;'<\/code><\/pre>\n<p>The maxAge option is a convenience option for setting \u201cexpires\u201d relative to the current time in milliseconds. The\nfollowing is equivalent to the second example above.<\/p>\n<pre><code class=\"language-javascript\">res.cookie('rememberme', '1', { maxAge: 900000, httpOnly: true });<\/code><\/pre>\n<p>You can pass an object as the value parameter; it is then serialized as JSON and parsed by <code>bodyParser<\/code> middleware.<\/p>\n<pre><code class=\"language-javascript\">res.cookie('cart', { items: [1,2,3] });\nres.cookie('cart', { items: [1,2,3] }, { maxAge: 900000 });<\/code><\/pre>\n<p>When cookieParser middleware is enabled, this method also supports signed cookies. Simply include the signed option\nset to true. Then res.cookie() will use the application encryption key in <code>app\/config\/app.js<\/code> to sign the value.<\/p>\n<pre><code class=\"language-javascript\">res.cookie('name', 'tobi', { signed: true });<\/code><\/pre>\n<p>Later you may access this value through the req.signedCookie object.<\/p>\n<h3 id=\"resclearcookiename--options\">res.clearCookie(name [, options])<\/h3>\n<p>Clears the cookie specified by name. For details about the options object, see res.cookie().<\/p>\n<pre><code class=\"language-javascript\">res.cookie('name', 'tobi', { path: '\/admin' });\nres.clearCookie('name', { path: '\/admin' });<\/code><\/pre>\n<h3 id=\"resdownloadpath--filename--fn\">res.download(path [, filename] [, fn])<\/h3>\n<p>Transfers the file at path as an \u201cattachment\u201d. Typically, browsers will prompt the user for download. By default,\nthe Content-Disposition header \u201cfilename=\u201d parameter is path (this typically appears in the browser dialog). Override\nthis default with the filename parameter.<\/p>\n<p>When an error occurs or transfer is complete, the method calls the optional callback function fn. This method uses\n<code>res.sendFile()<\/code> to transfer the file.<\/p>\n<pre><code class=\"language-javascript\">res.download('\/report-12345.pdf');\n\nres.download('\/report-12345.pdf', 'report.pdf');\n\nres.download('\/report-12345.pdf', 'report.pdf', function(err){\n  if (err) {\n    \/\/ Handle error, but keep in mind the response may be partially-sent\n    \/\/ so check res.headersSent\n  } else {\n    \/\/ decrement a download credit, etc.\n  }\n});<\/code><\/pre>\n<h3 id=\"resenddata--encoding\">res.end([data] [, encoding])<\/h3>\n<p>Ends the response process. This method actually comes from Node core, specifically the response.end() method of http\n.ServerResponse.<\/p>\n<p>Use to quickly end the response without any data. If you need to respond with data, instead use methods such as <code>res .send()<\/code> and <code>res.json()<\/code>.<\/p>\n<pre><code class=\"language-javascript\">res.end();\nres.status(404).end();<\/code><\/pre>\n<h3 id=\"resformatobject\">res.format(object)<\/h3>\n<p>Performs content-negotiation on the Accept HTTP header on the request object, when present. It uses req.accepts() to\nselect a handler for the request, based on the acceptable types ordered by their quality values. If the header is not\nspecified, the first callback is invoked. When no match is found, the server responds with 406 \u201cNot Acceptable\u201d, or\ninvokes the default callback.<\/p>\n<p>The Content-Type response header is set when a callback is selected. However, you may alter this within the callback\nusing methods such as <code>res.set()<\/code> or <code>res.type()<\/code>.<\/p>\n<p>The following example would respond with <code>{ \"message\": \"hey\" }<\/code> when the Accept header field is set to\n<code>application\/json<\/code> or <code>*\/json<\/code> (however if it is <code>*\/*<\/code>, then the response will be <code>hey<\/code>).<\/p>\n<pre><code class=\"language-javascript\">res.format({\n  'text\/plain': function(){\n    res.send('hey');\n  },\n\n  'text\/html': function(){\n    res.send('&lt;p&gt;hey&lt;\/p&gt;');\n  },\n\n  'application\/json': function(){\n    res.send({ message: 'hey' });\n  },\n\n  'default': function() {\n    \/\/ log the request and respond with 406\n    res.status(406).send('Not Acceptable');\n  }\n});<\/code><\/pre>\n<p>In addition to canonicalized MIME types, you may also use extension names mapped to these types for a slightly less\nverbose implementation:<\/p>\n<pre><code class=\"language-javascript\">res.format({\n  text: function(){\n    res.send('hey');\n  },\n\n  html: function(){\n    res.send('&lt;p&gt;hey&lt;\/p&gt;');\n  },\n\n  json: function(){\n    res.send({ message: 'hey' });\n  }\n});<\/code><\/pre>\n<h3 id=\"resgetfield\">res.get(field)<\/h3>\n<p>Returns the HTTP response header specified by field. The match is case-insensitive.<\/p>\n<pre><code class=\"language-javascript\">res.get('Content-Type');\n\/\/ =&gt; \"text\/plain\"<\/code><\/pre>\n<h3 id=\"resjsonbody\">res.json([body])<\/h3>\n<p>Sends a JSON response. This method is identical to res.send() with an object or array as the parameter. However, you\ncan use it to convert other values to JSON, such as null, and undefined. (although these are technically not valid\nJSON).<\/p>\n<pre><code class=\"language-javascript\">res.json(null);\nres.json({ user: 'tobi' });\nres.status(500).json({ error: 'message' });<\/code><\/pre>\n<h3 id=\"resjsonpbody\">res.jsonp([body])<\/h3>\n<p>Sends a JSON response with <code>JSONP<\/code> support. This method is identical to <code>res.json()<\/code>, except that it opts-in to <code>JSONP<\/code>\ncallback support.<\/p>\n<pre><code class=\"language-javascript\">res.jsonp(null);\n\/\/ =&gt; null\n\nres.jsonp({ user: 'tobi' });\n\/\/ =&gt; { \"user\": \"tobi\" }\n\nres.status(500).jsonp({ error: 'message' });\n\/\/ =&gt; { \"error\": \"message\" }<\/code><\/pre>\n<p>By default, the <code>JSONP<\/code> callback name is simply <code>callback<\/code>. Override this with the <code>jsonpCallbackName<\/code> configuration in\n<code>app\/config\/response.js<\/code>.<\/p>\n<p>The following are some examples of <code>JSONP<\/code> responses using the same code:<\/p>\n<pre><code class=\"language-javascript\">\/\/ ?callback=foo\nres.jsonp({ user: 'tobi' });\n\/\/ =&gt; foo({ \"user\": \"tobi\" })\n\nApp.config.set('response.jsonpCallbackName', 'cb');\n\n\/\/ ?cb=foo\nres.status(500).jsonp({ error: 'message' });\n\/\/ =&gt; foo({ \"error\": \"message\" })<\/code><\/pre>\n<h3 id=\"reslinkslinks\">res.links(links)<\/h3>\n<p>Joins the links provided as properties of the parameter to populate the response\u2019s Link HTTP header field.<\/p>\n<pre><code class=\"language-javascript\">res.links({\n  next: 'http:\/\/api.example.com\/users?page=2',\n  last: 'http:\/\/api.example.com\/users?page=5'\n});\n\nyields:\n\n```javascript\nLink: &lt;http:\/\/api.example.com\/users?page=2&gt;; rel=\"next\",\n      &lt;http:\/\/api.example.com\/users?page=5&gt;; rel=\"last\"<\/code><\/pre>\n<h3 id=\"reslocationpath\">res.location(path)<\/h3>\n<p>Sets the response Location HTTP header to the specified path parameter.<\/p>\n<pre><code class=\"language-javascript\">res.location('\/foo\/bar');\nres.location('http:\/\/example.com');\nres.location('back');<\/code><\/pre>\n<p>A path value of <code>back<\/code> has a special meaning, it refers to the URL specified in the <code>Referer<\/code> header of the request. If\nthe <code>Referer<\/code> header was not specified, it refers to \u201c\/\u201d.<\/p>\n<p>Quorra passes the specified URL string as-is to the browser in the Location header, without any validation or\nmanipulation, except in case of back.<\/p>\n<p>Browsers take the responsibility of deriving the intended URL from the current URL or the referring URL, and the URL\nspecified in the Location header; and redirect the user accordingly.<\/p>\n<h3 id=\"resredirectstatus-path\">res.redirect([status,] path)<\/h3>\n<p>Redirects to the URL derived from the specified path, with specified HTTP status code status. If you don\u2019t specify\nstatus, the status code defaults to \u201c302 \u201cFound\u201d.<\/p>\n<pre><code class=\"language-javascript\">res.redirect('\/foo\/bar');\nres.redirect('http:\/\/example.com');\nres.redirect(301, 'http:\/\/example.com');\nres.redirect('..\/login');<\/code><\/pre>\n<p>Redirects can be a fully-qualified URL for redirecting to a different site:<\/p>\n<pre><code class=\"language-javascript\">res.redirect('http:\/\/google.com');<\/code><\/pre>\n<p>Redirects can be relative to the root of the host name. For example, if the application is on <code>http:\/\/example .com\/admin\/post\/new<\/code>, the following would redirect to the URL <code>http:\/\/example.com\/admin<\/code>:<\/p>\n<pre><code class=\"language-javascript\">res.redirect('\/admin');<\/code><\/pre>\n<p>Redirects can be relative to the current URL. For example, from <code>http:\/\/example.com\/blog\/admin\/<\/code> (notice the trailing\nslash), the following would redirect to the URL <code>http:\/\/example.com\/blog\/admin\/post\/new<\/code>.<\/p>\n<pre><code class=\"language-javascript\">res.redirect('post\/new');<\/code><\/pre>\n<p>Redirecting to <code>post\/new<\/code> from <code>http:\/\/example.com\/blog\/admin<\/code> (no trailing slash), will redirect to <code>http:\/\/example .com\/blog\/post\/new<\/code>.<\/p>\n<p>If you found the above behavior confusing, think of path segments as directories (with trailing slashes) and files,\nit will start to make sense.<\/p>\n<p>Path-relative redirects are also possible. If you were on <code>http:\/\/example.com\/admin\/post\/new<\/code>, the following would\nredirect to <code>http\/\/example.com\/admin\/post<\/code>:<\/p>\n<pre><code class=\"language-javascript\">res.redirect('..');<\/code><\/pre>\n<p>A back redirection redirects the request back to the referer, defaulting to \/ when the referer is missing.<\/p>\n<pre><code class=\"language-javascript\">res.redirect('back');<\/code><\/pre>\n<h3 id=\"ressendbody\">res.send([body])<\/h3>\n<p>Sends the HTTP response.<\/p>\n<p>The body parameter can be a Buffer object, a String, an object, or an Array. For example:<\/p>\n<pre><code class=\"language-javascript\">res.send(new Buffer('whoop'));\nres.send({ some: 'json' });\nres.send('&lt;p&gt;some html&lt;\/p&gt;');\nres.status(404).send('Sorry, we cannot find that!');\nres.status(500).send({ error: 'something blew up' });<\/code><\/pre>\n<p>This method performs many useful tasks for simple non-streaming responses: For example, it automatically assigns the\nContent-Length HTTP response header field (unless previously defined) and provides automatic HEAD and HTTP cache\nfreshness support.<\/p>\n<p>When the parameter is a Buffer object, the method sets the Content-Type response header field to\n<code>application\/octet-stream<\/code>, unless previously defined as shown below:<\/p>\n<pre><code class=\"language-javascript\">res.set('Content-Type', 'text\/html');\nres.send(new Buffer('&lt;p&gt;some html&lt;\/p&gt;'));<\/code><\/pre>\n<p>When the parameter is a String, the method sets the Content-Type to \u201ctext\/html\u201d:<\/p>\n<pre><code class=\"language-javascript\">res.send('&lt;p&gt;some html&lt;\/p&gt;');<\/code><\/pre>\n<p>When the parameter is an Array or Object, Quorra responds with the JSON representation:<\/p>\n<pre><code class=\"language-javascript\">res.send({ user: 'tobi' });\nres.send([1,2,3]);<\/code><\/pre>\n<h3 id=\"ressendfilepath--options--fn\">res.sendFile(path [, options] [, fn])<\/h3>\n<p>Transfers the file at the given path. Sets the Content-Type response HTTP header field based on the filename\u2019s\nextension. Unless the root option is set in the options object, path must be an absolute path to the file.<\/p>\n<p>The following table provides details on the options parameter.<\/p>\n<table>\n<thead>\n<tr>\n<th>Property<\/th>\n<th>Description<\/th>\n<th>Default<\/th>\n<\/tr>\n<\/thead>\n<tbody>\n<tr>\n<td>maxAge<\/td>\n<td>Sets the max-age property of the Cache-Control header in milliseconds or a string in ms format<\/td>\n<td>0<\/td>\n<\/tr>\n<tr>\n<td>root<\/td>\n<td>Root directory for relative filenames.<\/td>\n<td><\/td>\n<\/tr>\n<tr>\n<td>lastModified<\/td>\n<td>Sets the Last-Modified header to the last modified date of the file on the OS. Set false to disable it.<\/td>\n<td><\/td>\n<\/tr>\n<tr>\n<td>headers<\/td>\n<td>Object containing HTTP headers to serve with the file.<\/td>\n<td><\/td>\n<\/tr>\n<tr>\n<td>dotfiles<\/td>\n<td>Option for serving dotfiles. Possible values are \u201callow\u201d, \u201cdeny\u201d, \u201cignore\u201d.<\/td>\n<td>\u201cignore\u201d<\/td>\n<\/tr>\n<\/tbody>\n<\/table>\n<p>The method invokes the callback function fn(err) when the transfer is complete or when an error occurs. If the\ncallback function is specified and an error occurs, the callback function must explicitly handle the response process\neither by ending the request-response cycle, or by passing control to the next route.<\/p>\n<p>Here is an example of using res.sendFile with all its arguments.<\/p>\n<pre><code class=\"language-javascript\">Route.get('\/file\/{name}', function (req, res, next) {\n\n  var options = {\n    root: __dirname + '\/..\/public\/',\n    dotfiles: 'deny',\n    headers: {\n        'x-timestamp': Date.now(),\n        'x-sent': true\n    }\n  };\n\n  var fileName = req.routeParameters.name;\n\n  res.sendFile(fileName, options, function (err) {\n    if (err) {\n      console.log(err);\n      res.status(err.status).end();\n    }\n    else {\n      console.log('Sent:', fileName);\n    }\n  });\n\n});<\/code><\/pre>\n<p>res.sendFile provides fine-grained support for file serving as illustrated in the following example:<\/p>\n<pre><code class=\"language-javascript\">Route.get('\/user\/{uid}\/photos\/{file}', function(req, res){\n  var uid = req.routeParameters.uid\n    , file = req.routeParameters.file;\n\n  user.mayViewFilesFrom(uid, function(yes){\n    if (yes) {\n      res.sendFile('\/uploads\/' + uid + '\/' + file);\n    } else {\n      res.status(403).send('Sorry! you cant see that.');\n    }\n  });\n});<\/code><\/pre>\n<p>For more information, or if you have issues or concerns, see res.send().<\/p>\n<h3 id=\"ressendstatusstatuscode\">res.sendStatus(statusCode)<\/h3>\n<p>Set the response HTTP status code to statusCode and send its string representation as the response body.<\/p>\n<pre><code class=\"language-javascript\">res.sendStatus(200); \/\/ equivalent to res.status(200).send('OK')\nres.sendStatus(403); \/\/ equivalent to res.status(403).send('Forbidden')\nres.sendStatus(404); \/\/ equivalent to res.status(404).send('Not Found')\nres.sendStatus(500); \/\/ equivalent to res.status(500).send('Internal Server Error')<\/code><\/pre>\n<p>If an unsupported status code is specified, the HTTP status is still set to statusCode and the string version of the\ncode is sent as the response body.<\/p>\n<pre><code class=\"language-javascript\">res.sendStatus(2000); \/\/ equivalent to res.status(2000).send('2000')<\/code><\/pre>\n<p><a href=\"http:\/\/en.wikipedia.org\/wiki\/List_of_HTTP_status_codes\">More about HTTP Status Codes<\/a><\/p>\n<h3 id=\"ressetfield--value\">res.set(field [, value])<\/h3>\n<p>Sets the response\u2019s HTTP header field to value. To set multiple fields at once, pass an object as the parameter.<\/p>\n<pre><code class=\"language-javascript\">res.set('Content-Type', 'text\/plain');\n\nres.set({\n  'Content-Type': 'text\/plain',\n  'Content-Length': '123',\n  'ETag': '12345'\n});<\/code><\/pre>\n<p>Aliased as <code>res.header(field [, value])<\/code>.<\/p>\n<h3 id=\"resstatuscode\">res.status(code)<\/h3>\n<p>Use this method to set the HTTP status for the response. It is a chainable alias of Node\u2019s response.statusCode.<\/p>\n<pre><code class=\"language-javascript\">res.status(403).end();\nres.status(400).send('Bad Request');\nres.status(404).sendFile('\/absolute\/path\/to\/404.png');<\/code><\/pre>\n<h3 id=\"restypetype\">res.type(type)<\/h3>\n<p>Sets the Content-Type HTTP header to the MIME type as determined by <code>mime.lookup()<\/code> for the specified type. If type\ncontains the <code>\/<\/code> character, then it sets the <code>Content-Type<\/code> to <code>type<\/code>.<\/p>\n<pre><code class=\"language-javascript\">res.type('.html');              \/\/ =&gt; 'text\/html'\nres.type('html');               \/\/ =&gt; 'text\/html'\nres.type('json');               \/\/ =&gt; 'application\/json'\nres.type('application\/json');   \/\/ =&gt; 'application\/json'\nres.type('png');                \/\/ =&gt; image\/png:<\/code><\/pre>\n<h3 id=\"resvaryfield\">res.vary(field)<\/h3>\n<p>Adds the field to the Vary response header, if it is not there already.<\/p>\n<pre><code class=\"language-javascript\">res.vary('User-Agent').render('docs');<\/code><\/pre>\n<h3 id=\"resviewview--locals--callback\">res.view(view [, locals] [, callback])<\/h3>\n<p>Renders a view and sends the rendered HTML string to the client. Optional parameters:<\/p>\n<ul>\n<li>view, view file relative to path <code>applicationRoot\/resources\/views<\/code><\/li>\n<li>locals, an object whose properties define local variables for the view.<\/li>\n<li>callback, a callback function. If provided, the method returns both the possible error and rendered string, but does\nnot perform an automated response. When an error occurs, the method invokes next(err) internally.<\/li>\n<\/ul>\n<blockquote>\n<p><strong>Note:<\/strong> The local variable <code>cache<\/code> enables view caching. Set it to true, to cache the view or caching will be\ndetermined by the configuration <code>cache<\/code> in <code>app\/config\/view.js<\/code>.<\/p>\n<\/blockquote>\n<pre><code class=\"language-javascript\">\/\/ send the rendered view to the client\nres.view('index');\n\n\/\/ if a callback is specified, the rendered HTML string has to be sent explicitly\nres.view('index', function(err, html) {\n  res.send(html);\n});\n\n\/\/ pass a local variable to the view\nres.view('user', { name: 'Tobi' }, function(err, html) {\n  \/\/ ...\n});<\/code><\/pre>"});</script>
+</body>
+</html>
+
