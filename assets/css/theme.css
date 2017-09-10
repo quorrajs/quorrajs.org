@@ -14409,7 +14409,7 @@ nav.main .navbar-toggle {
     color: #444;
     width: 100%;
     float: right;
-    left: 30px;
+    padding-left: 30px;
 }
 
 .twitter-typeahead .tt-hint {
@@ -14417,7 +14417,6 @@ nav.main .navbar-toggle {
 }
 
 .twitter-typeahead .tt-dropdown-menu {
-    left: -30px!important;
     margin: 21px 0 0 0;
     width: 100%;
     padding: 0;
