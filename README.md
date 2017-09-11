@@ -1,2 +1,2 @@
 # quorrajs.org
-Quorra Landing Page
+Quorra Website
