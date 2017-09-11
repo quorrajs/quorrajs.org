@@ -14276,7 +14276,13 @@ nav.main .navbar-toggle {
 .navbar-toggle {
     display: none;
 }
-@media (max-width: 981px) {
+.landing header:not(.navbar-scrolled) .navbar-toggle {
+    margin: 28px 15px 28px;
+}
+.landing .navbar-brand span{
+    display: inline!important;
+}
+@media (max-width: 991px) {
     nav.main .main-nav{
         display: none;
     }
